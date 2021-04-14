@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <header>
-      aslkdjdflsö
+      Hamburg Coding School - Learning Management System
     </header>
   )
 }
