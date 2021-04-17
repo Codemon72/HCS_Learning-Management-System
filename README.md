@@ -7,7 +7,8 @@ This is a continuation / new setup of project I build in Node.js: [HCS_Learning-
 ## Tech Stack
 - local Database with MariaDB
   - GUI: Sequel Ace
-- React
+- backend with Node.js
+- frontend with React.js
 - JavaScript
 - HTML & CSS
 - SQL
