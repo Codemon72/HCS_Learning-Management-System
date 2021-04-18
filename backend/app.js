@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const Courses = require("./models/Courses");
+const Teachers = require("./models/Teachers");
 
 // Database
 const db = require('./config/database');
@@ -43,13 +45,22 @@ app.use(cors());
 // logAllCourses();
 
 
-// Route Index
+// Route Home
 app.get("/", (req, res) => {
   res.send("Hello from Codemon72");
 });
 
 // Route Courses
-app.get("/courses", (req, res) => {});
+app.get("/courses", (req, res) => {
+  Courses.findAll({
+    include: [Teachers],
+  })
+    .then((courses) => {
+      // res.sendStatus(200);
+      res.send(courses);
+    })
+    .catch((err) => console.log(`Error: ${err}`));
+});
 
 const PORT = process.env.PORT || 4000;
 
