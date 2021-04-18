@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import Header from './components/Header'
-import Main from './components/Main'
+import Display from './components/Display'
+import Dashboard from './components/Dashboard'
 
 
 
@@ -13,7 +14,10 @@ function App() {
   return (
     <>
       <Header />
-      <Main />
+      <main>
+      <Dashboard />
+      <Display />
+      </main>
     </>
   );
 }
