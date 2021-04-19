@@ -3,16 +3,22 @@ import { useState } from 'react'
 
 const Dashboard = () => {
 
-  const [selected, setSelected] = useState("null");
+  const [formState, setFormState] = useState({
+    name: 'null',
+    hours: null
+  });
 
-  const handleSelectorChange = (event) => {
-    setSelected(event.target.value);
-    // setChangeValue('')
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    setFormState({
+      ...formState,
+      [event.target.name]: value
+    });
   };       
 
   const handleAddCourse = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
+    console.log(formState)
   }
 
   return (
@@ -23,11 +29,10 @@ const Dashboard = () => {
       <div className="input-group">
         <label htmlFor="name">Course Name</label>
         <select 
-          className=""
+          className="input-field"
           name="name" 
-          id="name"
-          value={selected}
-          onChange={handleSelectorChange} >
+          value={formState.name}
+          onChange={handleInputChange} >
           <option value="null" disabled hidden>Please select</option>
           <option value="HTML & CSS">HTML & CSS</option>
           <option value="Learn To Code">Learn To Code</option>
@@ -37,8 +42,20 @@ const Dashboard = () => {
           <option value="Vue.js">Vue.js</option>
         </select>
       </div>
+      <div className="input-group">
+        <label htmlFor="hours">Hours Total</label>
+        <input 
+          className="input-field"
+          type="number" 
+          name="hours" 
+          placeholder="number" 
+          maxLength="100"
+          value={formState.number} />
+      </div>
       
-      <input type="submit" value="Add Course" className="" id="AddSubmit" />
+      <div className="input-group">
+      <input type="submit" value="Add Course" id="AddSubmit" />
+      </div>
     </form>
     </div>
   )

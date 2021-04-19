@@ -63,6 +63,18 @@ main {
   margin-left: auto;
   outline: 1px solid black;
 }
+.input-group ~ .input-group {
+  margin-top: 1rem;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+}
+.input-group .input-field {
+  display: block;
+  width: 150px;
+}
 
 /* Display */
 .display {
