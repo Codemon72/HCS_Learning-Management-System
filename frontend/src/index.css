@@ -73,7 +73,8 @@ main {
 }
 .input-group .input-field {
   display: block;
-  width: 150px;
+  padding: .5rem 1rem;
+  width: 200px;
 }
 
 /* Display */

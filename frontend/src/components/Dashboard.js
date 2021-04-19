@@ -5,7 +5,8 @@ const Dashboard = () => {
 
   const [formState, setFormState] = useState({
     name: 'null',
-    hours: null
+    start_date: '',
+    hours: ''
   });
 
   const handleInputChange = (event) => {
@@ -43,6 +44,16 @@ const Dashboard = () => {
         </select>
       </div>
       <div className="input-group">
+        <label htmlFor="start_date">Start Date</label>
+        <input 
+          className="input-field"
+          type="date"
+          name="start_date"
+          value={formState.start_date}
+          onChange={handleInputChange}
+          />
+      </div>
+      <div className="input-group">
         <label htmlFor="hours">Hours Total</label>
         <input 
           className="input-field"
@@ -50,7 +61,9 @@ const Dashboard = () => {
           name="hours" 
           placeholder="number" 
           maxLength="100"
-          value={formState.number} />
+          value={formState.hours}
+          onChange={handleInputChange} 
+          />
       </div>
       
       <div className="input-group">
