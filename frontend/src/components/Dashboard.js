@@ -6,7 +6,9 @@ const Dashboard = () => {
   const [formState, setFormState] = useState({
     name: 'null',
     start_date: '',
-    hours: ''
+    end_date: '',
+    hours: '',
+    teacher_id: 'null'
   });
 
   const handleInputChange = (event) => {
@@ -54,6 +56,16 @@ const Dashboard = () => {
           />
       </div>
       <div className="input-group">
+        <label htmlFor="end_date">End Date</label>
+        <input 
+          className="input-field"
+          type="date"
+          name="end_date"
+          value={formState.end_date}
+          onChange={handleInputChange}
+          />
+      </div>
+      <div className="input-group">
         <label htmlFor="hours">Hours Total</label>
         <input 
           className="input-field"
@@ -65,10 +77,36 @@ const Dashboard = () => {
           onChange={handleInputChange} 
           />
       </div>
+      <div className="input-group">
+        <label htmlFor="teacher_id">Teacher</label>
+        <select 
+        type="number"
+        name="teacher_id" 
+        className="input-field"
+        value={formState.teacher_id}
+        onChange={handleInputChange}
+        required
+        >
+          <option value="" disabled hidden>Please select</option>
+          <option value="null">not determined yet</option>
+          <option value="2">Alexander Löhn</option>
+          <option value="5">Ansgar Mertens</option>
+          <option value="11">Benjamin Rabe</option>
+          <option value="7">Christoph Eicke</option>
+          <option value="1">Helder Pereira</option>
+          <option value="4">Jonas Reitmann</option>
+          <option value="8">Teresa Holfeld</option>
+          <option value="9">Thomas Hedeler</option>
+          <option value="10">Mary Vokicic</option>
+          <option value="3">Paul Anton</option>
+          <option value="6">Paul Mölders</option>
+        </select>
+      </div>
       
       <div className="input-group">
-      <input type="submit" value="Add Course" id="AddSubmit" />
+      <input type="submit" />
       </div>
+
     </form>
     </div>
   )
