@@ -58,9 +58,11 @@ main {
 
 /* Dashboard */
 .dashboard {
+  position: fixed;
+  top: 6rem;
+  left: 3rem;
   width: 400px;
   padding: 2rem;
-  margin-left: auto;
   outline: 1px solid black;
 }
 .input-group ~ .input-group {
@@ -81,8 +83,7 @@ main {
 .display {
   width: 500px;
   padding: 2rem;
-  margin-left: 3rem;
-  margin-right: auto;
+  margin-left: 33rem;
   outline: 1px solid black;
 }
 

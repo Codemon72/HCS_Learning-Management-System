@@ -22,6 +22,13 @@ const Dashboard = () => {
   const handleAddCourse = (e) => {
     e.preventDefault()
     console.log(formState)
+    setFormState({
+      name: 'null',
+      start_date: '',
+      end_date: '',
+      hours: '',
+      teacher_id: 'null'
+    })
   }
 
   return (
