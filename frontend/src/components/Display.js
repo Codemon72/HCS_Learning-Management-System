@@ -1,4 +1,5 @@
 import Course from './Course'
+import Loader from "./Loader";
 import { useEffect, useState } from 'react'
 
 const Display = () => {
@@ -15,7 +16,7 @@ const Display = () => {
     // setProducts(data.map((obj) => ({ ...obj, selected: true })));
   };
 
-  // fetch course data on first rendering
+  // Fetch Course Data on first Rendering
   useEffect(() => {
     fetchCourseData();
   }, []);
@@ -23,14 +24,19 @@ const Display = () => {
   return (
     <div className="display">
       This is Display. <br/><br/><br/>
-      {courses.map((course) => {
-          return (
-            <Course
-              // key={course_id}
-              course={course}
-            />
-          );
-        })}
+      {true}
+      {courses.length > 0 ? (
+        courses.map((course) => {
+            return (
+              <Course
+                key = {course.course_id}
+                course = {course}
+              />
+            );
+          })
+      ) : (
+        <Loader />
+      )}
     </div>
   )
 }
