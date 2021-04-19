@@ -70,7 +70,9 @@ main {
 @media only screen and (1000px) {
 }
 
-
+.course {
+  border: 1px solid blue;
+}
 
 
 
