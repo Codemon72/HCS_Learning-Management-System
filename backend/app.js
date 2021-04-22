@@ -16,12 +16,12 @@ const app = express();
 app.use(cors());
 
 // Route Home
-app.get("/", (req, res) => {
-  res.send("Hello from Codemon72");
+app.get('/', (req, res) => {
+  res.send('Hello from Codemon72');
 });
 
 // Route Courses
-app.get("/courses", (req, res) => {
+app.get('/courses', (req, res) => {
   Courses.findAll({
     include: [Teachers],
   })
@@ -30,6 +30,13 @@ app.get("/courses", (req, res) => {
     })
     .catch((err) => console.log(`Error: ${err}`));
 });
+
+// Add a Course
+app.post('/courses/add', (req, res) => {
+  let data = JSON.parse(req.body);
+  console.log(data)
+});
+
 
 const PORT = process.env.PORT || 4000;
 

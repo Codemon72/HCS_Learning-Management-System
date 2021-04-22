@@ -12,7 +12,6 @@ const Display = () => {
     const res = await fetch(URLAllCourseData);
     const data = await res.json();
     setCourses(data);
-    console.log(data);
     // setProducts(data.map((obj) => ({ ...obj, selected: true })));
   };
 

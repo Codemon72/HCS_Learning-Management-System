@@ -19,16 +19,30 @@ const Dashboard = () => {
     });
   };       
 
+  const addCourse = () => {
+    fetch('http://localhost:4000/courses/add', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formState.name
+      })
+    });
+  }
+
   const handleAddCourse = (e) => {
     e.preventDefault()
+    addCourse()
     console.log(formState)
-    setFormState({
-      name: 'null',
-      start_date: '',
-      end_date: '',
-      hours: '',
-      teacher_id: 'null'
-    })
+    // setFormState({
+    //   name: 'null',
+    //   start_date: '',
+    //   end_date: '',
+    //   hours: '',
+    //   teacher_id: 'null'
+    // })
   }
 
   return (
