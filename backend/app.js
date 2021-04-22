@@ -38,10 +38,20 @@ app.get('/courses', (req, res) => {
 app.post('/courses/add', (req, res) => {
   const { name, start_date, end_date, hours, teacher_id } = req.body;
   console.log(name);
-  res.json({
-    status: 'send',
-    name, start_date, end_date, hours, teacher_id
+  // Insert into table
+  Courses.create({
+    name,
+    hours,
+    start_date,
+    end_date,
+    teacher_id,
   })
+    .then(res.json({
+      status: 'Course added to DB',
+      name, start_date, end_date, hours, teacher_id
+      })
+    )
+    .catch((err) => console.log(err));
 });
 
 

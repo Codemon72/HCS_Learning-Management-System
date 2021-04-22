@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import Axios from 'axios'
-
 
 const Dashboard = () => {
 
@@ -41,13 +39,13 @@ const Dashboard = () => {
     e.preventDefault()
     addCourseToDB()
     console.log(formState)
-    // setFormState({
-    //   name: 'null',
-    //   start_date: '',
-    //   end_date: '',
-    //   hours: '',
-    //   teacher_id: 'null'
-    // })
+    setFormState({
+      name: 'null',
+      start_date: '',
+      end_date: '',
+      hours: '',
+      teacher_id: 'null'
+    })
   }
 
   return (
