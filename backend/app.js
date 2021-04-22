@@ -5,6 +5,7 @@ const Teachers = require("./models/Teachers");
 
 // Database
 const db = require('./config/database');
+const { response } = require("express");
 
 // Test DB (with Sequelize)
 db.authenticate()
@@ -13,6 +14,8 @@ db.authenticate()
 
 const app = express();
 
+// Middleware
+app.use(express.json({ limit: '1mb' }));
 app.use(cors());
 
 // Route Home
@@ -33,8 +36,12 @@ app.get('/courses', (req, res) => {
 
 // Add a Course
 app.post('/courses/add', (req, res) => {
-  let data = JSON.parse(req.body);
-  console.log(data)
+  const { name, start_date, end_date, hours, teacher_id } = req.body;
+  console.log(name);
+  res.json({
+    status: 'send',
+    name, start_date, end_date, hours, teacher_id
+  })
 });
 
 

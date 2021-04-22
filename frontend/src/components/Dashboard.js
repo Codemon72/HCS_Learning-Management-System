@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Axios from 'axios'
 
 
 const Dashboard = () => {
@@ -19,22 +20,26 @@ const Dashboard = () => {
     });
   };       
 
-  const addCourse = () => {
-    fetch('http://localhost:4000/courses/add', {
+  const addCourseToDB = () => {
+    const data = formState;
+    const options = {
       method: 'POST',
       headers: {
-        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: formState.name
-      })
-    });
+      body: JSON.stringify(data)
+    };
+
+    fetch('http://localhost:4000/courses/add', options)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
   }
 
   const handleAddCourse = (e) => {
     e.preventDefault()
-    addCourse()
+    addCourseToDB()
     console.log(formState)
     // setFormState({
     //   name: 'null',
