@@ -46,6 +46,7 @@ const Dashboard = () => {
       hours: '',
       teacher_id: 'null'
     })
+    // refresh Display
   }
 
   return (

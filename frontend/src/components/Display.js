@@ -23,7 +23,6 @@ const Display = () => {
   return (
     <div className="display">
       Display <br/><br/><br/>
-      {true}
       {courses.length > 0 ? (
         courses.map((course) => {
             return (

@@ -37,7 +37,6 @@ app.get('/courses', (req, res) => {
 // Add a Course
 app.post('/courses/add', (req, res) => {
   const { name, start_date, end_date, hours, teacher_id } = req.body;
-  console.log(name);
   // Insert into table
   Courses.create({
     name,
