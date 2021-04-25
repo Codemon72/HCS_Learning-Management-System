@@ -7,6 +7,8 @@ import Dashboard from './components/Dashboard'
 
 function App() {
 
+  console.log('App rendered');
+
   return (
     <>
       <Header />

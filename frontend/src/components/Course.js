@@ -1,4 +1,7 @@
 const Course = ({course}) => {
+
+  console.log('Course rendered');
+
   return (
     <div className="course">
       <h3>Course: {course.name} </h3>

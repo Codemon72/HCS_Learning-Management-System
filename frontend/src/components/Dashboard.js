@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 const Dashboard = () => {
 
+  console.log('Dashboard rendered');
+
   const [formState, setFormState] = useState({
     name: 'null',
     start_date: '',

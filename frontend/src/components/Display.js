@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 
 const Display = () => {
 
+  console.log('Display rendered');
+
   let [courses, setCourses] = useState([]);
 
   const URLAllCourseData = 'http://localhost:4000/courses'
