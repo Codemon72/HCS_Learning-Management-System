@@ -12,7 +12,11 @@ const Display = () => {
 
   const fetchCourseData = async () => {
     const res = await fetch(URLAllCourseData);
+    if (!res.ok) {
+      throw Error('could not fetch data from that endpoint');
+    }
     const data = await res.json();
+    const error = await 
     setCourses(data);
     // setProducts(data.map((obj) => ({ ...obj, selected: true })));
   };
@@ -25,7 +29,7 @@ const Display = () => {
   return (
     <div className="display">
       Display <br/><br/><br/>
-      {courses.length > 0 ? (
+      { courses && (
         courses.map((course) => {
             return (
               <Course
@@ -34,9 +38,9 @@ const Display = () => {
               />
             );
           })
-      ) : (
-        <Loader />
       )}
+        <Loader />
+
     </div>
   )
 }
