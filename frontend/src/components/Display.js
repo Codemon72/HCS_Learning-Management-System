@@ -9,6 +9,10 @@ const Display = () => {
 
   const { courses, error, isPending } = useContext(CourseContext);
 
+  const handleDelete = (course_id) => {
+    console.log(course_id);
+  }
+
   return (
     <div className="display">
 
@@ -22,6 +26,7 @@ const Display = () => {
               <Course
                 key = {course.course_id}
                 course = {course}
+                handleDelete = {handleDelete}
               />
             );
           })
