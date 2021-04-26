@@ -8,16 +8,19 @@ const Display = () => {
 
   let [courses, setCourses] = useState([]);
 
-  const URLAllCourseData = 'http://localhost:4000/courses'
+  const URLAllCourseData = 'http://localhost:4000/coursess'
 
   const fetchCourseData = async () => {
-    const res = await fetch(URLAllCourseData);
-    if (!res.ok) {
-      throw Error('could not fetch data from that endpoint');
+    try {
+      const response = await fetch(URLAllCourseData);
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const data = await response.json();
+      setCourses(data);
+    } catch (error) {
+      console.log(error)
     }
-    const data = await res.json();
-    const error = await 
-    setCourses(data);
     // setProducts(data.map((obj) => ({ ...obj, selected: true })));
   };
 
