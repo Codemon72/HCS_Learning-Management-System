@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import Display from './components/Display'
 import Dashboard from './components/Dashboard'
+import CourseContextProvider from './contexts/CourseContext';
 // import { BrowserRouter as Router, Route } from "react-router-dom"
 
 
@@ -13,8 +14,10 @@ function App() {
     <>
       <Header />
       <main>
-      <Dashboard />
-      <Display />
+        <CourseContextProvider>
+          <Dashboard />
+          <Display />
+        </CourseContextProvider>
       </main>
     </>
   );
