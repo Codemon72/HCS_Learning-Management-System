@@ -6,9 +6,11 @@ const Display = () => {
 
   console.log('Display rendered');
 
-  let [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
 
-  const URLAllCourseData = 'http://localhost:4000/coursess'
+  const URLAllCourseData = 'http://localhost:4000/courses'
 
   const fetchCourseData = async () => {
     try {
@@ -18,8 +20,11 @@ const Display = () => {
       }
       const data = await response.json();
       setCourses(data);
+      setIsPending(false);
+      setError(null);
     } catch (error) {
-      console.log(error)
+      setIsPending(false);
+      setError(error.message);
     }
     // setProducts(data.map((obj) => ({ ...obj, selected: true })));
   };
@@ -32,6 +37,8 @@ const Display = () => {
   return (
     <div className="display">
       Display <br/><br/><br/>
+      { error && <div>Error: &nbsp; { error }</div> }
+      { isPending && <Loader /> }
       { courses && (
         courses.map((course) => {
             return (
@@ -42,8 +49,6 @@ const Display = () => {
             );
           })
       )}
-        <Loader />
-
     </div>
   )
 }
