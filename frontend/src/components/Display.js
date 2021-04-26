@@ -7,9 +7,12 @@ const Display = () => {
 
   console.log('Display rendered');
 
-  const { courses, error, isPending } = useContext(CourseContext);
+  const { courses, error, isPending, fetchCourseData } = useContext(CourseContext);
 
   const handleDelete = (course_id) => {
+    fetch('http://localhost:4000/courses/delete/' + course_id, {
+      method: 'GET'
+    }).then(() => {fetchCourseData()})
     console.log(course_id);
   }
 

@@ -10,7 +10,6 @@ const Course = ({course, handleDelete}) => {
       <div>Start Date: {course.start_date}</div>
       <div>End Date: {course.end_date}</div>
       <div>Hours: {course.hours}</div>
-      <div>Course: {course.course_id}</div>
       <div>Trainer: { course.Teacher != null ? course.Teacher.name : 'not determined yet'}</div>
       <button onClick={() => handleDelete(course.course_id)}>Delete</button>
     </div>
