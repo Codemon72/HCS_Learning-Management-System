@@ -15,14 +15,14 @@ const Display = () => {
   const fetchCourseData = async () => {
     try {
       const response = await fetch(URLAllCourseData);
-      if (!response.ok) {
+      if (!response.ok) { // error from server (e.g. invalid API endpoint)
         throw Error(response.statusText);
       }
       const data = await response.json();
       setCourses(data);
       setIsPending(false);
       setError(null);
-    } catch (error) {
+    } catch (error) { // auto catches network / connection error
       setIsPending(false);
       setError(error.message);
     }
