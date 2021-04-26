@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react';
+import { CourseContext } from '../contexts/CourseContext';
 
 const Dashboard = () => {
 
   console.log('Dashboard rendered');
+
+  const { fetchCourseData } = useContext(CourseContext);
 
   const [formState, setFormState] = useState({
     name: 'null',
@@ -29,7 +32,6 @@ const Dashboard = () => {
       },
       body: JSON.stringify(data)
     };
-
     fetch('http://localhost:4000/courses/add', options)
       .then(response => response.json())
       .then(data => {
@@ -38,22 +40,24 @@ const Dashboard = () => {
   }
 
   const handleAddCourse = (e) => {
-    e.preventDefault()
-    addCourseToDB()
-    console.log(formState)
+    e.preventDefault();
+    addCourseToDB();
+    console.log(formState);
     setFormState({
       name: 'null',
       start_date: '',
       end_date: '',
       hours: '',
       teacher_id: 'null'
-    })
+    });
     // refresh Display
+    fetchCourseData();
   }
 
   return (
     <div className="dashboard">
-      Dashboard <br/><br/><br/>
+
+      <h3>Dashboard</h3><br/><br/>
 
       <form onSubmit={handleAddCourse}>
       <div className="input-group">
@@ -135,6 +139,8 @@ const Dashboard = () => {
       </div>
 
     </form>
+    {/* ToDo */}
+    {/* <button onClick={() => console.log('--- Break ---')}>Log Break</button> */}
     </div>
   )
 }

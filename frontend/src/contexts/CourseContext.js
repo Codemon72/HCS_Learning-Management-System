@@ -2,7 +2,7 @@ import { useState, useEffect, createContext } from 'react';
 
 export const CourseContext = createContext();
 
-export const CourseContextProvider = (props) => {
+export const CourseContextProvider = ({ children }) => {
 
   const [courses, setCourses] = useState([]);
   const [isPending, setIsPending] = useState(true);
@@ -37,9 +37,12 @@ export const CourseContextProvider = (props) => {
       value={{
         courses,
         error,
-        isPending
+        isPending,
+        fetchCourseData
       }}>
-        { props.children }
+
+        { children }
+
     </CourseContext.Provider>
   )
 }
