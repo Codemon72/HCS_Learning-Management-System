@@ -11,8 +11,10 @@ const Display = () => {
 
   const handleDelete = (course_id) => {
     fetch('http://localhost:4000/courses/delete/' + course_id, {
-      method: 'GET'
-    }).then(() => {fetchCourseData()})
+      method: 'DELETE'
+    })
+    .then(response => console.log(response))
+    .then(fetchCourseData())
     console.log(course_id);
   }
 

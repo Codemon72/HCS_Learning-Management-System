@@ -54,14 +54,10 @@ app.post('/courses/add', (req, res) => {
 });
 
 // Delete a Course
-app.get("/courses/delete/:id", (req, res) => {
+app.delete("/courses/delete/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
   Courses.destroy({ where: { course_id: idDeleted } })
-    .then(res.json({
-      status: 'Course deleted from DB',
-      course_id
-      })
-    )
+    .then(res.send(course_id))
     .catch((err) => console.log(err));
 });
 
