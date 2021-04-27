@@ -1,5 +1,9 @@
 const express = require("express");
 const cors = require("cors");
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+}
 const Courses = require("./models/Courses");
 const Teachers = require("./models/Teachers");
 
@@ -16,7 +20,7 @@ const app = express();
 
 // Middleware
 app.use(express.json({ limit: '1mb' }));
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Route Home
 app.get('/', (req, res) => {
