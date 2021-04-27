@@ -49,11 +49,9 @@ app.post('/courses/add', (req, res) => {
     end_date,
     teacher_id,
   })
-    .then(res.json({
-      status: 'Course added to DB',
-      name, start_date, end_date, hours, teacher_id
-      })
-    )
+    .then(result => {    
+      res.status(200).json(result);
+    })
     .catch((err) => console.log(err));
 });
 
