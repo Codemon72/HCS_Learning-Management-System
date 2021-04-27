@@ -36,7 +36,8 @@ const Dashboard = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-      });
+      })
+      .catch(error => console.log('error adding course: ' + error));
   }
 
   const handleAddCourse = (e) => {
