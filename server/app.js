@@ -51,6 +51,7 @@ app.post('/api/courses/add', (req, res) => {
     .catch((err) => console.log(err));
 });
 
+
 // Update Course
 app.put("/api/courses", (req, res) => {
   let { name, hours, start_date, end_date, teacher_id, course_id } = req.body;
@@ -77,6 +78,7 @@ app.put("/api/courses", (req, res) => {
       });
     });
 });
+
 
 // Delete Course
 app.delete("/api/courses/delete/:id", (req, res) => {

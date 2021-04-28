@@ -11,7 +11,7 @@ const Course = ({course, handleDelete}) => {
     setFormVisibility(true);
   };
 
-  const cancelUpdate = () => {
+  const closeUpdateForm = () => {
     setFormVisibility(false);
   };
 
@@ -31,7 +31,7 @@ const Course = ({course, handleDelete}) => {
         </div>)}
       
 
-      { formVisibility && <CourseUpdateForm course={course} cancelUpdate={cancelUpdate} /> }
+      { formVisibility && <CourseUpdateForm course={course} closeUpdateForm={closeUpdateForm} /> }
 
     </div>
   )

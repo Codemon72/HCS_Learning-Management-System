@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CourseContext } from '../contexts/CourseContext';
 
-const CourseUpdateForm = ({ course, cancelUpdate }) => {
+const CourseUpdateForm = ({ course, closeUpdateForm }) => {
 
-  const handleUpdateCourse = (e) => {
-    e.preventDefault();
-    console.log(updateFormState)
-  }
+  console.log('CourseUpdateForm rendered');
+
+  const { fetchCourseData } = useContext(CourseContext);
 
   const [updateFormState, setUpdateFormState] = useState({
     name: course.name,
@@ -15,6 +15,28 @@ const CourseUpdateForm = ({ course, cancelUpdate }) => {
     teacher_id: course.teacher_id,
     course_id: course.course_id
   });
+
+  const updateCourseInDB = () => {
+    const options = {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(updateFormState)
+    };
+
+    fetch('http://localhost:4000/api/courses/', options)
+      .then(response => response.json())
+      .then(data => {console.log(data)})
+      .catch(error => console.log('error adding course: ' + error));
+  }
+
+  const handleUpdateCourse = (e) => {
+    e.preventDefault();
+    updateCourseInDB();
+    console.log(updateFormState);
+    // refresh Display
+    fetchCourseData();
+    closeUpdateForm();
+  }
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -102,7 +124,7 @@ const CourseUpdateForm = ({ course, cancelUpdate }) => {
           </div>
           
           <div className="button-box">
-            <button onClick={ cancelUpdate }>Cancel</button>
+            <button onClick={ closeUpdateForm }>Cancel</button>
             <input type="submit" />
           </div>
 
