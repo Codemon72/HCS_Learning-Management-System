@@ -93,7 +93,7 @@ main {
   border: 1px solid blue;
 }
 
-.update_delete {
+.button-box {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;

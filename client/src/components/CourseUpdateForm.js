@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
-const CourseUpdateForm = ({ course }) => {
+const CourseUpdateForm = ({ course, cancelUpdate }) => {
 
-  const handleUpdateCourse = () => {
-    console.log('handleUpdateCourse')
+  const handleUpdateCourse = (e) => {
+    e.preventDefault();
+    console.log(updateFormState)
   }
 
   const [updateFormState, setUpdateFormState] = useState({
@@ -11,7 +12,8 @@ const CourseUpdateForm = ({ course }) => {
     start_date: course.start_date,
     end_date: course.end_date,
     hours: course.hours,
-    teacher_id: course.teacher_id
+    teacher_id: course.teacher_id,
+    course_id: course.course_id
   });
 
   const handleInputChange = (event) => {
@@ -76,13 +78,13 @@ const CourseUpdateForm = ({ course }) => {
           <div className="input-group">
             <label htmlFor="teacher_id">Teacher</label>
             <select 
-            type="number"
-            name="teacher_id" 
-            className="input-field"
-            value={updateFormState.teacher_id}
-            onChange={handleInputChange}
-            required
-            >
+              type="number"
+              name="teacher_id" 
+              className="input-field"
+              value={updateFormState.teacher_id}
+              onChange={handleInputChange}
+              required
+              >
               <option value="" disabled hidden>Please select</option>
               <option value="null">not determined yet</option>
               <option value="2">Alexander Löhn</option>
@@ -98,10 +100,12 @@ const CourseUpdateForm = ({ course }) => {
               <option value="6">Paul Mölders</option>
             </select>
           </div>
-      
-          <div className="input-group">
-          <input type="submit" />
+          
+          <div className="button-box">
+            <button onClick={ cancelUpdate }>Cancel</button>
+            <input type="submit" />
           </div>
+
         </form>
       </div>
   )

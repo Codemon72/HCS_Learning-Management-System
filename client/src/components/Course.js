@@ -9,7 +9,11 @@ const Course = ({course, handleDelete}) => {
 
   const chooseUpdate = () => {
     setFormVisibility(true);
-  }
+  };
+
+  const cancelUpdate = () => {
+    setFormVisibility(false);
+  };
 
   return (
     <div className="course">
@@ -20,13 +24,14 @@ const Course = ({course, handleDelete}) => {
       <div>Hours: {course.hours}</div>
       <div>Trainer: { course.Teacher != null ? course.Teacher.name : 'not determined yet'}</div>
 
-      { !formVisibility && (<div className="update_delete">
-        <button onClick={chooseUpdate}>Update</button>
-        <button onClick={() => handleDelete(course.course_id)}>Delete</button>
-      </div>)}
+      { !formVisibility && (
+        <div className="button-box">
+          <button onClick={chooseUpdate}>Update</button>
+          <button onClick={() => handleDelete(course.course_id)}>Delete</button>
+        </div>)}
       
 
-      { formVisibility && <CourseUpdateForm course={course}/> }
+      { formVisibility && <CourseUpdateForm course={course} cancelUpdate={cancelUpdate} /> }
 
     </div>
   )
