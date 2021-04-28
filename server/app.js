@@ -36,7 +36,7 @@ app.get('/api/courses', (req, res) => {
     .catch((err) => console.log(`Error: ${err}`));
 });
 
-// Add a Course
+// Add Course
 app.post('/api/courses/add', (req, res) => {
   const { name, start_date, end_date, hours, teacher_id } = req.body;
   // Insert into table
@@ -51,7 +51,34 @@ app.post('/api/courses/add', (req, res) => {
     .catch((err) => console.log(err));
 });
 
-// Delete a Course
+// Update Course
+app.put("/api/courses", (req, res) => {
+  let { name, hours, start_date, end_date, teacher_id, course_id } = req.body;
+  if (teacher_id === "null") {
+    teacher_id = null;
+  }
+  Courses.update(
+    { name, hours, start_date, end_date, teacher_id },
+    { where: { course_id: course_id } }
+  )
+    .then((result) => {
+      if(!result) {
+        res.status(500).json({
+          message: "Error -> Can not update course with id = " + course_id,
+          error: "Can NOT Update",
+        });
+      }
+      res.status(200).json(result);
+      })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Error -> Can not update course with id = " + course_id,
+        error: error.message
+      });
+    });
+});
+
+// Delete Course
 app.delete("/api/courses/delete/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
   Courses.destroy({ where: { course_id: idDeleted } })
