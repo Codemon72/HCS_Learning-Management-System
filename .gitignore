@@ -2,6 +2,6 @@
 
 process-log.md
 
-backend/node_modules/
+server/node_modules/
 
 .vscode/
