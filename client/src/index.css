@@ -93,8 +93,22 @@ main {
   border: 1px solid blue;
 }
 
+.update_delete {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+}
+
 .course + .course {
   margin-top: 1rem;
+}
+
+.course_update_form{
+  min-width: 100%;
+  margin-top: 2rem;
+  outline: 1px solid darkorange;
+  outline-offset: .7rem;
 }
 
 .Loader::after {
