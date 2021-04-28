@@ -30,7 +30,7 @@ const Dashboard = () => {
       body: JSON.stringify(formState)
     };
 
-    fetch('http://localhost:4000/api/courses/add', options)
+    fetch('http://localhost:4000/api/courses', options)
       .then(response => response.json())
       .then(data => {console.log(data)})
       .catch(error => console.log('error adding course: ' + error));

@@ -37,7 +37,7 @@ app.get('/api/courses', (req, res) => {
 });
 
 // Add Course
-app.post('/api/courses/add', (req, res) => {
+app.post('/api/courses', (req, res) => {
   const { name, start_date, end_date, hours, teacher_id } = req.body;
   // Insert into table
   Courses.create({
@@ -81,7 +81,7 @@ app.put("/api/courses", (req, res) => {
 
 
 // Delete Course
-app.delete("/api/courses/delete/:id", (req, res) => {
+app.delete("/api/courses/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
   Courses.destroy({ where: { course_id: idDeleted } })
     .then(res.send(course_id))

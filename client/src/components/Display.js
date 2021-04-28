@@ -10,7 +10,7 @@ const Display = () => {
   const { courses, error, isPending, fetchCourseData } = useContext(CourseContext);
 
   const handleDelete = (course_id) => {
-    fetch('http://localhost:4000/api/courses/delete/' + course_id, { method: 'DELETE' })
+    fetch('http://localhost:4000/api/courses/' + course_id, { method: 'DELETE' })
     .then(response => console.log(response))
     .then(fetchCourseData())
     .catch(error => console.log('error deleting course: ' + error));
