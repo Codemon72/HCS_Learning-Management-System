@@ -8,7 +8,7 @@ export const CourseContextProvider = ({ children }) => {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
-  const URLAllCourseData = 'http://localhost:4000/courses'
+  const URLAllCourseData = 'http://localhost:4000/api/courses'
 
   const fetchCourseData = async () => {
     try {

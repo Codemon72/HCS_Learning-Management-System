@@ -28,18 +28,16 @@ app.get('/', (req, res) => {
 });
 
 // Route Courses
-app.get('/courses', (req, res) => {
+app.get('/api/courses', (req, res) => {
   Courses.findAll({
     include: [Teachers],
   })
-    .then((courses) => {
-      res.send(courses);
-    })
+    .then((courses) => {res.send(courses)})
     .catch((err) => console.log(`Error: ${err}`));
 });
 
 // Add a Course
-app.post('/courses/add', (req, res) => {
+app.post('/api/courses/add', (req, res) => {
   const { name, start_date, end_date, hours, teacher_id } = req.body;
   // Insert into table
   Courses.create({
@@ -49,14 +47,12 @@ app.post('/courses/add', (req, res) => {
     end_date,
     teacher_id,
   })
-    .then(result => {    
-      res.status(200).json(result);
-    })
+    .then(result => {res.status(200).json(result)})
     .catch((err) => console.log(err));
 });
 
 // Delete a Course
-app.delete("/courses/delete/:id", (req, res) => {
+app.delete("/api/courses/delete/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
   Courses.destroy({ where: { course_id: idDeleted } })
     .then(res.send(course_id))
