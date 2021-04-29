@@ -23,18 +23,22 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
       body: JSON.stringify(updateFormState)
     };
 
-    fetch('http://localhost:4000/api/courses/', options)
-      .then(response => response.json())
-      .then(data => {console.table(data)})
-      .catch(error => console.log('error adding course: ' + error));
+    return fetch('http://localhost:4000/api/courses/', options)
+             .then(response => response.json())
+            //  .then(data => {console.table(data)})
+            //  .catch(error => console.log('error adding course: ' + error));
   }
 
   const handleUpdateCourse = (e) => {
     e.preventDefault();
-    updateCourseInDB();
-    console.log(updateFormState);
+    updateCourseInDB()
+      .then(data => {console.table(data)})
+      .then(() => {
+        console.log(updateFormState)
+      })
+      .then(() => fetchCourseData())
+      .catch(error => console.log('error adding course: ' + error))
     // refresh Display
-    fetchCourseData();
     closeUpdateForm();
   }
 

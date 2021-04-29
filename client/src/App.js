@@ -15,8 +15,10 @@ function App() {
       <Header />
       <main>
         <CourseContextProvider>
+
           <Dashboard />
           <Display />
+          
         </CourseContextProvider>
       </main>
     </>

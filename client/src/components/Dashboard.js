@@ -136,6 +136,7 @@ const Dashboard = () => {
       </div>
 
     </form>
+    <button onClick={() => console.log('--- Break ---')}>Log Break</button>
     </div>
   )
 }

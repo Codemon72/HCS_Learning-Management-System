@@ -32,8 +32,11 @@ app.get('/api/courses', (req, res) => {
   Courses.findAll({
     include: [Teachers],
   })
-    .then((courses) => {res.status(200).json(courses)})
-    .catch((error) => console.log(`Error: ${err}`));
+    .then(result => res.status(200).json(result))
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
 });
 
 // Add Course
@@ -47,8 +50,11 @@ app.post('/api/courses', (req, res) => {
     end_date,
     teacher_id,
   })
-    .then(result => {res.status(200).json(result)})
-    .catch((error) => console.log(error));
+    .then(result => res.status(200).json(result))
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
 });
 
 
@@ -62,20 +68,10 @@ app.put("/api/courses", (req, res) => {
     { name, hours, start_date, end_date, teacher_id },
     { where: { course_id: course_id } }
   )
-    .then((result) => {
-      if(!result) {
-        res.status(500).json({
-          message: "Error -> Can not update course with id = " + course_id,
-          error: "Can NOT Update",
-        });
-      }
-      res.status(200).json(result);
-      })
+    .then(result => res.status(200).json(result))
     .catch((error) => {
-      res.status(500).json({
-        message: "Error -> Can not update course with id = " + course_id,
-        error: error.message
-      });
+      console.log(error);
+      res.send(error);
     });
 });
 
@@ -84,8 +80,9 @@ app.put("/api/courses", (req, res) => {
 app.delete("/api/courses/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
   Courses.destroy({ where: { course_id: idDeleted } })
-    .then(res.send(course_id))
+    .then(result => res.status(200).json(result))
     .catch((error) => {
+      console.log(error);
       res.send(error);
     });
 });
