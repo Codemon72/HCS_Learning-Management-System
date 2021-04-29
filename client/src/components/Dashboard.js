@@ -30,16 +30,19 @@ const Dashboard = () => {
       body: JSON.stringify(formState)
     };
 
-    fetch('http://localhost:4000/api/courses', options)
-      .then(response => response.json())
-      .then(data => {console.table(data)})
-      .catch(error => console.log('error adding course: ' + error));
-  }
+    return fetch('http://localhost:4000/api/courses', options)
+            .then(response => response.json())
+            // .then(data => {console.table(data)})
+            .catch(error => console.log('error adding course: ' + error));
+  };
 
   const handleAddCourse = (e) => {
     e.preventDefault();
-    addCourseToDB();
-    console.log(formState);
+    addCourseToDB()
+      .then(data => {console.table(data)})
+      .then(() => {console.table(formState)})
+      .then(() => fetchCourseData())
+      .catch(error => console.table(error));
     setFormState({
       name: 'null',
       start_date: '',
@@ -47,8 +50,6 @@ const Dashboard = () => {
       hours: '',
       teacher_id: 'null'
     });
-    // refresh Display
-    fetchCourseData();
   }
 
   return (
