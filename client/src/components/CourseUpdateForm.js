@@ -30,7 +30,7 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
     e.preventDefault();
     updateCourseInDB()
       .then(data => {console.table(data)})
-      .then(() => {console.log(updateFormState)})
+      .then(() => {console.table(updateFormState)})
       .then(() => fetchCourseData())
       .catch(error => console.table(error));
     closeUpdateForm();

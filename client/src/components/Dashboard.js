@@ -29,7 +29,6 @@ const Dashboard = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formState)
     };
-
     return fetch('http://localhost:4000/api/courses', options)
             .then(response => response.json())
             // .then(data => {console.table(data)})
