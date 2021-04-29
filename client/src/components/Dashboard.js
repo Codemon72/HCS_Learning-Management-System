@@ -26,13 +26,13 @@ const Dashboard = () => {
   const addCourseToDB = () => {
     const options = {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formState)
     };
 
     fetch('http://localhost:4000/api/courses', options)
       .then(response => response.json())
-      .then(data => {console.log(data)})
+      .then(data => {console.table(data)})
       .catch(error => console.log('error adding course: ' + error));
   }
 

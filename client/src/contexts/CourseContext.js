@@ -13,18 +13,17 @@ export const CourseContextProvider = ({ children }) => {
   const fetchCourseData = async () => {
     try {
       const response = await fetch(URLAllCourseData);
-      if (!response.ok) { // error from server (e.g. invalid API endpoint)
+      if (!response.ok) { // errors from server (e.g. invalid API endpoint)
         throw Error(response.statusText);
       }
       const data = await response.json();
       setCourses(data);
       setIsPending(false);
       setError(null);
-    } catch (error) { // auto catches network / connection error
+    } catch (error) { // errors from network / connection
       setIsPending(false);
       setError(error.message);
     }
-    // setProducts(data.map((obj) => ({ ...obj, selected: true })));
   };
 
   // Fetch Course Data on first Rendering

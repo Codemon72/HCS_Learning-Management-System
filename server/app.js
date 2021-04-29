@@ -32,8 +32,8 @@ app.get('/api/courses', (req, res) => {
   Courses.findAll({
     include: [Teachers],
   })
-    .then((courses) => {res.send(courses)})
-    .catch((err) => console.log(`Error: ${err}`));
+    .then((courses) => {res.status(200).json(courses)})
+    .catch((error) => console.log(`Error: ${err}`));
 });
 
 // Add Course
@@ -48,7 +48,7 @@ app.post('/api/courses', (req, res) => {
     teacher_id,
   })
     .then(result => {res.status(200).json(result)})
-    .catch((err) => console.log(err));
+    .catch((error) => console.log(error));
 });
 
 
@@ -85,7 +85,9 @@ app.delete("/api/courses/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
   Courses.destroy({ where: { course_id: idDeleted } })
     .then(res.send(course_id))
-    .catch((err) => console.log(err));
+    .catch((error) => {
+      res.send(error);
+    });
 });
 
 

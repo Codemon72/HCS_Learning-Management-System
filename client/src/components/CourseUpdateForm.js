@@ -25,7 +25,7 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
 
     fetch('http://localhost:4000/api/courses/', options)
       .then(response => response.json())
-      .then(data => {console.log(data)})
+      .then(data => {console.table(data)})
       .catch(error => console.log('error adding course: ' + error));
   }
 

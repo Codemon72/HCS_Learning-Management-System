@@ -11,10 +11,13 @@ const Display = () => {
 
   const handleDelete = (course_id) => {
     fetch('http://localhost:4000/api/courses/' + course_id, { method: 'DELETE' })
-    .then(response => console.log(response))
+    .then(response => response.json())
+    .then(data => {console.table(data)})
     .then(fetchCourseData())
-    .catch(error => console.log('error deleting course: ' + error));
-    console.log(course_id);
+    .catch(error => {
+      console.table(error);
+      console.log(`Client: Course deleted with ID: ${course_id}`);
+    });
   }
 
   return (
