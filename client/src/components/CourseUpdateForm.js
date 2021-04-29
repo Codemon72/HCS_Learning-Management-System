@@ -22,10 +22,9 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(updateFormState)
     };
-
     return fetch('http://localhost:4000/api/courses/', options)
              .then(response => response.json());
-  }
+  };
 
   const handleUpdateCourse = (e) => {
     e.preventDefault();
@@ -34,9 +33,8 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
       .then(() => {console.log(updateFormState)})
       .then(() => fetchCourseData())
       .catch(error => console.table(error));
-    // refresh Display
     closeUpdateForm();
-  }
+  };
 
   const handleInputChange = (event) => {
     const value = event.target.value;
