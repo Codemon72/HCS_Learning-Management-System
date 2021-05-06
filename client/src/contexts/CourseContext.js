@@ -13,7 +13,7 @@ export const CourseContextProvider = ({ children }) => {
   const fetchCourseData = async () => {
     try {
       const response = await fetch(URLAllCourseData);
-      if (!response.ok) { // errors from server (e.g. invalid API endpoint)
+      if (!response.ok) { // errors from server
         throw Error(response.statusText);
       }
       const data = await response.json();

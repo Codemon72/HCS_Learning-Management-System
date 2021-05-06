@@ -31,7 +31,7 @@ const Dashboard = () => {
     };
     return fetch('http://localhost:4000/api/courses', options)
             .then(res => { 
-              if (!res.ok) {
+              if (!res.ok) { // errors from server
                 throw Error(res.statusText);
               }
               return res.json();

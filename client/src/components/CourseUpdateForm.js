@@ -23,16 +23,21 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
       body: JSON.stringify(updateFormState)
     };
     return fetch('http://localhost:4000/api/courses/', options)
-             .then(response => response.json());
+             .then(res => { 
+              if (!res.ok) { // errors from server
+                throw Error(res.statusText);
+              }
+              return res.json();
+            });
   };
 
   const handleUpdateCourse = (e) => {
     e.preventDefault();
     updateCourseInDB()
-      .then(data => {console.table(data)})
-      .then(() => {console.table(updateFormState)})
+      .then(data => {console.log('course updated in db: ',data)})
+      // .then(() => {console.table(updateFormState)})
       .then(() => fetchCourseData())
-      .catch(error => console.table(error));
+      .catch(error => console.log(error));
     closeUpdateForm();
   };
 
