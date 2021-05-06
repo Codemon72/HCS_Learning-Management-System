@@ -34,7 +34,7 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
   const handleUpdateCourse = (e) => {
     e.preventDefault();
     updateCourseInDB()
-      .then(data => {console.log('course updated in db: ',data)})
+      .then(data => {console.log('course updated in db: ', data)})
       // .then(() => {console.table(updateFormState)})
       .then(() => fetchCourseData())
       .catch(error => console.log(error));

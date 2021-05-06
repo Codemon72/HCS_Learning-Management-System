@@ -14,14 +14,19 @@ const Display = () => {
       method: 'DELETE'
     };
     return fetch('http://localhost:4000/api/courses/' + course_id, options)
-              .then(response => response.json())
+            .then(res => { 
+              if (!res.ok) { // errors from server
+                throw Error(res.statusText);
+              }
+              return res.json();
+            });
   };
 
   const handleDelete = (course_id) => {
     deleteCourseFromDB(course_id)
-      .then(data => {console.table(data)})
+      .then(data => {console.log('course deleted: ', data)})
       .then(() => fetchCourseData())
-      .catch(error => console.table(error));
+      .catch(error => console.log(error));
   };
 
   return (
