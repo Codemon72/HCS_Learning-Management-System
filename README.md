@@ -15,3 +15,14 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
 
 ## Features
 - Relational database for teachers, students, courses and course bookings of [Hamburg Coding School](https://hamburgcodingschool.com/).
+- Full CRUD operations
+
+## Dashboard
+- Add a new course
+
+## Display
+- Show all courses
+
+  ### Course
+  - Edit course
+  - Delete course
