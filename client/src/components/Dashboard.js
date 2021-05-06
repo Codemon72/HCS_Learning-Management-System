@@ -30,18 +30,20 @@ const Dashboard = () => {
       body: JSON.stringify(formState)
     };
     return fetch('http://localhost:4000/api/courses', options)
-            .then(response => response.json())
-            // .then(data => {console.table(data)})
-            .catch(error => console.log('error adding course: ' + error));
+            .then(res => { 
+              if (!res.ok) {
+                throw Error(res.statusText);
+              }
+              return res.json();
+            });
   };
 
   const handleAddCourse = (e) => {
     e.preventDefault();
     addCourseToDB()
-      .then(data => {console.table(data)})
-      .then(() => {console.table(formState)})
+      .then(data => {console.log('course added to db: ', data)})
       .then(() => fetchCourseData())
-      .catch(error => console.table(error));
+      .catch(error => console.log(error));
     setFormState({
       name: 'null',
       start_date: '',

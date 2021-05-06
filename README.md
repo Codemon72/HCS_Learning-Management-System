@@ -8,6 +8,7 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
 - local Database with MariaDB
   - GUI: Sequel Ace
 - backend with Node.js
+  - Express
 - frontend with React.js
 - JavaScript
 - HTML & CSS
