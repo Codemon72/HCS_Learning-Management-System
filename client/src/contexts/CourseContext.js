@@ -4,6 +4,8 @@ export const CourseContext = createContext();
 
 export const CourseContextProvider = ({ children }) => {
 
+  console.log('CourseContextProvider rendered');
+
   const [courses, setCourses] = useState([]);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);

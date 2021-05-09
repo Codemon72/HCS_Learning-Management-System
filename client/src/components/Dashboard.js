@@ -7,13 +7,15 @@ const Dashboard = () => {
 
   const { fetchCourseData } = useContext(CourseContext);
 
-  const [formState, setFormState] = useState({
+  const initialFormState = {
     name: 'null',
     start_date: '',
     end_date: '',
     hours: '',
     teacher_id: 'null'
-  });
+  };
+
+  const [formState, setFormState] = useState(initialFormState);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
@@ -44,13 +46,9 @@ const Dashboard = () => {
       .then(data => {console.log('course added to db: ', data)})
       .then(() => fetchCourseData())
       .catch(error => console.log(error));
-    setFormState({
-      name: 'null',
-      start_date: '',
-      end_date: '',
-      hours: '',
-      teacher_id: 'null'
-    });
+    console.log('log before setFormState');
+    setFormState(initialFormState);
+    console.log('log after setFormState');
   }
 
   return (
@@ -100,6 +98,7 @@ const Dashboard = () => {
         <input 
           className="input-field"
           type="number" 
+          min="1" max="40"
           name="hours" 
           placeholder="number" 
           maxLength="100"
