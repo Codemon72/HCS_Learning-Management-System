@@ -93,6 +93,7 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
             <input 
               className="input-field"
               type="number" 
+              min="1" max="99"
               name="hours" 
               placeholder="number" 
               maxLength="100"
