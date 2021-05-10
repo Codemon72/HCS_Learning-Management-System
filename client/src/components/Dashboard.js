@@ -12,17 +12,22 @@ const Dashboard = () => {
     start_date: '',
     end_date: '',
     hours: '',
-    teacher_id: 'null'
+    teacher_id: ''
   };
 
   const [formState, setFormState] = useState(initialFormState);
 
+  const validateForm = () => {
+    console.log(formState);
+  };
+
   const handleInputChange = (event) => {
-    const value = event.target.value;
+    const { name, value } = event.target;
     setFormState({
       ...formState,
-      [event.target.name]: value
+      [name]: value
     });
+    validateForm();
   };       
 
   const addCourseToDB = () => {
@@ -46,9 +51,7 @@ const Dashboard = () => {
       .then(data => {console.log('course added to db: ', data)})
       .then(() => fetchCourseData())
       .catch(error => console.log(error));
-    console.log('log before setFormState');
     setFormState(initialFormState);
-    console.log('log after setFormState');
   }
 
   return (
