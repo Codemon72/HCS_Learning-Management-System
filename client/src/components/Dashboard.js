@@ -40,13 +40,20 @@ const Dashboard = () => {
   //   setErrors(errors);
   //   // return errors;
   // };
+  
   const validateInputField = (event) => {
     const { name } = event.target;
-    console.log(name)
-    if (name === 'name' && formState[name] === '') {
+    const errorMessages = {
+      name: "Please select a course.",
+      start_date: "Please choose a start date.",
+      end_date: "Please choose an end date.",
+      hours: "Please enter the total hours.",
+      teacher_id: "Please select a teacher."
+    }
+    if (formState[name] === '') {
       setErrors({
         ...errors,
-        [name]: 'Please select a course.'
+        [name]: errorMessages[name]
       });
     } 
   }
@@ -132,6 +139,7 @@ const Dashboard = () => {
           name="end_date"
           value={formState.end_date}
           onChange={handleInputChange}
+          onBlur={validateInputField} 
           />
       </div>
       {errors.end_date && <div className="errors">{errors.end_date}</div>}
@@ -146,6 +154,7 @@ const Dashboard = () => {
           maxLength="100"
           value={formState.hours}
           onChange={handleInputChange} 
+          onBlur={validateInputField} 
           />
       </div>
       {errors.hours && <div className="errors">{errors.hours}</div>}
@@ -157,6 +166,7 @@ const Dashboard = () => {
         className="input-field"
         value={formState.teacher_id}
         onChange={handleInputChange}
+        onBlur={validateInputField} 
         >
           <option value="" disabled hidden>Please select</option>
           <option value="null">not determined yet</option>
