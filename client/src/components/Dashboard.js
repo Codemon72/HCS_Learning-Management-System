@@ -17,29 +17,6 @@ const Dashboard = () => {
 
   const [formState, setFormState] = useState(initialFormState);
   const [errors, setErrors] = useState({});
-
-  // const validateForm = () => {
-  //   let errors = {};
-  //   if (formState.name === '') {
-  //     errors.name = "Please select a course."
-  //   };
-  //   if (formState.start_date === '') {
-  //     errors.start_date = "Please choose a start date."
-  //   };
-  //   if (formState.end_date === '') {
-  //     errors.end_date = "Please choose an end date."
-  //   };
-  //   if (formState.hours === '') {
-  //     errors.hours = "Please enter the total hours."
-  //   };
-  //   if (formState.teacher_id === '') {
-  //     errors.teacher_id = "Please select a teacher."
-  //   };
-
-  //   console.log(errors);
-  //   setErrors(errors);
-  //   // return errors;
-  // };
   
   const validateInputField = (event) => {
     const { name } = event.target;
@@ -48,14 +25,37 @@ const Dashboard = () => {
       start_date: "Please choose a start date.",
       end_date: "Please choose an end date.",
       hours: "Please enter the total hours.",
-      teacher_id: "Please select a teacher."
-    }
+      teacher_id: "Please select a teacher.",
+      dates_mismatch: "Start date must be before end date."
+    };
     if (formState[name] === '') {
       setErrors({
         ...errors,
         [name]: errorMessages[name]
       });
-    } 
+    }
+    if (formState[name] !== '') {
+      setErrors({
+        ...errors,
+        [name]: null
+      });
+    }
+    if (formState.start_date && formState.end_date) {
+      if (formState.start_date > formState.end_date) {
+        setErrors({
+          ...errors,
+          end_date: errorMessages.dates_mismatch,
+          start_date: errorMessages.dates_mismatch
+        });
+        console.log(errors);
+      } else if (formState.start_date < formState.end_date) {
+        setErrors({
+          ...errors,
+          end_date: null,
+          start_date: null
+        });
+      }
+    }
   }
 
   const handleInputChange = (event) => {
