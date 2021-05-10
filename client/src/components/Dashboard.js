@@ -8,7 +8,7 @@ const Dashboard = () => {
   const { fetchCourseData } = useContext(CourseContext);
 
   const initialFormState = {
-    name: 'null',
+    name: '',
     start_date: '',
     end_date: '',
     hours: '',
@@ -16,10 +16,40 @@ const Dashboard = () => {
   };
 
   const [formState, setFormState] = useState(initialFormState);
+  const [errors, setErrors] = useState({});
 
-  const validateForm = () => {
-    console.log(formState);
-  };
+  // const validateForm = () => {
+  //   let errors = {};
+  //   if (formState.name === '') {
+  //     errors.name = "Please select a course."
+  //   };
+  //   if (formState.start_date === '') {
+  //     errors.start_date = "Please choose a start date."
+  //   };
+  //   if (formState.end_date === '') {
+  //     errors.end_date = "Please choose an end date."
+  //   };
+  //   if (formState.hours === '') {
+  //     errors.hours = "Please enter the total hours."
+  //   };
+  //   if (formState.teacher_id === '') {
+  //     errors.teacher_id = "Please select a teacher."
+  //   };
+
+  //   console.log(errors);
+  //   setErrors(errors);
+  //   // return errors;
+  // };
+  const validateInputField = (event) => {
+    const { name } = event.target;
+    console.log(name)
+    if (name === 'name' && formState[name] === '') {
+      setErrors({
+        ...errors,
+        [name]: 'Please select a course.'
+      });
+    } 
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -27,7 +57,10 @@ const Dashboard = () => {
       ...formState,
       [name]: value
     });
-    validateForm();
+    setErrors({
+      ...errors,
+      [name]: null
+    })
   };       
 
   const addCourseToDB = () => {
@@ -66,8 +99,10 @@ const Dashboard = () => {
           className="input-field"
           name="name" 
           value={formState.name}
-          onChange={handleInputChange} >
-          <option value="null" disabled hidden>Please select</option>
+          onChange={handleInputChange} 
+          onBlur={validateInputField} 
+          >
+          <option value="" disabled hidden>Please select</option>
           <option value="HTML & CSS">HTML & CSS</option>
           <option value="Learn To Code">Learn To Code</option>
           <option value="JavaScript For Web">JavaScript For Web</option>
@@ -76,6 +111,7 @@ const Dashboard = () => {
           <option value="Vue.js">Vue.js</option>
         </select>
       </div>
+      {errors.name && <div className="errors">{errors.name}</div>}
       <div className="input-group">
         <label htmlFor="start_date">Start Date</label>
         <input 
@@ -84,8 +120,10 @@ const Dashboard = () => {
           name="start_date"
           value={formState.start_date}
           onChange={handleInputChange}
+          onBlur={validateInputField}
           />
       </div>
+      {errors.start_date && <div className="errors">{errors.start_date}</div>}
       <div className="input-group">
         <label htmlFor="end_date">End Date</label>
         <input 
@@ -96,6 +134,7 @@ const Dashboard = () => {
           onChange={handleInputChange}
           />
       </div>
+      {errors.end_date && <div className="errors">{errors.end_date}</div>}
       <div className="input-group">
         <label htmlFor="hours">Hours Total</label>
         <input 
@@ -109,6 +148,7 @@ const Dashboard = () => {
           onChange={handleInputChange} 
           />
       </div>
+      {errors.hours && <div className="errors">{errors.hours}</div>}
       <div className="input-group">
         <label htmlFor="teacher_id">Teacher</label>
         <select 
@@ -117,7 +157,6 @@ const Dashboard = () => {
         className="input-field"
         value={formState.teacher_id}
         onChange={handleInputChange}
-        required
         >
           <option value="" disabled hidden>Please select</option>
           <option value="null">not determined yet</option>
@@ -134,6 +173,7 @@ const Dashboard = () => {
           <option value="6">Paul Mölders</option>
         </select>
       </div>
+      {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       
       <div className="input-group">
       <input type="submit" />
