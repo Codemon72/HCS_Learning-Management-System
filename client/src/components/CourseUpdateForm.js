@@ -129,7 +129,7 @@ const CourseUpdateForm = ({ course, closeUpdateForm }) => {
           
           <div className="button-box">
             <button onClick={ closeUpdateForm }>Cancel</button>
-            <input type="submit" />
+            <input type="submit" className="button" />
           </div>
 
         </form>

@@ -7,16 +7,19 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
 ## Tech Stack
 - local Database with MariaDB
   - GUI: Sequel Ace
+  - SQL
 - backend with Node.js
   - Express
+  - ORM: Sequelize
 - frontend with React.js
-- JavaScript
-- HTML & CSS
-- SQL
+  - JavaScript
+  - HTML & CSS
 
 ## Features
 - Relational database for teachers, students, courses and course bookings of [Hamburg Coding School](https://hamburgcodingschool.com/).
 - Full CRUD operations
+- client side form validation (HTML, JS)
+- server side form validation (HTML, JS)
 
 ## UX
 - forms give feedback if input is lacking or faulty

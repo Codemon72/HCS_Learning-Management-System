@@ -61,7 +61,9 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 6rem;
-  outline: 1px solid red;
+  background-color: var(--color--white);
+  color: var(--color--black);
+  border-bottom: 1px solid var(--color--dark);
 }
 /* Main */
 main {
