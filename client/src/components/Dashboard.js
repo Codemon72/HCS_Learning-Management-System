@@ -17,10 +17,17 @@ const Dashboard = () => {
 
   const [formState, setFormState] = useState(initialFormState);
   const [errors, setErrors] = useState({});
+  const [dateError, setDateError] = useState(null);
 
-  // validate 'start date before end date' every time they change
+  // validate 'start_date' before 'end_date' every time they change
   useEffect(() => {
-    validateDates();
+    if (formState.start_date && formState.end_date) {
+      if (formState.start_date > formState.end_date) {
+        setDateError("Start date must be before end date.");
+      } else if (formState.start_date <= formState.end_date) {
+        setDateError(null);
+      }
+    }
   }, [formState.start_date, formState.end_date]);
   
   const checkForInput = (event) => {
@@ -43,24 +50,6 @@ const Dashboard = () => {
         ...errors,
         [name]: null,
       });
-    }
-  };
-
-  const validateDates = () => {
-    if (formState.start_date && formState.end_date) {
-      if (formState.start_date > formState.end_date) {
-        setErrors({
-          ...errors,
-          end_date: "Start date must be before end date.",
-          start_date: "Start date must be before end date.",
-        });
-      } else if (formState.start_date < formState.end_date) {
-        setErrors({
-          ...errors,
-          end_date: null,
-          start_date: null,
-        });
-      }
     }
   };
 
@@ -138,6 +127,7 @@ const Dashboard = () => {
           />
       </div>
       {errors.start_date && <div className="errors">{errors.start_date}</div>}
+      {dateError && <div className="errors">{dateError}</div>}
       <div className="input-group">
         <label htmlFor="end_date">End Date</label>
         <input 
@@ -150,6 +140,7 @@ const Dashboard = () => {
           />
       </div>
       {errors.end_date && <div className="errors">{errors.end_date}</div>}
+      {dateError && <div className="errors">{dateError}</div>}
       <div className="input-group">
         <label htmlFor="hours">Hours Total</label>
         <input 
