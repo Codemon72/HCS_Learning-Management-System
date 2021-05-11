@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
 const Dashboard = () => {
@@ -17,8 +17,13 @@ const Dashboard = () => {
 
   const [formState, setFormState] = useState(initialFormState);
   const [errors, setErrors] = useState({});
+
+  // validate 'start date before end date' every time they change
+  useEffect(() => {
+    validateDates();
+  }, [formState.start_date, formState.end_date]);
   
-  const validateInputField = (event) => {
+  const checkForInput = (event) => {
     const { name } = event.target;
     const errorMessages = {
       name: "Please select a course.",
@@ -26,63 +31,65 @@ const Dashboard = () => {
       end_date: "Please choose an end date.",
       hours: "Please enter the total hours.",
       teacher_id: "Please select a teacher.",
-      dates_mismatch: "Start date must be before end date."
     };
-    if (formState[name] === '') {
+    if (formState[name] === "") {
       setErrors({
         ...errors,
-        [name]: errorMessages[name]
+        [name]: errorMessages[name],
       });
     }
-    if (formState[name] !== '') {
+    if (formState[name] !== "") {
       setErrors({
         ...errors,
-        [name]: null
+        [name]: null,
       });
     }
+  };
+
+  const validateDates = () => {
     if (formState.start_date && formState.end_date) {
       if (formState.start_date > formState.end_date) {
         setErrors({
           ...errors,
-          end_date: errorMessages.dates_mismatch,
-          start_date: errorMessages.dates_mismatch
+          end_date: "Start date must be before end date.",
+          start_date: "Start date must be before end date.",
         });
-        console.log(errors);
       } else if (formState.start_date < formState.end_date) {
         setErrors({
           ...errors,
           end_date: null,
-          start_date: null
+          start_date: null,
         });
       }
     }
-  }
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
     });
     setErrors({
       ...errors,
-      [name]: null
-    })
+      [name]: null,
+    });
   };       
 
   const addCourseToDB = () => {
     const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formState)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formState),
     };
-    return fetch('http://localhost:4000/api/courses', options)
-            .then(res => { 
-              if (!res.ok) { // errors from server
-                throw Error(res.statusText);
-              }
-              return res.json();
-            });
+    return fetch("http://localhost:4000/api/courses", options)
+      .then((res) => {
+        if (!res.ok) {
+          // errors from server
+          throw Error(res.statusText);
+        }
+        return res.json();
+      });
   };
 
   const handleAddCourse = (e) => {
@@ -107,7 +114,7 @@ const Dashboard = () => {
           name="name" 
           value={formState.name}
           onChange={handleInputChange} 
-          onBlur={validateInputField} 
+          onBlur={checkForInput} 
           >
           <option value="" disabled hidden>Please select</option>
           <option value="HTML & CSS">HTML & CSS</option>
@@ -127,7 +134,7 @@ const Dashboard = () => {
           name="start_date"
           value={formState.start_date}
           onChange={handleInputChange}
-          onBlur={validateInputField}
+          onBlur={checkForInput}
           />
       </div>
       {errors.start_date && <div className="errors">{errors.start_date}</div>}
@@ -139,7 +146,7 @@ const Dashboard = () => {
           name="end_date"
           value={formState.end_date}
           onChange={handleInputChange}
-          onBlur={validateInputField} 
+          onBlur={checkForInput} 
           />
       </div>
       {errors.end_date && <div className="errors">{errors.end_date}</div>}
@@ -154,7 +161,7 @@ const Dashboard = () => {
           maxLength="100"
           value={formState.hours}
           onChange={handleInputChange} 
-          onBlur={validateInputField} 
+          onBlur={checkForInput} 
           />
       </div>
       {errors.hours && <div className="errors">{errors.hours}</div>}
@@ -166,7 +173,7 @@ const Dashboard = () => {
         className="input-field"
         value={formState.teacher_id}
         onChange={handleInputChange}
-        onBlur={validateInputField} 
+        onBlur={checkForInput} 
         >
           <option value="" disabled hidden>Please select</option>
           <option value="null">not determined yet</option>
