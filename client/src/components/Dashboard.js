@@ -186,11 +186,11 @@ const Dashboard = () => {
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       
       <div className="input-group">
-      <input type="submit" />
+      <input type="submit" className="button"/>
       </div>
 
     </form>
-    <button onClick={() => console.log('--- Break ---')}>Log Break</button>
+    <button className="logBreak" onClick={() => console.log('--- Break ---')}>Log Break</button>
     </div>
   )
 }

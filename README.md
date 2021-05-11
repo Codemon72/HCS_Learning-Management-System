@@ -18,6 +18,9 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
 - Relational database for teachers, students, courses and course bookings of [Hamburg Coding School](https://hamburgcodingschool.com/).
 - Full CRUD operations
 
+## UX
+- forms give feedback if input is lacking or faulty
+
 ## Dashboard
 - Add a new course
 
