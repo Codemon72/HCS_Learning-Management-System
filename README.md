@@ -19,10 +19,10 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
 - Relational database for teachers, students, courses and course bookings of [Hamburg Coding School](https://hamburgcodingschool.com/).
 - Full CRUD operations
 - client side form validation (HTML, JS)
-- server side form validation (Sequelize)
+- server side input validation (Sequelize)
 
 ## UX
-- forms present feedback if input is lacking or faulty
+- forms present feedback if input is lacking or faulty (text messages, submit button disabled, submit button style changes according to validity of form input)
 
 ## Dashboard
 - Add a new course
