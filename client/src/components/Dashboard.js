@@ -23,7 +23,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (formState.start_date && formState.end_date) {
       if (formState.start_date > formState.end_date) {
-        setDateError("Start date must be before end date.");
+        setDateError("Start date must come before end date.");
       } else if (formState.start_date <= formState.end_date) {
         setDateError(null);
       }

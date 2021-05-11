@@ -36,7 +36,7 @@ button, .button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   border: 1px solid var(--color--black);
-  transition: all 0.3s;
+  transition: all 0.2s;
   cursor: pointer;
   padding: .5rem 1rem;
 }
