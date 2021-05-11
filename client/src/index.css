@@ -45,6 +45,14 @@ button:hover,
   color: var(--color--white);
   background-color: var(--color--dark);
 }
+input[disabled] {
+  color: lightgray;
+  background-color: grey;
+}
+input[disabled]:hover {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 .errors {
   font-size: 15px;
   color: red;
@@ -145,11 +153,20 @@ main {
   }
 }
 
-@media only screen and (1000px) {
-}
 
+/* ___________________ */
+/* During Development: */
 
 .logBreak {
   position: relative;
   bottom: -17rem;
 }
+
+/* * { outline: 2px dotted red }
+* * { outline: 2px dotted green }
+* * * { outline: 2px dotted orange }
+* * * * { outline: 2px dotted blue }
+* * * * * { outline: 1px solid red }
+* * * * * * { outline: 1px solid green }
+* * * * * * * { outline: 1px solid orange }
+* * * * * * * * { outline: 1px solid blue } */

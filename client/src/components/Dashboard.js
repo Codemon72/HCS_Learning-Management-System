@@ -4,6 +4,7 @@ import { CourseContext } from '../contexts/CourseContext';
 const Dashboard = () => {
 
   console.log('Dashboard rendered');
+  
 
   const { fetchCourseData } = useContext(CourseContext);
 
@@ -18,6 +19,9 @@ const Dashboard = () => {
   const [formState, setFormState] = useState(initialFormState);
   const [errors, setErrors] = useState({});
   const [dateError, setDateError] = useState(null);
+
+  let formIsValid = !Object.values(formState).includes('') && !dateError;
+
 
   // validate 'start_date' before 'end_date' every time they change
   useEffect(() => {
@@ -46,10 +50,10 @@ const Dashboard = () => {
       });
     }
     if (formState[name] !== "") {
-      setErrors({
-        ...errors,
-        [name]: null,
-      });
+      // remove key:value from errors:
+      const state = errors;
+      delete state[name];
+      setErrors(state);
     }
   };
 
@@ -184,7 +188,7 @@ const Dashboard = () => {
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       
       <div className="input-group">
-      <input type="submit" className="button"/>
+      <input type="submit" className="button" disabled={!formIsValid} />
       </div>
 
     </form>
