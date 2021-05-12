@@ -33,3 +33,8 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
   ### Course
   - Edit course
   - Delete course
+
+
+___
+### Entity Relationship Diagram
+![ERD - HAMBURG CODING SCHOOL LMS.png](./ERD_LMS.png)
