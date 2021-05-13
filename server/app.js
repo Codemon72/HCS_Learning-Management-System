@@ -5,7 +5,11 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 const Courses = require("./models/Courses");
+
+const Course_Events = require("./models/Course_Events");
 const Teachers = require("./models/Teachers");
+const Course_Modules = require("./models/Course_Modules");
+const Sessions = require("./models/Sessions");
 
 // Database
 const db = require('./config/database');
@@ -28,11 +32,23 @@ app.get('/', (req, res) => {
 });
 
 // Route Courses
+// app.get('/api/courses', (req, res) => {
+//   Courses.findAll({
+//     include: [Teachers],
+//   })
+//     .then(result => res.status(200).json(result))
+//     .catch((error) => {
+//       console.log(error);
+//       res.send(error);
+//     });
+// });
+
 app.get('/api/courses', (req, res) => {
-  Courses.findAll({
-    include: [Teachers],
+  Course_Events.findAll({
+    include: [Teachers, Course_Modules, Sessions],
   })
     .then(result => res.status(200).json(result))
+    .then(data => console.log(data))
     .catch((error) => {
       console.log(error);
       res.send(error);
