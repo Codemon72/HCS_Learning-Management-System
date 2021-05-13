@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/courses', (req, res) => {
   Course_Events.findAll({
-    include: [Teachers, Course_Modules, Sessions],
+    include: [Teachers],
   })
     .then(result => res.status(200).json(result))
     .then(data => console.log(data))

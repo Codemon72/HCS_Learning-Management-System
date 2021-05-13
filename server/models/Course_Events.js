@@ -25,7 +25,6 @@ const Course_Events = db.define('Course_Events', {
   },
   course_module_id: {
     type: DataTypes.INTEGER,
-    allowNull: true,
     references: {
       model: Course_Modules,
       key: 'course_module_id'
