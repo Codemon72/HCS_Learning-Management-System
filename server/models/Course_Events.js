@@ -9,10 +9,10 @@ const Course_Events = db.define('Course_Events', {
     primaryKey: true,
     autoIncrement: true
   },
-  start_date: {
+  course_start_date: {
     type: DataTypes.DATEONLY
   },
-  end_date: {
+  course_end_date: {
     type: DataTypes.DATEONLY
   },
   teacher_id: {

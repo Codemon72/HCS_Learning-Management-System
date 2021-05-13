@@ -7,11 +7,11 @@ const Sessions = db.define('Sessions', {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
-  }
-  start: {
+  },
+  session_start: {
     type: DataTypes.DATE
   },
-  end: {
+  session_end: {
     type: DataTypes.DATE
   },
   course_event_id: {
