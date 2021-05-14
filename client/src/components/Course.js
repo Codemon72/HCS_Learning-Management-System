@@ -17,11 +17,11 @@ const Course = ({course, handleDelete}) => {
 
   return (
     <div className="course">
-      <h3>Course: {course.name} </h3>
-      <div>Course ID: {course.course_id}</div>
-      <div>Start Date: {course.start_date}</div>
-      <div>End Date: {course.end_date}</div>
-      <div>Hours: {course.hours}</div>
+      <h3>Course: {course.Course_Module.name} </h3>
+      <div>Course ID: {course.course_event_id}</div>
+      <div>Start Date: {course.course_start_date}</div>
+      <div>End Date: {course.course_end_date}</div>
+      <div>Hours: {course.Course_Module.hours}</div>
       <div>Trainer: { course.Teacher != null ? course.Teacher.name : 'not determined yet'}</div>
 
       { !formVisibility && (

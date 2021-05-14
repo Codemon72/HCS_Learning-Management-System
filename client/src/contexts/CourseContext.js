@@ -19,6 +19,7 @@ export const CourseContextProvider = ({ children }) => {
         throw Error(response.statusText);
       }
       const data = await response.json();
+      console.log(data)
       setCourses(data);
       setIsPending(false);
       setError(null);

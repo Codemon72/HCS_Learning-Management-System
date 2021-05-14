@@ -44,11 +44,8 @@ app.get('/', (req, res) => {
 // });
 
 app.get('/api/courses', (req, res) => {
-  Course_Events.findAll({
-    include: [Teachers],
-  })
+  Course_Events.findAll({ include: [{ all: true, nested: true }]})
     .then(result => res.status(200).json(result))
-    .then(data => console.log(data))
     .catch((error) => {
       console.log(error);
       res.send(error);
