@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 // });
 
 app.get('/api/courses', (req, res) => {
-  Course_Events.findAll({ include: { model: Sessions }})
+  Course_Events.findAll({ include: { model: Sessions }, include: { model: Course_Modules }})
     .then(result => res.status(200).json(result))
     .catch((error) => {
       console.log(error);
