@@ -6,7 +6,7 @@ export const CourseContextProvider = ({ children }) => {
 
   console.log('CourseContextProvider rendered');
 
-  const [courses, setCourses] = useState([]);
+  const [courseEvents, setCourseEvents] = useState([]);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,7 +20,7 @@ export const CourseContextProvider = ({ children }) => {
       }
       const data = await response.json();
       console.log(data)
-      setCourses(data);
+      setCourseEvents(data);
       setIsPending(false);
       setError(null);
     } catch (error) { // errors from network / connection
@@ -37,7 +37,7 @@ export const CourseContextProvider = ({ children }) => {
   return (
     <CourseContext.Provider
       value={{
-        courses,
+        courseEvents,
         error,
         isPending,
         fetchCourseData

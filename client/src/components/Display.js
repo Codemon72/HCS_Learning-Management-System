@@ -7,7 +7,7 @@ const Display = () => {
 
   console.log('Display rendered');
 
-  const { courses, error, isPending, fetchCourseData } = useContext(CourseContext);
+  const { courseEvents, error, isPending, fetchCourseData } = useContext(CourseContext);
 
   const deleteCourseFromDB = (course_id) => {
     const options = {
@@ -36,11 +36,11 @@ const Display = () => {
 
       { error && <div>Error: &nbsp; { error }</div> }
       { isPending && <Loader /> }
-      { courses && (
-        courses.map((course) => {
+      { courseEvents && (
+        courseEvents.map((course) => {
             return (
               <Course
-                key = {course.course_id}
+                key = {course.course_event_id}
                 course = {course}
                 handleDelete = {handleDelete}
               />
