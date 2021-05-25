@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CourseUpdateForm from './CourseUpdateForm';
 
-const Course = ({course, handleDelete}) => {
+const Course = ({course_event, handleDelete}) => {
 
   console.log('Course rendered');
 
@@ -17,21 +17,21 @@ const Course = ({course, handleDelete}) => {
 
   return (
     <div className="course">
-      <h3>Course: {course.Course_Module.name} </h3>
-      <div>Course ID: {course.course_event_id}</div>
-      <div>Start Date: {course.course_start_date}</div>
-      <div>End Date: {course.course_end_date}</div>
-      <div>Hours: {course.Course_Module.hours}</div>
-      <div>Trainer: { course.Teacher != null ? course.Teacher.name : 'not determined yet'}</div>
+      {/* <h3>Course: {course_event.Course_Module.name} </h3> */}
+      <div>Course ID: {course_event.course_event_id}</div>
+      <div>Start Date: {course_event.course_start_date}</div>
+      <div>End Date: {course_event.course_end_date}</div>
+      {/* <div>Hours: {course_event.Course_Module.hours}</div> */}
+      <div>Trainer: { course_event.Teacher != null ? course_event.Teacher.name : 'not determined yet'}</div>
 
       { !formVisibility && (
         <div className="button-box">
           <button onClick={chooseUpdate}>Update</button>
-          <button onClick={() => handleDelete(course.course_id)}>Delete</button>
+          <button onClick={() => handleDelete(course_event.course_id)}>Delete</button>
         </div>)}
       
 
-      { formVisibility && <CourseUpdateForm course={course} closeUpdateForm={closeUpdateForm} /> }
+      { formVisibility && <CourseUpdateForm course_event={course_event} closeUpdateForm={closeUpdateForm} /> }
 
     </div>
   )

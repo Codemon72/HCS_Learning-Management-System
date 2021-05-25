@@ -37,11 +37,11 @@ const Display = () => {
       { error && <div>Error: &nbsp; { error }</div> }
       { isPending && <Loader /> }
       { courseEvents && (
-        courseEvents.map((course) => {
+        courseEvents.map((course_event) => {
             return (
               <Course
-                key = {course.course_event_id}
-                course = {course}
+                key = {course_event.course_event_id}
+                course_event = {course_event}
                 handleDelete = {handleDelete}
               />
             );
