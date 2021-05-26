@@ -134,7 +134,35 @@ main {
 .sessions {
   margin-top: .5rem;
 }
-.session {
+.sessions table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  width: 100%;
+  margin-top: .5rem;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
+}
+.sessions table thead {
+  text-align: left;
+  background-color: #777;
+  color: #fff;
+  font-weight: bold;
+}
+.sessions table th,
+.sessions table td {
+  padding: 5px 10px;
+}
+.sessions table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+.sessions table tbody tr:nth-child(even) {
+  background: #e3e3e3;
+}
+.sessions table tbody tr:last-child {
+  border-bottom: 2px solid #777;
+}
+/* .session {
   outline: 1px solid #000;
   line-height: 1.5;
   margin-top: 3px;
@@ -146,7 +174,7 @@ main {
 }
 .session div {
   border-left: 1px solid #000;
-}
+} */
 
 .Loader::after {
   content: "\2026";
