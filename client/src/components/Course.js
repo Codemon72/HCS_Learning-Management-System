@@ -26,9 +26,22 @@ const Course = ({course_event, handleDelete}) => {
       <div className="sessions">
         <h4>Sessions</h4>
       </div>
-      { course_event.Sessions.length === 0 && <span className="session">There are no sessions listed yet for this course.</span>}
-      { course_event.Sessions.map(session => {
-        return ( 'blib')
+      { course_event.Sessions.length === 0 
+          ? <div className="session">There are no sessions listed yet for this course.</div>
+          : <div className="session">
+              <span>#</span>
+              <div>Session Start</div>
+              <div>Session End</div>
+            </div>
+          }
+      { course_event.Sessions.map((session, index) => {
+        return ( 
+          <div className="session">
+            <span>{ index + 1 }</span>
+            <div>{ session.session_start }</div>
+            <div>{ session.session_end }</div>
+          </div>
+        )
       })}
 
       { !formVisibility && (

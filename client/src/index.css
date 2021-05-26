@@ -112,29 +112,40 @@ main {
   margin-left: 33rem;
   outline: 1px solid black;
 }
-
-
 .course {
   padding: 1.5rem;
   border: 1px solid blue;
 }
-
 .button-box {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
   padding: 1rem 2rem;
 }
-
 .course + .course {
   margin-top: 1rem;
 }
-
 .course_update_form{
   min-width: 100%;
   margin-top: 2rem;
   outline: 1px solid darkorange;
   outline-offset: .7rem;
+}
+.sessions {
+  margin-top: .5rem;
+}
+.session {
+  outline: 1px solid #000;
+  line-height: 1.5;
+  margin-top: 3px;
+  text-indent: 3px;
+  display: flex;
+}
+.session * {
+  padding: 0 4px;
+}
+.session div {
+  border-left: 1px solid #000;
 }
 
 .Loader::after {
