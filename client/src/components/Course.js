@@ -15,21 +15,20 @@ const Course = ({course_event, handleDelete}) => {
     setFormVisibility(false);
   };
 
-  const displayDate = (dateString) => {
-    const options = {
-      day: '2-digit', month: '2-digit', year: '2-digit', timeZone: 'Europe/Berlin'
-    };
-    var l10nDE = new Intl.DateTimeFormat("de-DE", options);
+  const displayDateTime = (dateString, dateTime) => {
+    let options = {}
+    if (dateTime === 'date') {
+      options = {
+        hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin'
+      };
+    } else if (dateTime === 'time') {
+      options = {
+        hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin'
+      };
+    }
+    let l10nDE = new Intl.DateTimeFormat("de-DE", options);
     return (l10nDE.format(new Date(dateString)))
   };
-  const displayTime = (dateString) => {
-    const options = {
-      hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin'
-    };
-    var l10nDE = new Intl.DateTimeFormat("de-DE", options);
-    return (l10nDE.format(new Date(dateString)))
-  };
-
 
   return (
     <div className="course">
@@ -57,9 +56,9 @@ const Course = ({course_event, handleDelete}) => {
                 return ( 
                   <tr className="session">
                     <td>{ index + 1 }</td>
-                    <td>{ displayDate(session.session_start) }</td>
-                    <td>{ displayTime(session.session_start) }</td>
-                    <td>{ displayTime(session.session_end) }</td>
+                    <td>{ displayDateTime(session.session_start, 'date') }</td>
+                    <td>{ displayDateTime(session.session_start, 'time') }</td>
+                    <td>{ displayDateTime(session.session_end, 'time') }</td>
                   </tr>
                 )
               })}
