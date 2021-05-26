@@ -15,6 +15,14 @@ const Course = ({course_event, handleDelete}) => {
     setFormVisibility(false);
   };
 
+  const displayDate = (dateString) => {
+    const options = {
+      day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'Europe/Berlin'
+    };
+    var l10nDE = new Intl.DateTimeFormat("de-DE", options);
+    return (l10nDE.format(new Date(dateString)))
+  }
+
   return (
     <div className="course">
       <h3>Course: {course_event.Course_Module.name} </h3>
@@ -35,11 +43,16 @@ const Course = ({course_event, handleDelete}) => {
             </div>
           }
       { course_event.Sessions.map((session, index) => {
+        const options = {
+          day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'Europe/Berlin'
+        };
+        var l10nDE = new Intl.DateTimeFormat("de-DE", options);
+        console.log(l10nDE.format(new Date(session.session_end)))
         return ( 
           <div className="session">
             <span>{ index + 1 }</span>
-            <div>{ session.session_start }</div>
-            <div>{ session.session_end }</div>
+            <div>{ displayDate(session.session_start) }</div>
+            <div>{ displayDate(session.session_end) }</div>
           </div>
         )
       })}
