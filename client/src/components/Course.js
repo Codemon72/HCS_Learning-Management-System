@@ -19,7 +19,7 @@ const Course = ({course_event, handleDelete}) => {
     let options = {}
     if (dateTime === 'date') {
       options = {
-        hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin'
+        day: '2-digit', month: '2-digit', year: '2-digit', timeZone: 'Europe/Berlin'
       };
     } else if (dateTime === 'time') {
       options = {
