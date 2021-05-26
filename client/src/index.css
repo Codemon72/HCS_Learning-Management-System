@@ -141,7 +141,7 @@ main {
   margin-top: .5rem;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
-  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
 }
 .sessions table thead {
   text-align: left;
@@ -162,19 +162,6 @@ main {
 .sessions table tbody tr:last-child {
   border-bottom: 2px solid #777;
 }
-/* .session {
-  outline: 1px solid #000;
-  line-height: 1.5;
-  margin-top: 3px;
-  text-indent: 3px;
-  display: flex;
-}
-.session * {
-  padding: 0 4px;
-}
-.session div {
-  border-left: 1px solid #000;
-} */
 
 .Loader::after {
   content: "\2026";
