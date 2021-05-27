@@ -28,7 +28,6 @@ const Dashboard = () => {
 
   let formIsValid = !Object.values(formState).includes('') && !dateError;
 
-  console.log(formState)
   // validate 'start_date' before 'end_date' every time they change
   useEffect(() => {
     if (formState.start_date && formState.end_date) {
@@ -76,8 +75,12 @@ const Dashboard = () => {
   };      
   
   const handleSessionInputChange = (event, i) => {
+    let temp = {...formState};
     const { name, value } = event.target;
-    console.log(name, value)
+
+    temp.sessions[i].[name] = value
+    setFormState(temp);
+    console.log(temp)
   }
 
   const addCourseToDB = () => {
