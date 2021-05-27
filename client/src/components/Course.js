@@ -42,10 +42,10 @@ const Course = ({course_event, handleDelete}) => {
       <div>End Date: {course_event.course_end_date}</div>
       <div>Hours: {course_event.Course_Module.hours}</div>
       <div>Trainer: { course_event.Teacher != null ? course_event.Teacher.name : 'not determined yet'}</div>
-      <div className="sessions">
+      <div className="display__sessions">
         <h4>Sessions</h4>
       { course_event.Sessions.length === 0 
-          ? <div className="session">There are no sessions listed yet for this course.</div>
+          ? <div className="display__session">There are no sessions listed yet for this course.</div>
           : <table >
             <thead>
               <tr>
@@ -59,7 +59,7 @@ const Course = ({course_event, handleDelete}) => {
             <tbody>
               { course_event.Sessions.map((session, index) => {
                 return ( 
-                  <tr className="session" key = {session.session_id}>
+                  <tr className="display__session" key = {session.session_id}>
                     <td>{ index + 1 }</td>
                     <td>{ displayDateTime(session.session_start, 'weekday') }</td>
                     <td>{ displayDateTime(session.session_start, 'date') }</td>

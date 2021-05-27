@@ -201,23 +201,28 @@ const Dashboard = () => {
       </div>
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       
-      {formState.sessions[0].start_date}
       {formState.sessions.map((session, i) => {
         return (
-          <div className="input-group"
-                key="i">
-            <input 
-              type="datetime-local" 
-              name="session_start" 
-              className="input-field"
-              onChange={e => handleSessionInputChange(e, i)} 
-              value={session.session_start}/>
-            <input 
-              type="datetime-local" 
-              name="session_end" 
-              className="input-field"
-              onChange={e => handleSessionInputChange(e, i)}
-              value={session.session_end}/>
+          <div key="i">
+            <h4>Session {i + 1}</h4>
+            <div className="input-group dashboard__session">
+              <label htmlFor="session_start">Start</label>
+              <input 
+                type="datetime-local" 
+                name="session_start" 
+                className="input-field"
+                onChange={e => handleSessionInputChange(e, i)} 
+                value={session.session_start}/>
+            </div>
+            <div className="input-group dashboard__session">
+              <label htmlFor="session_end">End</label>
+              <input 
+                type="datetime-local" 
+                name="session_end" 
+                className="input-field"
+                onChange={e => handleSessionInputChange(e, i)}
+                value={session.session_end}/>
+            </div>
           </div>
           )
       })}

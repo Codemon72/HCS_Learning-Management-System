@@ -94,6 +94,9 @@ main {
 .input-group ~ .input-group {
   margin-top: 1rem;
 }
+.input-group.dashboard__session ~ .input-group.dashboard__session {
+  margin-top: .5rem;
+}
 
 .input-group {
   display: flex;
@@ -103,6 +106,10 @@ main {
   display: block;
   padding: .5rem 1rem;
   width: 200px;
+}
+.input-group.dashboard__session .input-field {
+  padding: 5px 10px;
+  width: 220px;
 }
 
 /* Display */
@@ -133,10 +140,10 @@ main {
   outline: 1px solid darkorange;
   outline-offset: .7rem;
 }
-.sessions {
+.display__sessions {
   margin-top: .5rem;
 }
-.sessions table {
+.display__sessions table {
   border-collapse: collapse;
   font-size: 0.9em;
   width: 100%;
@@ -145,23 +152,23 @@ main {
   overflow: hidden;
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
 }
-.sessions table thead {
+.display__sessions table thead {
   text-align: left;
   background-color: #777;
   color: #fff;
   font-weight: bold;
 }
-.sessions table th,
-.sessions table td {
+.display__sessions table th,
+.display__sessions table td {
   padding: 5px 10px;
 }
-.sessions table tbody tr {
+.display__sessions table tbody tr {
   border-bottom: 1px solid #ddd;
 }
-.sessions table tbody tr:nth-child(even) {
+.display__sessions table tbody tr:nth-child(even) {
   background: #e3e3e3;
 }
-.sessions table tbody tr:last-child {
+.display__sessions table tbody tr:last-child {
   border-bottom: 2px solid #777;
 }
 
