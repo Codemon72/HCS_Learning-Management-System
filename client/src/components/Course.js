@@ -59,7 +59,7 @@ const Course = ({course_event, handleDelete}) => {
             <tbody>
               { course_event.Sessions.map((session, index) => {
                 return ( 
-                  <tr className="session">
+                  <tr className="session" key = {session.session_id}>
                     <td>{ index + 1 }</td>
                     <td>{ displayDateTime(session.session_start, 'weekday') }</td>
                     <td>{ displayDateTime(session.session_start, 'date') }</td>
