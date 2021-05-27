@@ -13,7 +13,13 @@ const Dashboard = () => {
     start_date: '',
     end_date: '',
     hours: '',
-    teacher_id: ''
+    teacher_id: '',
+    sessions: [
+      {
+        session_start: '',
+        session_end: ''
+      }
+    ]
   };
 
   const [formState, setFormState] = useState(initialFormState);
@@ -22,7 +28,7 @@ const Dashboard = () => {
 
   let formIsValid = !Object.values(formState).includes('') && !dateError;
 
-
+  console.log(formState)
   // validate 'start_date' before 'end_date' every time they change
   useEffect(() => {
     if (formState.start_date && formState.end_date) {
@@ -187,6 +193,26 @@ const Dashboard = () => {
       </div>
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       
+      {formState.sessions[0].start_date}
+      {formState.sessions.map((session, i) => {
+        return (
+          <div className="input-group"
+                key="i">
+            <input 
+              type="datetime-local" 
+              name="dslfkj" 
+              className="input-field"
+              onChange={e => handleInputChange(e, i)} 
+              value={session.session_start}/>
+            <input 
+              type="datetime-local" 
+              name="dslfkj" 
+              className="input-field"
+              onChange={e => handleInputChange(e, i)}
+              value={session.session_start}/>
+          </div>
+          )
+      })}
       <div className="input-group">
       <input type="submit" className="button" disabled={!formIsValid} />
       </div>
