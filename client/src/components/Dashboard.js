@@ -42,9 +42,9 @@ const Dashboard = () => {
   const checkForInput = (event) => {
     const { name } = event.target;
     const errorMessages = {
-      name: "Please select a course.",
-      start_date: "Please choose a start date.",
-      end_date: "Please choose an end date.",
+      course_module_id: "Please select a course.",
+      course_start_date: "Please choose a start date.",
+      course_end_date: "Please choose an end date.",
       hours: "Please enter the total hours.",
       teacher_id: "Please select a teacher.",
     };
@@ -113,11 +113,12 @@ const Dashboard = () => {
       <h3>Dashboard</h3><br/><br/>
 
       <form onSubmit={handleAddCourse}>
+        {/* Course Module */}
       <div className="input-group">
-        <label htmlFor="name">Course Name</label>
+        <label htmlFor="course_module_id">Course Name</label>
         <select 
           className="input-field"
-          name="name" 
+          name="course_module_id" 
           value={formState.course_module_id}
           onChange={handleInputChange} 
           onBlur={checkForInput} 
@@ -133,33 +134,36 @@ const Dashboard = () => {
           <option value="8">Workshop: Databases</option>
         </select>
       </div>
-      {errors.name && <div className="errors">{errors.name}</div>}
+      {errors.course_module_id && <div className="errors">{errors.course_module_id}</div>}
+      {/* Course Start Date */}
       <div className="input-group">
-        <label htmlFor="start_date">Start Date</label>
+        <label htmlFor="course_start_date">Start Date</label>
         <input 
           className="input-field"
           type="date"
-          name="start_date"
-          value={formState.start_date}
+          name="course_start_date"
+          value={formState.course_start_date}
           onChange={handleInputChange}
           onBlur={checkForInput}
           />
       </div>
-      {errors.start_date && <div className="errors">{errors.start_date}</div>}
+      {errors.course_start_date && <div className="errors">{errors.course_start_date}</div>}
       {dateError && <div className="errors">{dateError}</div>}
+      {/* Course End Date */}
       <div className="input-group">
-        <label htmlFor="end_date">End Date</label>
+        <label htmlFor="course_end_date">End Date</label>
         <input 
           className="input-field"
           type="date"
-          name="end_date"
-          value={formState.end_date}
+          name="course_end_date"
+          value={formState.course_end_date}
           onChange={handleInputChange}
           onBlur={checkForInput} 
           />
       </div>
-      {errors.end_date && <div className="errors">{errors.end_date}</div>}
+      {errors.course_end_date && <div className="errors">{errors.course_end_date}</div>}
       {dateError && <div className="errors">{dateError}</div>}
+      {/* Hours */}
       <div className="input-group">
         <label htmlFor="hours">Hours Total</label>
         <input 
@@ -175,6 +179,7 @@ const Dashboard = () => {
           />
       </div>
       {errors.hours && <div className="errors">{errors.hours}</div>}
+      {/* Teacher ID */}
       <div className="input-group">
         <label htmlFor="teacher_id">Teacher</label>
         <select 
@@ -201,7 +206,7 @@ const Dashboard = () => {
         </select>
       </div>
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
-      
+      {/* Sessions */}
       {formState.sessions.map((session, i) => {
         return (
           <div key="i">
