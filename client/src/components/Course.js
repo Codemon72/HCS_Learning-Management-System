@@ -25,8 +25,12 @@ const Course = ({course_event, handleDelete}) => {
       options = {
         hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin'
       };
+    } else if (dateTime === 'weekday') {
+      options = {
+        weekday: 'short', timeZone: 'Europe/Berlin'
+      };
     }
-    let l10nDE = new Intl.DateTimeFormat("de-DE", options);
+    let l10nDE = new Intl.DateTimeFormat("en-UK", options);
     return (l10nDE.format(new Date(dateString)))
   };
 
@@ -46,6 +50,7 @@ const Course = ({course_event, handleDelete}) => {
             <thead>
               <tr>
                 <th>#</th>
+                <th>Day</th>
                 <th>Date</th>
                 <th>Start</th>
                 <th>End</th>
@@ -56,6 +61,7 @@ const Course = ({course_event, handleDelete}) => {
                 return ( 
                   <tr className="session">
                     <td>{ index + 1 }</td>
+                    <td>{ displayDateTime(session.session_start, 'weekday') }</td>
                     <td>{ displayDateTime(session.session_start, 'date') }</td>
                     <td>{ displayDateTime(session.session_start, 'time') }</td>
                     <td>{ displayDateTime(session.session_end, 'time') }</td>
