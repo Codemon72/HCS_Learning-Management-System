@@ -73,7 +73,12 @@ const Dashboard = () => {
       ...errors,
       [name]: null,
     });
-  };       
+  };      
+  
+  const handleSessionInputChange = (event, i) => {
+    const { name, value } = event.target;
+    console.log(name, value)
+  }
 
   const addCourseToDB = () => {
     const options = {
@@ -200,16 +205,16 @@ const Dashboard = () => {
                 key="i">
             <input 
               type="datetime-local" 
-              name="dslfkj" 
+              name="session_start" 
               className="input-field"
-              onChange={e => handleInputChange(e, i)} 
+              onChange={e => handleSessionInputChange(e, i)} 
               value={session.session_start}/>
             <input 
               type="datetime-local" 
-              name="dslfkj" 
+              name="session_end" 
               className="input-field"
-              onChange={e => handleInputChange(e, i)}
-              value={session.session_start}/>
+              onChange={e => handleSessionInputChange(e, i)}
+              value={session.session_end}/>
           </div>
           )
       })}
