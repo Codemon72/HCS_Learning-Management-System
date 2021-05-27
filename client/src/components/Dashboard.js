@@ -77,10 +77,9 @@ const Dashboard = () => {
   const handleSessionInputChange = (event, i) => {
     let temp = {...formState};
     const { name, value } = event.target;
-
-    temp.sessions[i].[name] = value
+    temp.sessions[i].[name] = value;
     setFormState(temp);
-    console.log(temp)
+    // console.log(temp);
   }
 
   const addCourseToDB = () => {
@@ -119,17 +118,19 @@ const Dashboard = () => {
         <select 
           className="input-field"
           name="name" 
-          value={formState.name}
+          value={formState.course_module_id}
           onChange={handleInputChange} 
           onBlur={checkForInput} 
           >
           <option value="" disabled hidden>Please select</option>
-          <option value="HTML & CSS">HTML & CSS</option>
-          <option value="Learn To Code">Learn To Code</option>
-          <option value="JavaScript For Web">JavaScript For Web</option>
-          <option value="React.js">React.js</option>
-          <option value="Node.js">Node.js</option>
-          <option value="Vue.js">Vue.js</option>
+          <option value="1">HTML & CSS</option>
+          <option value="2">Learn To Code</option>
+          <option value="3">JavaScript For Web</option>
+          <option value="4">Node.js</option>
+          <option value="5">React.js</option>
+          <option value="6">Vue.js</option>
+          <option value="7">Network Technologies</option>
+          <option value="8">Workshop: Databases</option>
         </select>
       </div>
       {errors.name && <div className="errors">{errors.name}</div>}
