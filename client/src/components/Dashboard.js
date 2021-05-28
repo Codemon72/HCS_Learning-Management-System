@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
+import AddSessions from './AddSessions';
 
 const Dashboard = () => {
 
@@ -238,6 +239,10 @@ const Dashboard = () => {
 
     </form>
     <button className="logBreak" onClick={() => console.log('--- Break ---')}>Log Break</button>
+    <br />
+    <br />
+    <br />
+    <AddSessions />
     </div>
   )
 }
