@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
 const AddSessions = () => {
@@ -24,7 +24,12 @@ const AddSessions = () => {
         >
           {courseEvents.map((courseEvent) => {
             return(
-              <option value={courseEvent.course_event_id} className="input-field">{courseEvent.Course_Module.name}:  {courseEvent.course_start_date} - {courseEvent.course_end_date}</option>
+              <option 
+                value={courseEvent.course_event_id} 
+                key={courseEvent.course_event_id} 
+                className="input-field">
+                  {courseEvent.Course_Module.name}:  {courseEvent.course_start_date} - {courseEvent.course_end_date}
+              </option>
             )
           })}
         </select>
