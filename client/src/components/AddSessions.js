@@ -7,7 +7,7 @@ const AddSessions = () => {
 
   const { courseEvents } = useContext(CourseContext);
 
-  console.log(courseEvents);
+  // console.log(courseEvents);
   return (
     <div>
       <h3>Add Sessions</h3>

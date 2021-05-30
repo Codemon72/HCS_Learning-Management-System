@@ -6,7 +6,6 @@ const Dashboard = () => {
 
   console.log('Dashboard rendered');
   
-
   const { fetchCourseData } = useContext(CourseContext);
 
   const initialFormState = {
@@ -80,8 +79,20 @@ const Dashboard = () => {
     const { name, value } = event.target;
     temp.sessions[i].[name] = value;
     setFormState(temp);
-    // console.log(temp);
-  }
+    console.log(temp);
+  };
+
+  const addSessionForm = (e) => {
+    e.preventDefault();
+    let temp = {...formState};
+    const tally = temp.sessions.length;
+    temp.sessions[tally + 1] = {
+      session_start: '',
+      session_end: ''
+    };
+    setFormState(temp);
+    console.log(temp);
+  };
 
   const addCourseToDB = () => {
     const options = {
@@ -233,6 +244,7 @@ const Dashboard = () => {
           </div>
           )
       })}
+      <button onClick={addSessionForm}>+</button>
       <div className="input-group">
       <input type="submit" className="button" disabled={!formIsValid} />
       </div>
