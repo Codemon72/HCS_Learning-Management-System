@@ -219,9 +219,9 @@ const Dashboard = () => {
       {/* Sessions */}
       {formState.sessions.map((session, i) => {
         return (
-          <div key="i">
-            <h5>Session {i + 1}</h5>
-            <div className="input-group dashboard__session">
+          <div key="i" className="dashboard__session">
+            <h4>Session {i + 1}</h4>
+            <div className="input-group">
               <label htmlFor="session_start">Start</label>
               <input 
                 type="datetime-local" 
@@ -230,7 +230,7 @@ const Dashboard = () => {
                 onChange={e => handleSessionInputChange(e, i)} 
                 value={session.session_start}/>
             </div>
-            <div className="input-group dashboard__session">
+            <div className="input-group">
               <label htmlFor="session_end">End</label>
               <input 
                 type="datetime-local" 
@@ -242,7 +242,7 @@ const Dashboard = () => {
           </div>
           )
       })}
-      <button onClick={addSessionForm}>+</button>
+      <button className="dashboard__session" onClick={addSessionForm}>+</button>
       <div className="input-group">
       <input type="submit" className="button" disabled={!formIsValid} />
       </div>

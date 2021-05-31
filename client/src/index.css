@@ -92,7 +92,7 @@ main {
 .input-group ~ .input-group {
   margin-top: 1rem;
 }
-.input-group.dashboard__session ~ .input-group.dashboard__session {
+.dashboard__session .input-group ~ .input-group {
   margin-top: .5rem;
 }
 
@@ -105,9 +105,13 @@ main {
   padding: .5rem 1rem;
   width: 200px;
 }
-.input-group.dashboard__session .input-field {
+.dashboard__session .input-group .input-field {
   padding: 5px 10px;
   width: 220px;
+}
+.dashboard__session {
+  font-size: 16px;
+  margin-left: .5rem;
 }
 
 /* Display */
