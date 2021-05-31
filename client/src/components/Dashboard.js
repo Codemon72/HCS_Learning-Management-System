@@ -29,14 +29,14 @@ const Dashboard = () => {
 
   // validate 'start_date' before 'end_date' every time they change
   useEffect(() => {
-    if (formState.start_date && formState.end_date) {
-      if (formState.start_date > formState.end_date) {
+    if (formState.course_start_date && formState.course_end_date) {
+      if (formState.course_start_date > formState.course_end_date) {
         setDateError("Start date must come before end date.");
-      } else if (formState.start_date <= formState.end_date) {
+      } else if (formState.course_start_date <= formState.course_end_date) {
         setDateError(null);
       }
     }
-  }, [formState.start_date, formState.end_date]);
+  }, [formState.course_start_date, formState.course_end_date]);
   
   const checkForInput = (event) => {
     const { name } = event.target;
@@ -199,17 +199,16 @@ const Dashboard = () => {
         >
           <option value="" disabled hidden>Please select</option>
           <option value="null">not determined yet</option>
-          <option value="2">Alexander Löhn</option>
-          <option value="5">Ansgar Mertens</option>
-          <option value="11">Benjamin Rabe</option>
-          <option value="7">Christoph Eicke</option>
-          <option value="1">Helder Pereira</option>
-          <option value="4">Jonas Reitmann</option>
-          <option value="8">Teresa Holfeld</option>
+          <option value="1">Mary Vokicic</option>
+          <option value="2">Teresa Holfeld</option>
+          <option value="3">Helder Pereira</option>
+          <option value="4">Paul Anton</option>
+          <option value="5">Jonas Reitmann</option>
+          <option value="6">Ansgar Mertens</option>
+          <option value="7">Benjamin Rabe</option>
+          <option value="8">Christoph Eicke</option>
           <option value="9">Thomas Hedeler</option>
-          <option value="10">Mary Vokicic</option>
-          <option value="3">Paul Anton</option>
-          <option value="6">Paul Mölders</option>
+          <option value="10">Paul Börding</option>
         </select>
       </div>
       <br />
