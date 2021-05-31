@@ -219,7 +219,7 @@ const Dashboard = () => {
       {/* Sessions */}
       {formState.sessions.map((session, i) => {
         return (
-          <div key="i" className="dashboard__session">
+          <div key={i} className="dashboard__session">
             <h4>Session {i + 1}</h4>
             <div className="input-group">
               <label htmlFor="session_start">Start</label>
