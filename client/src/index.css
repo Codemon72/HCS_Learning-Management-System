@@ -194,8 +194,7 @@ main {
 /* During Development: */
 
 .logBreak {
-  position: relative;
-  bottom: -17rem;
+  margin-top: 5rem
 }
 
 /* * { outline: 2px dotted red }

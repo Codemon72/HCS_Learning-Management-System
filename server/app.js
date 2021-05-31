@@ -58,13 +58,12 @@ app.get('/api/courses', (req, res) => {
 
 // Add Course
 app.post('/api/courses', (req, res) => {
-  const { name, start_date, end_date, hours, teacher_id } = req.body;
+  const { course_module_id, course_start_date, course_end_date, teacher_id } = req.body;
   // Insert into table
-  Courses.create({
-    name,
-    hours,
-    start_date,
-    end_date,
+  Course_Events.create({
+    course_module_id,
+    course_start_date,
+    course_end_date,
     teacher_id,
   })
     .then(result => res.status(200).json(result))

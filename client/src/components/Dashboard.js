@@ -8,10 +8,10 @@ const Dashboard = () => {
   const { fetchCourseData } = useContext(CourseContext);
 
   const initialFormState = {
-    name: '',
-    start_date: '',
-    end_date: '',
-    hours: '',
+    course_module_id: '',
+    course_start_date: '',
+    course_end_date: '',
+    // hours: '',
     teacher_id: '',
     sessions: [
       {
@@ -171,7 +171,7 @@ const Dashboard = () => {
       {errors.course_end_date && <div className="errors">{errors.course_end_date}</div>}
       {dateError && <div className="errors">{dateError}</div>}
       {/* Hours */}
-      <div className="input-group">
+      {/* <div className="input-group">
         <label htmlFor="hours">Hours Total</label>
         <input 
           className="input-field"
@@ -185,7 +185,7 @@ const Dashboard = () => {
           onBlur={checkForInput} 
           />
       </div>
-      {errors.hours && <div className="errors">{errors.hours}</div>}
+      {errors.hours && <div className="errors">{errors.hours}</div>} */}
       {/* Teacher ID */}
       <div className="input-group">
         <label htmlFor="teacher_id">Teacher</label>
