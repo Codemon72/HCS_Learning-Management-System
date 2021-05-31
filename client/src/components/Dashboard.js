@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
-import AddSessions from './AddSessions';
 
 const Dashboard = () => {
 
@@ -85,11 +84,7 @@ const Dashboard = () => {
   const addSessionForm = (e) => {
     e.preventDefault();
     let temp = {...formState};
-    const tally = temp.sessions.length;
-    temp.sessions[tally + 1] = {
-      session_start: '',
-      session_end: ''
-    };
+    temp.sessions.push({session_start: '', session_end: ''}) 
     setFormState(temp);
     console.log(temp);
   };
@@ -217,12 +212,15 @@ const Dashboard = () => {
           <option value="6">Paul Mölders</option>
         </select>
       </div>
+      <br />
+      <h4>Sessions</h4>
+      <br />
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       {/* Sessions */}
       {formState.sessions.map((session, i) => {
         return (
           <div key="i">
-            <h4>Session {i + 1}</h4>
+            <h5>Session {i + 1}</h5>
             <div className="input-group dashboard__session">
               <label htmlFor="session_start">Start</label>
               <input 
@@ -251,10 +249,6 @@ const Dashboard = () => {
 
     </form>
     <button className="logBreak" onClick={() => console.log('--- Break ---')}>Log Break</button>
-    <br />
-    <br />
-    <br />
-    <AddSessions />
     </div>
   )
 }
