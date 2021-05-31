@@ -110,8 +110,7 @@ main {
   width: 220px;
 }
 .dashboard__session {
-  font-size: 16px;
-  margin-left: .5rem;
+  margin-top: 2rem;
 }
 
 /* Display */

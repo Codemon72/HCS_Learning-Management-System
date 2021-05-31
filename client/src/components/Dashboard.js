@@ -12,14 +12,7 @@ const Dashboard = () => {
     course_module_id: '',
     course_start_date: '',
     course_end_date: '',
-    // hours: '',
-    teacher_id: '',
-    sessions: [
-      {
-        session_start: '',
-        session_end: ''
-      }
-    ]
+    teacher_id: ''
   };
 
   const [formState, setFormState] = useState(initialFormState);
@@ -74,21 +67,21 @@ const Dashboard = () => {
     });
   };      
   
-  const handleSessionInputChange = (event, i) => {
-    let temp = {...formState};
-    const { name, value } = event.target;
-    temp.sessions[i].[name] = value;
-    setFormState(temp);
-    console.log(temp);
-  };
+  // const handleSessionInputChange = (event, i) => {
+  //   let temp = {...formState};
+  //   const { name, value } = event.target;
+  //   temp.sessions[i].[name] = value;
+  //   setFormState(temp);
+  //   console.log(temp);
+  // };
 
-  const addSessionForm = (e) => {
-    e.preventDefault();
-    let temp = {...formState};
-    temp.sessions.push({session_start: '', session_end: ''}) 
-    setFormState(temp);
-    console.log(temp);
-  };
+  // const addSessionForm = (e) => {
+  //   e.preventDefault();
+  //   let temp = {...formState};
+  //   temp.sessions.push({session_start: '', session_end: ''}) 
+  //   setFormState(temp);
+  //   console.log(temp);
+  // };
 
   const addCourseToDB = () => {
     const options = {
@@ -217,7 +210,7 @@ const Dashboard = () => {
       <br />
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       {/* Sessions */}
-      {formState.sessions.map((session, i) => {
+      {/* {formState.sessions.map((session, i) => {
         return (
           <div key={i} className="dashboard__session">
             <h4>Session {i + 1}</h4>
@@ -242,7 +235,7 @@ const Dashboard = () => {
           </div>
           )
       })}
-      <button className="dashboard__session" onClick={addSessionForm}>+</button>
+      <button className="dashboard__session" onClick={addSessionForm}>+</button> */}
       <div className="input-group">
       <input type="submit" className="button" disabled={!formIsValid} />
       </div>
