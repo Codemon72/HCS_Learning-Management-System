@@ -23,10 +23,10 @@ const AddSessions = () => {
 
   const addSessionForm = (e) => {
     e.preventDefault();
-    let temp = {...formState};
-    temp.sessions.push({session_start: '', session_end: ''}) 
-    setFormState(temp);
+    let temp = [...formState];
+    temp.push({course_event_id: '', session_start: '', session_end: ''});
     console.log(temp);
+    setFormState(temp);
   };
 
   return (
