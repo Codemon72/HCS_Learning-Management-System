@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CourseContext } from '../contexts/CourseContext';
 
 const AddSessions = () => {
   console.log("AddSessions rendered");
+
+  const { courseEvents } = useContext(CourseContext);
 
   const initialFormState = [
     {
@@ -32,6 +35,19 @@ const AddSessions = () => {
   return (
   <div className="dashboard__session">
     <h3>Add Sessions</h3>
+    <br />
+    <div className="input-group">
+      <label htmlFor="course_event_id">Choose Course</label>
+      <select name="" id="">
+        {courseEvents.map((course_event) => {
+          return(
+            <option value="{course_event.course_event_id}">
+              {course_event.Course_Module.name} | {course_event.course_start_date} - {course_event.course_end_date}
+            </option>
+          )
+        })}
+      </select>
+    </div>
     <br />
     <form action="">
     {formState.map((session, i) => {
