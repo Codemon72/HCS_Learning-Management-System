@@ -39,7 +39,7 @@ const AddSessions = () => {
   const addSessionForm = (e) => {
     e.preventDefault();
     let temp = [...formState];
-    temp.push({course_event_id: '', session_start: '', session_end: ''});
+    temp.push({course_event_id: courseEventID, session_start: '', session_end: ''});
     console.log(temp);
     setFormState(temp);
   };
