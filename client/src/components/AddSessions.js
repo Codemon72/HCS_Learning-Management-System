@@ -80,9 +80,11 @@ const AddSessions = () => {
         className="input-field"
         >
         <option value="" disabled hidden>Please select</option>
-        {courseEvents.map((course_event) => {
+        {courseEvents.map((course_event, i) => {
           return(
-            <option value={course_event.course_event_id}>
+            <option 
+              value={course_event.course_event_id}
+              key={i}>
               {course_event.Course_Module.name} | {course_event.course_start_date} - {course_event.course_end_date}
             </option>
           )
