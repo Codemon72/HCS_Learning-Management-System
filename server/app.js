@@ -105,9 +105,6 @@ app.delete("/api/courses/:id", (req, res) => {
 
 // Add Sessions
 app.post('/api/sessions', (req, res) => {
-  const array = [...req.body];
-  // Insert into table
-  console.log('body:', req.body);
   Sessions.bulkCreate(req.body)
     .then(result => res.status(200).json(result))
     .catch((error) => {
