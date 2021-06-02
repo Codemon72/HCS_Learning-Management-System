@@ -29,7 +29,6 @@ const AddSessions = () => {
   const handleSessionInputChange = (event, i) => {
     let temp = [...formState];
     const { name, value } = event.target;
-    console.log(i);
     temp[i][name] = value;
     temp[i].course_event_id = courseEventID;
     setFormState(temp);
@@ -63,6 +62,8 @@ const AddSessions = () => {
   const handleAddSessions = (e) => {
     e.preventDefault();
     console.log(formState);
+    addSessionsToDB();
+    // setFormState(initialFormState);
   }
 
   return (
@@ -74,9 +75,11 @@ const AddSessions = () => {
       <label htmlFor="course_event_id">Choose Course</label>
       <select 
         name="course_event_id"
-        value={courseEvents.course_event_id}
+        value={courseEventID}
         onChange={handleCourseChoice}
-        className="input-field">
+        className="input-field"
+        >
+        <option value="" disabled hidden>Please select</option>
         {courseEvents.map((course_event) => {
           return(
             <option value={course_event.course_event_id}>

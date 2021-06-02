@@ -105,14 +105,10 @@ app.delete("/api/courses/:id", (req, res) => {
 
 // Add Sessions
 app.post('/api/sessions', (req, res) => {
-  const { course_module_id, course_start_date, course_end_date, teacher_id, sessions } = req.body;
+  const array = [...req.body];
   // Insert into table
-  Course_Events.create({
-    course_module_id,
-    course_start_date,
-    course_end_date,
-    teacher_id,
-  })
+  console.log('body:', req.body);
+  Sessions.bulkCreate(req.body)
     .then(result => res.status(200).json(result))
     .catch((error) => {
       console.log(error);
