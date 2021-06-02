@@ -14,12 +14,20 @@ const AddSessions = () => {
     }
   ];
 
+  const [courseEventID, setcourseEventID] = useState('');
   const [formState, setFormState] = useState(initialFormState);
+
+  const handleCourseChoice = (event) => {
+    const { value } = event.target;
+    setcourseEventID(value);
+  }
 
   const handleSessionInputChange = (event, i) => {
     let temp = [...formState];
     const { name, value } = event.target;
+    console.log(i);
     temp[i][name] = value;
+    temp[i].course_event_id = courseEventID;
     setFormState(temp);
     console.log(temp);
   };
@@ -36,12 +44,16 @@ const AddSessions = () => {
   <div className="dashboard__session">
     <h3>Add Sessions</h3>
     <br />
-    <div className="input-group">
+    <div className="input-group vertical">
       <label htmlFor="course_event_id">Choose Course</label>
-      <select name="" id="">
+      <select 
+        name="course_event_id"
+        value={courseEvents.course_event_id}
+        onChange={handleCourseChoice}
+        className="input-field">
         {courseEvents.map((course_event) => {
           return(
-            <option value="{course_event.course_event_id}">
+            <option value={course_event.course_event_id}>
               {course_event.Course_Module.name} | {course_event.course_start_date} - {course_event.course_end_date}
             </option>
           )
@@ -60,7 +72,7 @@ const AddSessions = () => {
                 type="datetime-local" 
                 name="session_start" 
                 className="input-field"
-                onChange={e => handleSessionInputChange(e, i)} 
+                onChange={e => handleSessionInputChange(e, i)}
                 value={session.session_start}/>
             </div>
             <div className="input-group">

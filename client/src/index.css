@@ -100,8 +100,14 @@ main {
   display: flex;
   justify-content: space-between;
 }
+.input-group.vertical {
+  flex-direction: column;
+  gap: .5rem;
+}
+.dashboard__session .input-group.vertical .input-field {
+  width: 100%;
+}
 .input-group .input-field {
-  display: block;
   padding: .5rem 1rem;
   width: 200px;
 }
