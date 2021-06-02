@@ -44,10 +44,16 @@ const AddSessions = () => {
     setFormState(temp);
   };
 
+  const handleAddSessions = (e) => {
+    e.preventDefault();
+    console.log(formState);
+  }
+
   return (
   <div className="dashboard__session">
     <h3>Add Sessions</h3>
     <br />
+      <form onSubmit={handleAddSessions}>
     <div className="input-group vertical">
       <label htmlFor="course_event_id">Choose Course</label>
       <select 
@@ -65,7 +71,6 @@ const AddSessions = () => {
       </select>
     </div>
     <br />
-    <form action="">
     {formState.map((session, i) => {
         return (
           <div key={i}>
@@ -98,7 +103,7 @@ const AddSessions = () => {
       <input 
         type="submit" 
         className="button" 
-        disabled
+        // disabled
         />
       </div>
     </form>
