@@ -14,7 +14,7 @@ const AddSessions = () => {
   const [formState, setFormState] = useState(initialFormState);
 
   const handleSessionInputChange = (event, i) => {
-    let temp = { ...formState };
+    let temp = [...formState];
     const { name, value } = event.target;
     temp[i][name] = value;
     setFormState(temp);
@@ -37,7 +37,7 @@ const AddSessions = () => {
     {formState.map((session, i) => {
         return (
           <div key={i}>
-            <h4>Session {i + 1}</h4>
+            <h4>{i + 1}. Session</h4>
             <div className="input-group">
               <label htmlFor="session_start">Start</label>
               <input 
