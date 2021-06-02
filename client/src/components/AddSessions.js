@@ -4,7 +4,7 @@ import { CourseContext } from '../contexts/CourseContext';
 const AddSessions = () => {
   console.log("AddSessions rendered");
 
-  const { courseEvents } = useContext(CourseContext);
+  const { courseEvents, fetchCourseData } = useContext(CourseContext);
 
   const initialFormState = [
     {
@@ -62,8 +62,12 @@ const AddSessions = () => {
   const handleAddSessions = (e) => {
     e.preventDefault();
     console.log(formState);
-    addSessionsToDB();
-    // setFormState(initialFormState);
+    addSessionsToDB()
+      .then(data => {console.log('sessions added to db: ', data)})
+      .then(() => fetchCourseData())
+      .catch(error => console.log(error));
+    setcourseEventID('');
+    setFormState(initialFormState);
   }
 
   return (
