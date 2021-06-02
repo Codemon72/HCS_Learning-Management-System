@@ -19,6 +19,10 @@ const AddSessions = () => {
 
   const handleCourseChoice = (event) => {
     const { value } = event.target;
+    for (let i = 0; i < formState.length; i++) {
+      let temp = [...formState];
+      temp[i].course_event_id = value;
+    }
     setcourseEventID(value);
   }
 
