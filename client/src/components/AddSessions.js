@@ -31,7 +31,8 @@ const AddSessions = () => {
 
   return (
   <div className="dashboard__session">
-    <h4>Add Sessions</h4>
+    <h3>Add Sessions</h3>
+    <br />
     <form action="">
     {formState.map((session, i) => {
         return (
@@ -59,6 +60,8 @@ const AddSessions = () => {
           )
       })}
       <button className="dashboard__session" onClick={addSessionForm}>+</button>
+      <br />
+      <br />
       <div className="input-group">
       <input 
         type="submit" 

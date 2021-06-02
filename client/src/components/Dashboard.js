@@ -206,7 +206,6 @@ const Dashboard = () => {
         </select>
       </div>
       <br />
-      <h4>Sessions</h4>
       <br />
       {errors.teacher_id && <div className="errors">{errors.teacher_id}</div>}
       {/* Sessions */}
@@ -241,6 +240,9 @@ const Dashboard = () => {
       </div>
 
     </form>
+    <br />
+    <br />
+    <hr />
     <AddSessions />
     <button className="logBreak" onClick={() => console.log('--- Break ---')}>Log Break</button>
     </div>
