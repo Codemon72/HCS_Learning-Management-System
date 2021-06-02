@@ -36,6 +36,7 @@ button, .button {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   border: 1px solid var(--color--black);
+  border-radius: 3px;
   transition: all 0.2s;
   cursor: pointer;
   padding: .5rem 1rem;
@@ -117,6 +118,20 @@ main {
 }
 .dashboard__session {
   margin-top: 2rem;
+}
+.dashboard__session .session {
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 3px 3px 7px rgb(0 0 0 / 7%);
+}
+.dashboard__session .session ~ .session {
+  margin-top: 1rem;
+}
+.dashboard__session .session h4 {
+  margin-bottom: 1rem;
+}
+.addSessionFormField {
+  text-align: right;
 }
 
 /* Display */

@@ -111,7 +111,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
 
-      <h3>Dashboard</h3><br/><br/>
+      <h3>DASHBOARD</h3><br/><br/>
+
+      <h3>Add Course</h3>
+      <br />
 
       <form onSubmit={handleAddCourse}>
         {/* Course Module */}

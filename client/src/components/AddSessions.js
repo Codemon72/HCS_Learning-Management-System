@@ -98,7 +98,10 @@ const AddSessions = () => {
     <br />
     {formState.map((session, i) => {
         return (
-          <div key={i}>
+          <div 
+            key={i}
+            className="session"
+            >
             <h4>{i + 1}. Session</h4>
             <div className="input-group">
               <label htmlFor="session_start">Start</label>
@@ -121,8 +124,10 @@ const AddSessions = () => {
           </div>
           )
       })}
-      <button className="dashboard__session" onClick={addSessionFormField}>+</button>
-      <br />
+      <div className="addSessionFormField">
+        <span>Add Input Field  </span>
+        <button className="dashboard__session" onClick={addSessionFormField}>+</button>
+      </div>
       <br />
       <div className="input-group">
       <input 
