@@ -35,7 +35,7 @@ const AddSessions = () => {
     console.log(temp);
   };
 
-  const addSessionForm = (e) => {
+  const addSessionFormField = (e) => {
     e.preventDefault();
     let temp = [...formState];
     temp.push({course_event_id: courseEventID, session_start: '', session_end: ''});
@@ -121,7 +121,7 @@ const AddSessions = () => {
           </div>
           )
       })}
-      <button className="dashboard__session" onClick={addSessionForm}>+</button>
+      <button className="dashboard__session" onClick={addSessionFormField}>+</button>
       <br />
       <br />
       <div className="input-group">
