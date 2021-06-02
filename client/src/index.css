@@ -12,7 +12,7 @@
   --color--black: #000;
   --color--blue: #568c9b;
   --color--blue--hover: #0E4E5B;
-  --color--warning: #9E0505;
+  --color--warning: rgb(189, 6, 6);
   --box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.7);
 }
 
@@ -120,6 +120,7 @@ main {
   margin-top: 2rem;
 }
 .dashboard__session .session {
+  position: relative;
   padding: 1rem;
   border-radius: 6px;
   box-shadow: 3px 3px 7px rgb(0 0 0 / 7%);
@@ -129,6 +130,24 @@ main {
 }
 .dashboard__session .session h4 {
   margin-bottom: 1rem;
+}
+.dashboard__session .session .deleteOption {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-weight: bold;
+  background-color: #f33;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  text-align: center;
+  line-height: 1.4;
+  transition: all .25s ease-in-out;
+  opacity: 0;
+  cursor: pointer;
+}
+.dashboard__session .session .deleteOption:hover {
+  opacity: 1;
 }
 .addSessionFormField {
   text-align: right;
