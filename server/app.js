@@ -103,6 +103,23 @@ app.delete("/api/courses/:id", (req, res) => {
     });
 });
 
+// Add Sessions
+app.post('/api/sessions', (req, res) => {
+  const { course_module_id, course_start_date, course_end_date, teacher_id, sessions } = req.body;
+  // Insert into table
+  Course_Events.create({
+    course_module_id,
+    course_start_date,
+    course_end_date,
+    teacher_id,
+  })
+    .then(result => res.status(200).json(result))
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
+});
+
 
 const PORT = process.env.PORT || 4000;
 

@@ -44,6 +44,22 @@ const AddSessions = () => {
     setFormState(temp);
   };
 
+  const addSessionsToDB = () => {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formState),
+    };
+    return fetch("http://localhost:4000/api/sessions", options)
+      .then((res) => {
+        if (!res.ok) {
+          // errors from server
+          throw Error(res.statusText);
+        }
+        return res.json();
+      });
+  };
+
   const handleAddSessions = (e) => {
     e.preventDefault();
     console.log(formState);
