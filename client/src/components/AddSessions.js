@@ -103,7 +103,11 @@ const AddSessions = () => {
             className="session"
             >
             <h4>{i + 1}. Session</h4>
-            <div className="deleteOption">x</div>
+            <div className="deleteOption">
+              <div className="deleteIcon">+</div>
+              <br />
+              <button>Delete Session</button>
+            </div>
             <div className="input-group">
               <label htmlFor="session_start">Start</label>
               <input 

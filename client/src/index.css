@@ -133,21 +133,32 @@ main {
 }
 .dashboard__session .session .deleteOption {
   position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  width: 220px;
+  height: 80px;
+  border-radius: 6px;
+  text-align: center;
+  transition: all .3s ease-in-out;
+  opacity: 0.3;
+  cursor: pointer;
+  clip-path: circle(15px at calc(100% - 21px) 25px);
+}
+.dashboard__session .session .deleteOption .deleteIcon {
+  position: absolute;
+  transform: rotate(45deg);
   top: 14px;
   right: 14px;
-  font-weight: bold;
-  background-color: #f33;
-  border-radius: 50%;
-  width: 27px;
-  height: 27px;
-  text-align: center;
-  line-height: 1.4;
-  transition: all .25s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+.dashboard__session .session .deleteOption:hover .deleteIcon {
   opacity: 0;
-  cursor: pointer;
 }
 .dashboard__session .session .deleteOption:hover {
-  opacity: 1;
+  opacity: .9;
+  background-color: #f33;
+  clip-path: circle(100%);
 }
 .addSessionFormField {
   text-align: right;
