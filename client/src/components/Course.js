@@ -70,9 +70,9 @@ const Course = ({course_event, handleDelete}) => {
                     <td>{ displayDateTime(session.session_start, 'date') }</td>
                     <td>{ displayDateTime(session.session_start, 'time') }</td>
                     <td>{ displayDateTime(session.session_end, 'time') }</td>
-                    {/* <span>
-                      <button onClick={(e) => handledeleteSession(e, session.session_id)}>Delete Session</button>
-                    </span> */}
+                    <td>
+                      <button onClick={(e) => handledeleteSession(e, session.session_id)}>Log 'session_id'</button>
+                    </td>
                   </tr>
                 )
               })}

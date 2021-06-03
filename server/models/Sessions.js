@@ -29,6 +29,6 @@ const Sessions = db.define('Sessions', {
 
 
 Sessions.belongsTo(Course_Events, {foreignKey: 'course_event_id'});
-Course_Events.hasMany(Sessions, {foreignKey: 'course_event_id', sourceKey: 'course_event_id'});
+Course_Events.hasMany(Sessions, {foreignKey: 'course_event_id', sourceKey: 'course_event_id', onDelete: 'CASCADE'});
 
 module.exports = Sessions;

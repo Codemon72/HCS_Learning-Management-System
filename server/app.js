@@ -48,7 +48,7 @@ app.get('/api/courses', (req, res) => {
 
 // Add Course
 app.post('/api/courses', (req, res) => {
-  const { course_module_id, course_start_date, course_end_date, teacher_id, sessions } = req.body;
+  const { course_module_id, course_start_date, course_end_date, teacher_id } = req.body;
   // Insert into table
   Course_Events.create({
     course_module_id,
@@ -90,6 +90,7 @@ app.delete("/api/courses/:id", (req, res) => {
       res.send(error);
     });
 });
+
 
 // SESSIONS
 // Add Sessions
