@@ -1,8 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const db = require('../config/database');
 const Course_Modules = require('./Course_Modules');
 const Teachers = require('./Teachers');
-// const Sessions = require('./Sessions');
+
 
 const Course_Events = db.define('Course_Events', {
   course_event_id: {
@@ -37,6 +37,5 @@ const Course_Events = db.define('Course_Events', {
 
 Course_Events.belongsTo(Teachers, {foreignKey: 'teacher_id'});
 Course_Events.belongsTo(Course_Modules, {foreignKey: 'course_module_id'});
-// Course_Events.hasMany(Sessions);
 
 module.exports = Course_Events;

@@ -31,18 +31,8 @@ app.get('/', (req, res) => {
   res.send('Hello from Codemon72');
 });
 
-// Route Courses
-// app.get('/api/courses', (req, res) => {
-//   Courses.findAll({
-//     include: [Teachers],
-//   })
-//     .then(result => res.status(200).json(result))
-//     .catch((error) => {
-//       console.log(error);
-//       res.send(error);
-//     });
-// });
-
+// COURSES
+// Read Courses
 app.get('/api/courses', (req, res) => {
   Course_Events.findAll({ 
     include: [{ model: Sessions },
@@ -73,7 +63,6 @@ app.post('/api/courses', (req, res) => {
     });
 });
 
-
 // Update Course
 app.put("/api/courses", (req, res) => {
   let { name, hours, start_date, end_date, teacher_id, course_id } = req.body;
@@ -91,7 +80,6 @@ app.put("/api/courses", (req, res) => {
     });
 });
 
-
 // Delete Course
 app.delete("/api/courses/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
@@ -103,6 +91,7 @@ app.delete("/api/courses/:id", (req, res) => {
     });
 });
 
+// SESSIONS
 // Add Sessions
 app.post('/api/sessions', (req, res) => {
   Sessions.bulkCreate(req.body)
