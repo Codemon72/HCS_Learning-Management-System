@@ -138,7 +138,7 @@ const AddSessions = () => {
       })}
       <div className="addSessionFormField">
         <span>Add Input Field  </span>
-        <button className="dashboard__session" onClick={addSessionFormField}>+</button>
+        <button className="dashboard__session button" onClick={addSessionFormField}>+</button>
       </div>
       <br />
       <div className="input-group">
