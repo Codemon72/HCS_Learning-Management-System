@@ -7,6 +7,11 @@ const Course = ({course_event, handleDelete}) => {
 
   const [formVisibility, setFormVisibility] = useState(false);
 
+  const handledeleteSession = (e, session_id) => {
+    e.preventDefault();
+    console.log('session_id: ', session_id);
+  }
+
   const chooseUpdate = () => {
     setFormVisibility(true);
   };
@@ -65,6 +70,9 @@ const Course = ({course_event, handleDelete}) => {
                     <td>{ displayDateTime(session.session_start, 'date') }</td>
                     <td>{ displayDateTime(session.session_start, 'time') }</td>
                     <td>{ displayDateTime(session.session_end, 'time') }</td>
+                    <span>
+                      <button onClick={(e) => handledeleteSession(e, session.session_id)}>Delete Session</button>
+                    </span>
                   </tr>
                 )
               })}
