@@ -43,6 +43,11 @@ const AddSessions = () => {
     setFormState(temp);
   };
 
+  const deleteSessionFormField = (e, i) => {
+    e.preventDefault();
+    console.log(i);
+  };
+
   const addSessionsToDB = () => {
     const options = {
       method: "POST",
@@ -106,7 +111,7 @@ const AddSessions = () => {
             <div className="deleteOption">
               <div className="deleteIcon">+</div>
               <br />
-              <button>Delete Session</button>
+              <button onClick={(e) => deleteSessionFormField(e, i)}>Delete Session</button>
             </div>
             <div className="input-group">
               <label htmlFor="session_start">Start</label>
