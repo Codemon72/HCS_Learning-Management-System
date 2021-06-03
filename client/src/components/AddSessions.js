@@ -45,7 +45,9 @@ const AddSessions = () => {
 
   const deleteSessionFormField = (e, i) => {
     e.preventDefault();
-    console.log(i);
+    const temp = [...formState];
+    temp.splice(i, 1);
+    setFormState(temp);
   };
 
   const addSessionsToDB = () => {
