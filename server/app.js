@@ -83,7 +83,7 @@ app.put("/api/courses", (req, res) => {
 // Delete Course
 app.delete("/api/courses/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);
-  Courses.destroy({ where: { course_id: idDeleted } })
+  Course_Events.destroy({ where: { course_event_id: idDeleted } })
     .then(result => res.status(200).json(result))
     .catch((error) => {
       console.log(error);

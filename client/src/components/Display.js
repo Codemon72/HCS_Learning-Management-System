@@ -9,11 +9,11 @@ const Display = () => {
 
   const { courseEvents, error, isPending, fetchCourseData } = useContext(CourseContext);
 
-  const deleteCourseFromDB = (course_id) => {
+  const deleteCourseFromDB = (course_event_id) => {
     const options = {
       method: 'DELETE'
     };
-    return fetch('http://localhost:4000/api/courses/' + course_id, options)
+    return fetch('http://localhost:4000/api/courses/' + course_event_id, options)
             .then(res => { 
               if (!res.ok) { // errors from server
                 throw Error(res.statusText);
@@ -22,8 +22,8 @@ const Display = () => {
             });
   };
 
-  const handleDelete = (course_id) => {
-    deleteCourseFromDB(course_id)
+  const handleDelete = (course_event_id) => {
+    deleteCourseFromDB(course_event_id)
       .then(data => {console.log('course deleted: ', data)})
       .then(() => fetchCourseData())
       .catch(error => console.log(error));
