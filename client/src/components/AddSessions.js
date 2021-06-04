@@ -24,6 +24,12 @@ const AddSessions = () => {
       temp[i].course_event_id = value;
     }
     setcourseEventID(value);
+    console.table(formState);
+  };
+
+  const logFormstate = (e) => {
+    e.preventDefault();
+    console.table(formState);
   }
 
   const handleSessionInputChange = (event, i) => {
@@ -32,14 +38,14 @@ const AddSessions = () => {
     temp[i][name] = value;
     temp[i].course_event_id = courseEventID;
     setFormState(temp);
-    console.log(temp);
+    console.table(temp);
   };
 
   const addSessionFormField = (e) => {
     e.preventDefault();
     let temp = [...formState];
     temp.push({course_event_id: courseEventID, session_start: '', session_end: ''});
-    console.log(temp);
+    console.table(temp);
     setFormState(temp);
   };
 
@@ -81,29 +87,29 @@ const AddSessions = () => {
   <div className="dashboard__session">
     <h3>Add Sessions</h3>
     <br />
-      <form onSubmit={handleAddSessions}>
-    <div className="input-group vertical">
-      <label htmlFor="course_event_id">Choose Course</label>
-      <select 
-        name="course_event_id"
-        value={courseEventID}
-        onChange={handleCourseChoice}
-        className="input-field"
+    <form onSubmit={handleAddSessions}>
+      <div className="input-group vertical">
+        <label htmlFor="course_event_id">Choose Course</label>
+        <select 
+          name="course_event_id"
+          value={courseEventID}
+          onChange={handleCourseChoice}
+          className="input-field"
         >
-        <option value="" disabled hidden>Please select</option>
-        {courseEvents.map((course_event, i) => {
-          return(
-            <option 
-              value={course_event.course_event_id}
-              key={i}>
-              {course_event.Course_Module.name} | {course_event.course_start_date} - {course_event.course_end_date}
-            </option>
-          )
-        })}
-      </select>
-    </div>
-    <br />
-    {formState.map((session, i) => {
+          <option value="" disabled hidden>Please select</option>
+          {courseEvents.map((course_event, i) => {
+            return(
+              <option 
+                value={course_event.course_event_id}
+                key={i}>
+                {course_event.Course_Module.name} | {course_event.course_start_date} - {course_event.course_end_date}
+              </option>
+            )
+          })}
+        </select>
+      </div>
+      <br />
+      {formState.map((session, i) => {
         return (
           <div 
             key={i}
@@ -139,6 +145,10 @@ const AddSessions = () => {
       <div className="addSessionFormField">
         <span>Add Input Field  </span>
         <button className="dashboard__session button" onClick={addSessionFormField}>+</button>
+      </div>
+      <div className="addSessionFormField">
+        <span>Log FormState </span>
+        <button className="dashboard__session button" onClick={logFormstate}>Log FormState</button>
       </div>
       <br />
       <div className="input-group">
