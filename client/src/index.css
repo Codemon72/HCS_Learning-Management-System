@@ -216,6 +216,7 @@ main {
 .display__sessions table th,
 .display__sessions table td {
   padding: 5px 10px;
+  position: relative;
 }
 .display__sessions table tbody tr {
   border-bottom: 1px solid #ddd;
@@ -225,6 +226,15 @@ main {
 }
 .display__sessions table tbody tr:last-child {
   border-bottom: 2px solid #777;
+}
+.delete_session {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  cursor: pointer;
+}
+.delete_session:hover {
+  background-color: red;
 }
 
 .Loader::after {

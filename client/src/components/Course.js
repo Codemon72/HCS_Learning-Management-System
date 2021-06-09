@@ -86,12 +86,11 @@ const Course = ({course_event, handleDelete, fetchCourseData}) => {
                     <td>{ displayDateTime(session.session_start, 'weekday') }</td>
                     <td>{ displayDateTime(session.session_start, 'date') }</td>
                     <td>{ displayDateTime(session.session_start, 'time') }</td>
-                    <td>{ displayDateTime(session.session_end, 'time') }</td>
-                    <td>
-                      <button 
+                    <td>{ displayDateTime(session.session_end, 'time') }
+                      <span 
                         onClick={(e) => handleDeleteSession(e, session.session_id)}
                         className="delete_session"
-                        >Delete</button>
+                        >x</span>
                     </td>
                   </tr>
                 )
