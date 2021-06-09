@@ -42,6 +42,7 @@ const Display = () => {
               <Course
                 key = {course_event.course_event_id}
                 course_event = {course_event}
+                fetchCourseData = {fetchCourseData}
                 handleDelete = {handleDelete}
               />
             );

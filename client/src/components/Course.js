@@ -1,15 +1,32 @@
 import { useState } from 'react';
 import CourseUpdateForm from './CourseUpdateForm';
 
-const Course = ({course_event, handleDelete}) => {
+const Course = ({course_event, handleDelete, fetchCourseData}) => {
 
   console.log('Course rendered');
 
   const [formVisibility, setFormVisibility] = useState(false);
 
-  const handledeleteSession = (e, session_id) => {
+  const deleteSessionFromDB = (session_id) => {
+    const options = {
+      method: 'DELETE'
+    };
+    return fetch('http://localhost:4000/api/sessions/' + session_id, options)
+            .then(res => { 
+              if (!res.ok) { // errors from server
+                throw Error(res.statusText);
+              }
+              return res.json();
+            });
+  };
+
+  const handleDeleteSession = (e, session_id) => {
     e.preventDefault();
     console.log('session_id: ', session_id);
+    deleteSessionFromDB(session_id)
+      .then(data => {console.log('session deleted: ', data)})
+      .then(() => fetchCourseData())
+      .catch(error => console.log(error));
   }
 
   const chooseUpdate = () => {
@@ -71,7 +88,10 @@ const Course = ({course_event, handleDelete}) => {
                     <td>{ displayDateTime(session.session_start, 'time') }</td>
                     <td>{ displayDateTime(session.session_end, 'time') }</td>
                     <td>
-                      <button onClick={(e) => handledeleteSession(e, session.session_id)}>Log 'session_id'</button>
+                      <button 
+                        onClick={(e) => handleDeleteSession(e, session.session_id)}
+                        className="delete_session"
+                        >Delete</button>
                     </td>
                   </tr>
                 )

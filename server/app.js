@@ -103,6 +103,17 @@ app.post('/api/sessions', (req, res) => {
     });
 });
 
+// Delete Session
+app.delete("/api/sessions/:id", (req, res) => {
+  const idDeleted = parseInt(req.params.id);
+  Sessions.destroy({ where: { session_id: idDeleted } })
+    .then(result => res.status(200).json(result))
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
+});
+
 
 const PORT = process.env.PORT || 4000;
 
