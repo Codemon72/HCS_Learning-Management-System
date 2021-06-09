@@ -12,7 +12,17 @@ const Dashboard = () => {
     course_module_id: '',
     course_start_date: '',
     course_end_date: '',
-    teacher_id: ''
+    teacher_id: '',
+    sessions: [
+      {
+        session_start: "2021-07-09T11:00",
+        session_end: "2021-07-09T18:00"
+      },
+      {
+        session_start: "2021-07-11T11:00",
+        session_end: "2021-07-11T18:00"
+      }
+    ]
   };
 
   const [formState, setFormState] = useState(initialFormState);
@@ -82,6 +92,11 @@ const Dashboard = () => {
   //   setFormState(temp);
   //   console.log(temp);
   // };
+
+  const logFormstate = (e) => {
+    e.preventDefault();
+    console.log(formState);
+  }
 
   const addCourseToDB = () => {
     const options = {
@@ -167,22 +182,6 @@ const Dashboard = () => {
       </div>
       {errors.course_end_date && <div className="errors">{errors.course_end_date}</div>}
       {dateError && <div className="errors">{dateError}</div>}
-      {/* Hours */}
-      {/* <div className="input-group">
-        <label htmlFor="hours">Hours Total</label>
-        <input 
-          className="input-field"
-          type="number" 
-          min="1" max="99"
-          name="hours" 
-          placeholder="number" 
-          maxLength="100"
-          value={formState.hours}
-          onChange={handleInputChange} 
-          onBlur={checkForInput} 
-          />
-      </div>
-      {errors.hours && <div className="errors">{errors.hours}</div>} */}
       {/* Teacher ID */}
       <div className="input-group">
         <label htmlFor="teacher_id">Teacher</label>
@@ -244,6 +243,10 @@ const Dashboard = () => {
 
     </form>
     <br />
+    <div className="addSessionFormField">
+        <span>Log FormState </span>
+        <button className="dashboard__session button" onClick={logFormstate}>Log FormState</button>
+      </div>
     <br />
     <hr />
     <AddSessions />
