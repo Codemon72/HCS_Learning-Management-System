@@ -230,11 +230,16 @@ main {
 .delete_session {
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 0;
   cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
 }
 .delete_session:hover {
-  background-color: red;
+  background-color: #f33;
+  opacity: 9;
 }
 
 .Loader::after {

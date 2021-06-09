@@ -20,6 +20,16 @@ const Course = ({course_event, handleDelete, fetchCourseData}) => {
             });
   };
 
+  const confirmDelete = () => {
+    window.addEventListener('click', function(e){
+      if (document.getElementById('clickbox').contains(e.target)){
+        alert("Clicked in Box");
+      } else{
+        alert("Clicked outside Box");
+      }
+    })
+  };
+
   const handleDeleteSession = (e, session_id) => {
     e.preventDefault();
     console.log('session_id: ', session_id);
@@ -87,10 +97,13 @@ const Course = ({course_event, handleDelete, fetchCourseData}) => {
                     <td>{ displayDateTime(session.session_start, 'date') }</td>
                     <td>{ displayDateTime(session.session_start, 'time') }</td>
                     <td>{ displayDateTime(session.session_end, 'time') }
-                      <span 
+                      <div 
                         onClick={(e) => handleDeleteSession(e, session.session_id)}
                         className="delete_session"
-                        >x</span>
+                        >x</div>
+                        <div>
+                          
+                        </div>
                     </td>
                   </tr>
                 )
