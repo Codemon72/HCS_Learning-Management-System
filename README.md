@@ -16,7 +16,7 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
   - HTML & CSS
 
 ## Features
-- Relational database for teachers, students, courses and course bookings of [Hamburg Coding School](https://hamburgcodingschool.com/).
+- Relational database for teachers, students, courses, sessions and course bookings of [Hamburg Coding School](https://hamburgcodingschool.com/).
 - Full CRUD operations
 - client side form validation (HTML, JS)
 - server side input validation (Sequelize)
@@ -26,12 +26,13 @@ This is a continuation / new setup of a project I built using only Node.js: [HCS
 
 ## Dashboard
 - Add a new course
+- Add new sessions
 
 ## Display
 - Show all courses
 
   ### Course
-  - Edit course
+  - Edit/ update course
   - Delete course
 
 
