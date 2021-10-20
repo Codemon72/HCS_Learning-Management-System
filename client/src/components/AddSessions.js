@@ -15,6 +15,7 @@ const AddSessions = () => {
   ];
 
   const [courseEventID, setcourseEventID] = useState('');
+  
   const [formState, setFormState] = useState(initialFormState);
 
   const handleCourseChoice = (event) => {

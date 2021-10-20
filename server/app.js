@@ -48,13 +48,16 @@ app.get('/api/courses', (req, res) => {
 
 // Add Course
 app.post('/api/courses', (req, res) => {
-  const { course_module_id, course_start_date, course_end_date, teacher_id } = req.body;
+  const { course_module_id, course_start_date, course_end_date, teacher_id, sessions } = req.body;
   // Insert into table
   Course_Events.create({
     course_module_id,
     course_start_date,
     course_end_date,
     teacher_id,
+    sessions
+  }, {
+    include : [ Sessions ]
   })
     .then(result => res.status(200).json(result))
     .catch((error) => {
