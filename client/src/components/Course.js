@@ -73,7 +73,7 @@ const Course = ({course_event, handleDelete, fetchCourseData}) => {
       <div>Start Date: {course_event.course_start_date}</div>
       <div>End Date: {course_event.course_end_date}</div>
       <div>Hours: {course_event.Course_Module.hours}</div>
-      <div>Trainer: { course_event.Teacher != null ? course_event.Teacher.name : 'not determined yet'}</div>
+      <div>Teacher: { course_event.Teacher != null ? course_event.Teacher.name : 'not determined yet'}</div>
       <div className="display__sessions">
         <h4>Sessions</h4>
       { course_event.Sessions.length === 0 
