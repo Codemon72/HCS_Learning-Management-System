@@ -1,19 +1,19 @@
 import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
-const CourseUpdateForm = ({ course, closeUpdateForm }) => {
+const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
 
-  console.log('CourseUpdateForm rendered');
+  console.log('CourseUpdateForm rendered', course_event);
 
   const { fetchCourseData } = useContext(CourseContext);
 
   const [updateFormState, setUpdateFormState] = useState({
-    name: course.name,
-    start_date: course.start_date,
-    end_date: course.end_date,
-    hours: course.hours,
-    teacher_id: course.teacher_id,
-    course_id: course.course_id
+    course_module_id: course_event.course_module_id,
+    start_date: course_event.start_date,
+    end_date: course_event.end_date,
+    hours: course_event.hours,
+    teacher_id: course_event.teacher_id,
+    course_id: course_event.course_id
   });
 
   const updateCourseInDB = () => {
