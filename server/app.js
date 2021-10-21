@@ -67,14 +67,14 @@ app.post('/api/courses', (req, res) => {
 });
 
 // Update Course
-app.put("/api/courses", (req, res) => {
-  let { name, hours, start_date, end_date, teacher_id, course_id } = req.body;
+app.put("/api/course_events", (req, res) => {
+  let { course_event_id, course_module_id, course_start_date, course_end_date, teacher_id } = req.body;
   if (teacher_id === "null") {
     teacher_id = null;
   }
-  Courses.update(
-    { name, hours, start_date, end_date, teacher_id },
-    { where: { course_id: course_id } }
+  Course_Events.update(
+    { course_module_id, course_start_date, course_end_date, teacher_id },
+    { where: { course_event_id: course_event_id } }
   )
     .then(result => res.status(200).json(result))
     .catch((error) => {

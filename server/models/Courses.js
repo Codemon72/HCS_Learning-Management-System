@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const db = require('../config/database');
 const Teachers = require('./Teachers');
 
+// Todo: check if can be deleted
 
 const Courses = db.define('Courses', {
   course_id: {

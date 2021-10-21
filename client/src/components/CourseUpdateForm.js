@@ -8,11 +8,12 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
   const { fetchCourseData } = useContext(CourseContext);
 
   const [updateFormState, setUpdateFormState] = useState({
-    name: course_event.Course_Module.name,
-    start_date: course_event.start_date,
-    end_date: course_event.end_date,
-    teacher_id: course_event.Teacher.teacher_id,
-    course_id: course_event.course_id
+    course_event_id: course_event.course_event_id,
+    // name: course_event.Course_Module.name,
+    course_module_id: course_event.Course_Module.course_module_id,
+    course_start_date: course_event.course_start_date,
+    course_end_date: course_event.course_end_date,
+    teacher_id: course_event.Teacher.teacher_id
   });
 
   const updateCourseInDB = () => {
@@ -21,7 +22,7 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(updateFormState)
     };
-    return fetch('http://localhost:4000/api/courses/', options)
+    return fetch('http://localhost:4000/api/course_events/', options)
              .then(res => { 
               if (!res.ok) { // errors from server
                 throw Error(res.statusText);
@@ -52,38 +53,40 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
     <div className="course_update_form">
         <form onSubmit={handleUpdateCourse}>
           <div className="input-group">
-            <label htmlFor="name">Course Name</label>
+            <label htmlFor="course_module_id">Course Name</label>
             <select 
               className="input-field"
-              name="name" 
-              value={updateFormState.name}
+              name="course_module_id" 
+              value={updateFormState.course_module_id}
               onChange={handleInputChange} >
-              <option value="null" disabled hidden>Please select</option>
-              <option value="HTML & CSS">HTML & CSS</option>
-              <option value="Learn To Code">Learn To Code</option>
-              <option value="JavaScript For Web">JavaScript For Web</option>
-              <option value="React.js">React.js</option>
-              <option value="Node.js">Node.js</option>
-              <option value="Vue.js">Vue.js</option>
+              <option value="" disabled hidden>Please select</option>
+              <option value="1">HTML & CSS</option>
+              <option value="2">Learn To Code</option>
+              <option value="3">JavaScript For Web</option>
+              <option value="4">Node.js</option>
+              <option value="5">React.js</option>
+              <option value="6">Vue.js</option>
+              <option value="7">Network Technologies</option>
+              <option value="8">Workshop: Databases</option>
             </select>
           </div>
           <div className="input-group">
-            <label htmlFor="start_date">Start Date</label>
+            <label htmlFor="course_start_date">Start Date</label>
             <input 
               className="input-field"
               type="date"
-              name="start_date"
-              value={updateFormState.start_date}
+              name="course_start_date"
+              value={updateFormState.course_start_date}
               onChange={handleInputChange}
               />
           </div>
           <div className="input-group">
-            <label htmlFor="end_date">End Date</label>
+            <label htmlFor="course_end_date">End Date</label>
             <input 
               className="input-field"
               type="date"
-              name="end_date"
-              value={updateFormState.end_date}
+              name="course_end_date"
+              value={updateFormState.course_end_date}
               onChange={handleInputChange}
               />
           </div>
