@@ -4,11 +4,10 @@ const AddCourse = () => {
   console.log('AddCourse rendered');
 
   const openAddCourseModal = () => {
-    const addCourseButton = document.querySelector('.addCourseButton')
-    const addCourseModal = document.querySelector('.addCourseModal')
-    addCourseButton.classList.add('hidden')
-    addCourseModal.classList.remove('hidden')
+    document.querySelector('.addCourseButton').classList.add('hidden')
+    document.querySelector('.addCourseModal').classList.remove('hidden')
   }
+  
   return (
     <div className="addCourse">
       <button className="addCourseButton" onClick={openAddCourseModal}>Add A Course</button>
