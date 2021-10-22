@@ -16,17 +16,7 @@ const AddCourse = () => {
     course_module_id: '',
     course_start_date: '',
     course_end_date: '',
-    teacher_id: '',
-    sessions: [
-      {
-        session_start: "2021-07-09T11:00",
-        session_end: "2021-07-09T18:00"
-      },
-      {
-        session_start: "2021-07-11T11:00",
-        session_end: "2021-07-11T18:00"
-      }
-    ]
+    teacher_id: ''
   };
 
   const [formState, setFormState] = useState(initialFormState);
