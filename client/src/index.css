@@ -54,6 +54,9 @@ input[disabled]:hover {
   opacity: 0.4;
   cursor: not-allowed;
 }
+.hidden {
+  display: none;
+}
 .errors {
   font-size: 15px;
   color: red;
@@ -83,12 +86,18 @@ main {
   justify-content: space-evenly;
   outline: 3px solid green;
 }
-
+/* AddCourse */
+.addCourse {
+  width: 400px;
+  padding: 2rem;
+  outline: 1px solid black;
+}
 /* Dashboard */
 .dashboard {
   width: 400px;
   padding: 2rem;
   outline: 1px solid black;
+  margin-top: 2rem;
 }
 .input-group ~ .input-group {
   margin-top: 1rem;
