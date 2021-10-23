@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
-import AddSessions from './AddSessions';
+import AddSessions from './AddSessionsForm';
 
 const Dashboard = () => {
 

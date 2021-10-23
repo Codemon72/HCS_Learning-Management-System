@@ -87,7 +87,7 @@ main {
   outline: 3px solid green;
 }
 /* AddCourse */
-.addCourse {
+.modal {
   width: 400px;
   padding: 2rem;
   outline: 1px solid black;

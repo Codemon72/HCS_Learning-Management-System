@@ -2,7 +2,7 @@ import Header from './components/Header';
 import Display from './components/Display';
 import Dashboard from './components/Dashboard';
 import CourseContextProvider from './contexts/CourseContext';
-import AddCourse from './components/AddCourse';
+import Modal from './components/Modal';
 // import { BrowserRouter as Router, Route } from "react-router-dom"
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <main>
         <CourseContextProvider>
           <div>
-            <AddCourse />
+            <Modal />
             <Dashboard />
           </div>
           <Display />
