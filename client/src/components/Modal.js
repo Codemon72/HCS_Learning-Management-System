@@ -3,7 +3,11 @@ import AddCourse from './AddCourseForm';
 import AddSessions from './AddSessionsForm';
 
 const Modal = () => {
+
   const [modalState, setModalState] = useState('addCourseButton');
+
+  const [courseEventID, setCourseEventID] = useState('');
+
   console.log('modalState: ', modalState);
 
   return (
@@ -21,11 +25,11 @@ const Modal = () => {
       )}
 
       {modalState === 'addCourseForm' && (
-        <AddCourse setModalState={setModalState}/>
+        <AddCourse setModalState={setModalState} setCourseEventID={setCourseEventID}/>
       )}
 
       {modalState === 'addSessionsForm' && (
-        <AddSessions setModalState={setModalState}/>
+        <AddSessions setModalState={setModalState} courseEventID={courseEventID} setCourseEventID={setCourseEventID}/>
       )}
     </div>
   );

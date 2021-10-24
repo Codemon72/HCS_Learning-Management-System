@@ -1,32 +1,32 @@
 import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
-const AddSessions = ({ setModalState }) => {
+const AddSessions = ({ setModalState, courseEventID, setCourseEventID }) => {
   console.log('AddSessions rendered');
 
   const { courseEvents, fetchCourseData } = useContext(CourseContext);
 
   const initialFormState = [
     {
-      course_event_id: '',
+      course_event_id: courseEventID,
       session_start: '',
       session_end: '',
     },
   ];
 
-  const [courseEventID, setcourseEventID] = useState('');
+  
 
   const [formState, setFormState] = useState(initialFormState);
 
-  const handleCourseChoice = (event) => {
-    const { value } = event.target;
-    for (let i = 0; i < formState.length; i++) {
-      let temp = [...formState];
-      temp[i].course_event_id = value;
-    }
-    setcourseEventID(value);
-    console.table(formState);
-  };
+  // const handleCourseChoice = (event) => {
+  //   const { value } = event.target;
+  //   for (let i = 0; i < formState.length; i++) {
+  //     let temp = [...formState];
+  //     temp[i].course_event_id = value;
+  //   }
+  //   setcourseEventID(value);
+  //   console.table(formState);
+  // };
 
   // onlyDuringDev:
   const logFormstate = (e) => {
@@ -86,7 +86,7 @@ const AddSessions = ({ setModalState }) => {
       })
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
-    setcourseEventID('');
+      setCourseEventID('');
     setFormState(initialFormState);
     setModalState('addCourseButton');
   };
@@ -96,7 +96,7 @@ const AddSessions = ({ setModalState }) => {
       <h3>Add Sessions</h3>
       <br />
       <form onSubmit={handleAddSessions}>
-        <div className='input-group vertical'>
+        {/* <div className='input-group vertical'>
           <label htmlFor='course_event_id'>Choose Course</label>
           <select
             name='course_event_id'
@@ -117,7 +117,7 @@ const AddSessions = ({ setModalState }) => {
               );
             })}
           </select>
-        </div>
+        </div> */}
         <br />
         {formState.map((session, i) => {
           return (
