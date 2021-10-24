@@ -46,11 +46,12 @@ button:hover,
   color: var(--color--white);
   background-color: var(--color--dark);
 }
-input[disabled] {
+input[disabled], button[disabled] {
   color: lightgray;
   background-color: grey;
 }
-input[disabled]:hover {
+input[disabled]:hover,
+button[disabled]:hover {
   opacity: 0.4;
   cursor: not-allowed;
 }
