@@ -6,11 +6,6 @@ const AddCourse = ({setModalState}) => {
 
   const { fetchCourseData } = useContext(CourseContext);
 
-  // const openAddCourseModal = () => {
-  //   document.querySelector('.addCourseButton').classList.add('hidden');
-  //   document.querySelector('.addCourseModal').classList.remove('hidden');
-  // };
-
   const initialFormState = {
     course_module_id: '',
     course_start_date: '',

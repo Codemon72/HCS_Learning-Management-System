@@ -1,22 +1,31 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
-const AddSessions = ({ setModalState, courseEventID, setCourseEventID }) => {
-  console.log('AddSessions rendered');
-
+const AddSessions = ({ setModalState }) => {
+  
   const { courseEvents, fetchCourseData } = useContext(CourseContext);
+  
+  console.log('AddSessions rendered');
 
   const initialFormState = [
     {
-      course_event_id: courseEventID,
+      course_event_id: '',
       session_start: '',
       session_end: '',
     },
   ];
 
-  
-
   const [formState, setFormState] = useState(initialFormState);
+  const [courseEventID, setCourseEventID] = useState('');
+
+  // latest entry in course events:
+  // check with Teresa: 
+  useEffect(() => {
+    if (courseEvents.length > 0) {
+      let lastCourseEventEntryID = courseEvents[courseEvents.length -1].course_event_id;
+      setCourseEventID(lastCourseEventEntryID);
+    }
+  }, [courseEvents.length]);
 
   // const handleCourseChoice = (event) => {
   //   const { value } = event.target;
@@ -24,7 +33,7 @@ const AddSessions = ({ setModalState, courseEventID, setCourseEventID }) => {
   //     let temp = [...formState];
   //     temp[i].course_event_id = value;
   //   }
-  //   setcourseEventID(value);
+  //   setCourseEventID(value);
   //   console.table(formState);
   // };
 
@@ -86,7 +95,7 @@ const AddSessions = ({ setModalState, courseEventID, setCourseEventID }) => {
       })
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
-      setCourseEventID('');
+    setCourseEventID('');
     setFormState(initialFormState);
     setModalState('addCourseButton');
   };
@@ -164,17 +173,18 @@ const AddSessions = ({ setModalState, courseEventID, setCourseEventID }) => {
         </div>
 
         {/* onlyDuringDev: */}
-        {/* <div className="addSessionFormField">
-        <span>Log FormState </span>
-        <button className="dashboard__session button" onClick={logFormstate}>Log FormState</button>
-      </div>
-      <br /> */}
+        <div className='addSessionFormField'>
+          <span>Log FormState </span>
+          <button className='dashboard__session button' onClick={logFormstate}>
+            Log FormState
+          </button>
+        </div>
+        <br />
 
         <div className='input-group'>
           <input
             type='submit'
             className='button'
-            // disabled
           />
         </div>
       </form>

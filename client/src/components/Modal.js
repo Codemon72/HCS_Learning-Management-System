@@ -6,8 +6,6 @@ const Modal = () => {
 
   const [modalState, setModalState] = useState('addCourseButton');
 
-  const [courseEventID, setCourseEventID] = useState('');
-
   console.log('modalState: ', modalState);
 
   return (
@@ -25,11 +23,11 @@ const Modal = () => {
       )}
 
       {modalState === 'addCourseForm' && (
-        <AddCourse setModalState={setModalState} setCourseEventID={setCourseEventID}/>
+        <AddCourse setModalState={setModalState} />
       )}
 
       {modalState === 'addSessionsForm' && (
-        <AddSessions setModalState={setModalState} courseEventID={courseEventID} setCourseEventID={setCourseEventID}/>
+        <AddSessions setModalState={setModalState} />
       )}
     </div>
   );
