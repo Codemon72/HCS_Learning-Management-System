@@ -4,7 +4,6 @@ const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200
 }
-const Courses = require("./models/Courses");
 
 const Course_Events = require("./models/Course_Events");
 const Teachers = require("./models/Teachers");

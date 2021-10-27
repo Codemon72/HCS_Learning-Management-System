@@ -27,7 +27,6 @@ const AddCourse = ({setModalState}) => {
         throw Error(response.statusText);
       }
       const data = await response.json();
-      console.log('fetchCourseModulesData',data)
       setCourseModules(data);
     } catch (error) { // errors from network / connection
       console.log(error.message);
@@ -88,10 +87,10 @@ const AddCourse = ({setModalState}) => {
   };
 
   // onlyDuringDev:
-  const logFormstate = (e) => {
-    e.preventDefault();
-    console.log(formState);
-  };
+  // const logFormstate = (e) => {
+  //   e.preventDefault();
+  //   console.log(formState);
+  // };
 
   const addCourseToDB = () => {
     const options = {

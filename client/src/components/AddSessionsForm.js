@@ -25,7 +25,7 @@ const AddSessions = ({ setModalState }) => {
       let lastCourseEventEntryID = courseEvents[courseEvents.length -1].course_event_id;
       setCourseEventID(lastCourseEventEntryID);
     }
-  }, [courseEvents.length]);
+  }, [courseEvents]);
 
   // const handleCourseChoice = (event) => {
   //   const { value } = event.target;
