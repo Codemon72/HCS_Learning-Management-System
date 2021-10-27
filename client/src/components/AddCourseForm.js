@@ -16,6 +16,7 @@ const AddCourse = ({setModalState}) => {
   const [formState, setFormState] = useState(initialFormState);
   const [errors, setErrors] = useState({});
   const [dateError, setDateError] = useState(null);
+  const [courseModules, setCourseModules] = useState([]);
 
   const URLAllCourseModulesData = 'http://localhost:4000/api/course_modules'
 
@@ -27,16 +28,13 @@ const AddCourse = ({setModalState}) => {
       }
       const data = await response.json();
       console.log('fetchCourseModulesData',data)
-      // setCourseEvents(data);
-      // setIsPeding(false);
-      // setError(null);
+      setCourseModules(data);
     } catch (error) { // errors from network / connection
-      // setIsPending(false);
-      // setError(error.message);
+      console.log(error.message);
     }
   };
 
-  // Fetch Course Data on first Rendering
+  // Fetch Array of Course Modules on first Rendering
   useEffect(() => {
     fetchCourseModulesData();
   }, []);
@@ -142,40 +140,13 @@ const AddCourse = ({setModalState}) => {
               <option value='' disabled hidden>
                 Please select
               </option>
-              <option value='1'>HTML & CSS</option>
-              <option value='2'>Learn To Code</option>
-              <option value='3'>JavaScript For Web</option>
-              <option value='4'>Node.js</option>
-              <option value='5'>React.js</option>
-              <option value='6'>Vue.js</option>
-              <option value='7'>Network Technologies</option>
-              <option value='8'>Workshop: Databases</option>
-            </select>
-          </div>
-
-
-
-          <div className='input-group'>
-            <label htmlFor='course_module_id'>Course Module</label>
-            <select
-              className='input-field'
-              name='course_module_id'
-              value={formState.course_module_id}
-              onChange={handleInputChange}
-              onBlur={checkForInput}
-            >
-              <option value='' disabled hidden>
-                Please select
-              </option>
-              {/* {courseModules.map((course_event, i) => {
+              {courseModules.map((course_module, i) => {
               return (
-                <option value={course_event.course_event_id} key={i}>
-                  {course_event.Course_Module.name} |{' '}
-                  {course_event.course_start_date} -{' '}
-                  {course_event.course_end_date}
+                <option value={course_module.course_module_id} key={i}>
+                  {course_module.name}
                 </option>
               );
-            })} */}
+            })}
             </select>
           </div>
           {errors.course_module_id && (
