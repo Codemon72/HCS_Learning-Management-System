@@ -17,6 +17,30 @@ const AddCourse = ({setModalState}) => {
   const [errors, setErrors] = useState({});
   const [dateError, setDateError] = useState(null);
 
+  const URLAllCourseModulesData = 'http://localhost:4000/api/course_modules'
+
+  const fetchCourseModulesData = async () => {
+    try {
+      const response = await fetch(URLAllCourseModulesData);
+      if (!response.ok) { // errors from server
+        throw Error(response.statusText);
+      }
+      const data = await response.json();
+      console.log('fetchCourseModulesData',data)
+      // setCourseEvents(data);
+      // setIsPeding(false);
+      // setError(null);
+    } catch (error) { // errors from network / connection
+      // setIsPending(false);
+      // setError(error.message);
+    }
+  };
+
+  // Fetch Course Data on first Rendering
+  useEffect(() => {
+    fetchCourseModulesData();
+  }, []);
+
   let formIsValid = !Object.values(formState).includes('') && !dateError;
 
   // validate 'start_date' before 'end_date' every time they change
@@ -107,7 +131,7 @@ const AddCourse = ({setModalState}) => {
         <form onSubmit={handleAddCourse}>
           {/* Course Module */}
           <div className='input-group'>
-            <label htmlFor='course_module_id'>Course Name</label>
+            <label htmlFor='course_module_id'>Course Module</label>
             <select
               className='input-field'
               name='course_module_id'
@@ -126,6 +150,32 @@ const AddCourse = ({setModalState}) => {
               <option value='6'>Vue.js</option>
               <option value='7'>Network Technologies</option>
               <option value='8'>Workshop: Databases</option>
+            </select>
+          </div>
+
+
+
+          <div className='input-group'>
+            <label htmlFor='course_module_id'>Course Module</label>
+            <select
+              className='input-field'
+              name='course_module_id'
+              value={formState.course_module_id}
+              onChange={handleInputChange}
+              onBlur={checkForInput}
+            >
+              <option value='' disabled hidden>
+                Please select
+              </option>
+              {/* {courseModules.map((course_event, i) => {
+              return (
+                <option value={course_event.course_event_id} key={i}>
+                  {course_event.Course_Module.name} |{' '}
+                  {course_event.course_start_date} -{' '}
+                  {course_event.course_end_date}
+                </option>
+              );
+            })} */}
             </select>
           </div>
           {errors.course_module_id && (

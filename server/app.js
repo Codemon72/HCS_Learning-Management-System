@@ -95,6 +95,18 @@ app.delete("/api/courses/:id", (req, res) => {
 });
 
 
+// COURSE MODULES
+// Read Course Modules
+app.get('/api/course_modules', (req, res) => {
+  Course_Modules.findAll()
+    .then(result => res.status(200).json(result))
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
+});
+
+
 // SESSIONS
 // Add Sessions
 app.post('/api/sessions', (req, res) => {
