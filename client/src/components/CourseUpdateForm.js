@@ -1,15 +1,18 @@
 import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
+import { CourseModuleContext } from '../contexts/CourseModuleContext';
 
 const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
 
   console.log('CourseUpdateForm rendered', course_event);
 
   const { fetchCourseData } = useContext(CourseContext);
+  
+  const { courseModules } = useContext(CourseModuleContext);
+  console.log(courseModules);
 
   const [updateFormState, setUpdateFormState] = useState({
     course_event_id: course_event.course_event_id,
-    // name: course_event.Course_Module.name,
     course_module_id: course_event.Course_Module.course_module_id,
     course_start_date: course_event.course_start_date,
     course_end_date: course_event.course_end_date,
@@ -35,7 +38,6 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
     e.preventDefault();
     updateCourseInDB()
       .then(data => {console.log('course updated in db: ', data)})
-      // .then(() => {console.table(updateFormState)})
       .then(() => fetchCourseData())
       .catch(error => console.log(error));
     closeUpdateForm();
@@ -52,6 +54,7 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
   return (
     <div className="course_update_form">
         <form onSubmit={handleUpdateCourse}>
+          {/* Course Module */}
           <div className="input-group">
             <label htmlFor="course_module_id">Course Name</label>
             <select 
@@ -60,16 +63,16 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
               value={updateFormState.course_module_id}
               onChange={handleInputChange} >
               <option value="" disabled hidden>Please select</option>
-              <option value="1">HTML & CSS</option>
-              <option value="2">Learn To Code</option>
-              <option value="3">JavaScript For Web</option>
-              <option value="4">Node.js</option>
-              <option value="5">React.js</option>
-              <option value="6">Vue.js</option>
-              <option value="7">Network Technologies</option>
-              <option value="8">Workshop: Databases</option>
+              {courseModules.map((course_module, i) => {
+              return (
+                <option value={course_module.course_module_id} key={i}>
+                  {course_module.name}
+                </option>
+              );
+            })}
             </select>
           </div>
+          {/* Start Date */}
           <div className="input-group">
             <label htmlFor="course_start_date">Start Date</label>
             <input 
@@ -80,6 +83,7 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
               onChange={handleInputChange}
               />
           </div>
+          {/* End Date */}
           <div className="input-group">
             <label htmlFor="course_end_date">End Date</label>
             <input 
@@ -90,19 +94,7 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
               onChange={handleInputChange}
               />
           </div>
-          {/* <div className="input-group">
-            <label htmlFor="hours">Hours Total</label>
-            <input 
-              className="input-field"
-              type="number" 
-              min="1" max="99"
-              name="hours" 
-              placeholder="number" 
-              maxLength="100"
-              value={updateFormState.hours}
-              onChange={handleInputChange} 
-              />
-          </div> */}
+          {/* Teacher ID */}
           <div className="input-group">
             <label htmlFor="teacher_id">Teacher</label>
             <select 

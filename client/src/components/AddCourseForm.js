@@ -140,12 +140,12 @@ const AddCourse = ({setModalState}) => {
                 Please select
               </option>
               {courseModules.map((course_module, i) => {
-              return (
-                <option value={course_module.course_module_id} key={i}>
-                  {course_module.name}
-                </option>
-              );
-            })}
+                return (
+                  <option value={course_module.course_module_id} key={i}>
+                    {course_module.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
           {errors.course_module_id && (
