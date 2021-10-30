@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CourseUpdateForm from './CourseUpdateForm';
 
-const Course = ({course_event, handleDelete, fetchCourseData}) => {
+const CourseEvent = ({course_event, handleDelete, fetchCourseData}) => {
 
   console.log('Course rendered');
 
@@ -116,4 +116,4 @@ const Course = ({course_event, handleDelete, fetchCourseData}) => {
   )
 }
 
-export default Course
+export default CourseEvent;
