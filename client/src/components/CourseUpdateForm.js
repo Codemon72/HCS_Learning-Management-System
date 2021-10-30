@@ -9,7 +9,6 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
   const { fetchCourseData } = useContext(CourseContext);
   
   const { courseModules } = useContext(CourseModuleContext);
-  console.log(courseModules);
 
   const [updateFormState, setUpdateFormState] = useState({
     course_event_id: course_event.course_event_id,
