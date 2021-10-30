@@ -1,4 +1,4 @@
-import CourseEvent from './CourseEvent'
+import CourseEvent from './CourseEventCard'
 import Loader from "./Loader";
 import { useContext } from 'react'
 import { CourseContext } from '../contexts/CourseContext';
