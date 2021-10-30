@@ -1,41 +1,21 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
-const AddSessions = ({ setModalState }) => {
+const AddSessions = ({ setModalState, courseEventIDInProgress, setCourseEventIDInProgress }) => {
   
-  const { courseEvents, fetchCourseData } = useContext(CourseContext);
+  const { fetchCourseData } = useContext(CourseContext);
   
   console.log('AddSessions rendered');
 
   const initialFormState = [
     {
-      course_event_id: '',
+      course_event_id: courseEventIDInProgress,
       session_start: '',
       session_end: '',
     },
   ];
 
   const [formState, setFormState] = useState(initialFormState);
-  const [courseEventID, setCourseEventID] = useState('');
-
-  // latest entry in course events:
-  // check with Teresa: 
-  useEffect(() => {
-    if (courseEvents.length > 0) {
-      let lastCourseEventEntryID = courseEvents[courseEvents.length -1].course_event_id;
-      setCourseEventID(lastCourseEventEntryID);
-    }
-  }, [courseEvents]);
-
-  // const handleCourseChoice = (event) => {
-  //   const { value } = event.target;
-  //   for (let i = 0; i < formState.length; i++) {
-  //     let temp = [...formState];
-  //     temp[i].course_event_id = value;
-  //   }
-  //   setCourseEventID(value);
-  //   console.table(formState);
-  // };
 
   // onlyDuringDev:
   const logFormstate = (e) => {
@@ -47,7 +27,7 @@ const AddSessions = ({ setModalState }) => {
     let temp = [...formState];
     const { name, value } = event.target;
     temp[i][name] = value;
-    temp[i].course_event_id = courseEventID;
+    temp[i].course_event_id = courseEventIDInProgress;
     setFormState(temp);
     console.table(temp);
   };
@@ -56,7 +36,7 @@ const AddSessions = ({ setModalState }) => {
     e.preventDefault();
     let temp = [...formState];
     temp.push({
-      course_event_id: courseEventID,
+      course_event_id: courseEventIDInProgress,
       session_start: '',
       session_end: '',
     });
@@ -95,7 +75,7 @@ const AddSessions = ({ setModalState }) => {
       })
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
-    setCourseEventID('');
+    setCourseEventIDInProgress(null);
     setFormState(initialFormState);
     setModalState('addCourseButton');
   };
@@ -104,30 +84,8 @@ const AddSessions = ({ setModalState }) => {
     <div className='dashboard__session'>
       <h3>Add Sessions</h3>
       <br />
+      <span>CourseEventID: {courseEventIDInProgress}</span>
       <form onSubmit={handleAddSessions}>
-        {/* <div className='input-group vertical'>
-          <label htmlFor='course_event_id'>Choose Course</label>
-          <select
-            name='course_event_id'
-            value={courseEventID}
-            onChange={handleCourseChoice}
-            className='input-field'
-          >
-            <option value='' disabled hidden>
-              Please select
-            </option>
-            {courseEvents.map((course_event, i) => {
-              return (
-                <option value={course_event.course_event_id} key={i}>
-                  {course_event.Course_Module.name} |{' '}
-                  {course_event.course_start_date} -{' '}
-                  {course_event.course_end_date}
-                </option>
-              );
-            })}
-          </select>
-        </div> */}
-        <br />
         {formState.map((session, i) => {
           return (
             <div key={i} className='session'>

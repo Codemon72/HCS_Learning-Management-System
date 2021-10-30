@@ -32,7 +32,8 @@ const Modal = () => {
       {modalState === 'addSessionsForm' && (
         <AddSessionsForm 
           setModalState={setModalState} 
-          courseEventIDInProgress={courseEventIDInProgress} />
+          courseEventIDInProgress={courseEventIDInProgress}
+          setCourseEventIDInProgress={setCourseEventIDInProgress} />
       )}
     </div>
   );
