@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import AddCourse from './AddCourseForm';
-import AddSessions from './AddSessionsForm';
+import AddCourseForm from './AddCourseForm';
+import AddSessionsForm from './AddSessionsForm';
 
 const Modal = () => {
 
   const [modalState, setModalState] = useState('addCourseButton');
+  const [courseEventIDInProgress, setCourseEventIDInProgress] = useState(null);
 
   console.log('modalState: ', modalState);
 
@@ -23,11 +24,15 @@ const Modal = () => {
       )}
 
       {modalState === 'addCourseForm' && (
-        <AddCourse setModalState={setModalState} />
+        <AddCourseForm 
+          setModalState={setModalState} 
+          setCourseEventIDInProgress={setCourseEventIDInProgress} />
       )}
 
       {modalState === 'addSessionsForm' && (
-        <AddSessions setModalState={setModalState} />
+        <AddSessionsForm 
+          setModalState={setModalState} 
+          courseEventIDInProgress={courseEventIDInProgress} />
       )}
     </div>
   );

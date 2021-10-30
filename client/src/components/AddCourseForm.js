@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 import { CourseModuleContext } from '../contexts/CourseModuleContext';
 
-const AddCourse = ({setModalState}) => {
+const AddCourse = ({setModalState, setCourseEventIDInProgress}) => {
   console.log('AddCourse rendered');
 
   const { fetchCourseData } = useContext(CourseContext);
@@ -94,6 +94,7 @@ const AddCourse = ({setModalState}) => {
     addCourseToDB()
       .then((data) => {
         console.log('course added to db: ', data);
+        setCourseEventIDInProgress(data.course_event_id);
       })
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
