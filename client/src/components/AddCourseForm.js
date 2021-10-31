@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 import { CourseModuleContext } from '../contexts/CourseModuleContext';
 
-const AddCourse = ({setModalState, setCourseEventIDInProgress}) => {
+const AddCourse = ({setFormVisibility, setCourseEventIDInProgress}) => {
   console.log('AddCourse rendered');
 
   const { fetchCourseData } = useContext(CourseContext);
@@ -99,7 +99,7 @@ const AddCourse = ({setModalState, setCourseEventIDInProgress}) => {
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
     setFormState(initialFormState);
-    setModalState('addSessionsForm');
+    setFormVisibility('addSessionsForm');
   };
 
   return (

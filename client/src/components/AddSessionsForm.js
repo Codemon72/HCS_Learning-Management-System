@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
-const AddSessions = ({ setModalState, courseEventIDInProgress, setCourseEventIDInProgress }) => {
+const AddSessions = ({ courseEventIDInProgress, setCourseEventIDInProgress, setFormVisibility }) => {
   
   const { fetchCourseData } = useContext(CourseContext);
   
@@ -77,7 +77,7 @@ const AddSessions = ({ setModalState, courseEventIDInProgress, setCourseEventIDI
       .catch((error) => console.log(error));
     setCourseEventIDInProgress(null);
     setFormState(initialFormState);
-    setModalState('addCourseButton');
+    setFormVisibility('');
   };
 
   return (

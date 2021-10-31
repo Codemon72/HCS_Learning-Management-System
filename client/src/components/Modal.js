@@ -4,34 +4,34 @@ import AddSessionsForm from './AddSessionsForm';
 
 const Modal = () => {
 
-  const [modalState, setModalState] = useState('addCourseButton');
+  const [formVisibility, setFormVisibility] = useState('');
   const [courseEventIDInProgress, setCourseEventIDInProgress] = useState(null);
 
-  console.log('modalState: ', modalState);
+  console.log('formVisibility: ', formVisibility);
 
   return (
     <div className='modal'>
       <h3>Modal</h3>
       <br />
 
-      {modalState === 'addCourseButton' && (
+      {formVisibility === '' && (
         <button
           className='addCourseButton'
-          onClick={() => setModalState('addCourseForm')}
+          onClick={() => setFormVisibility('addCourseForm')}
         >
           Add Course
         </button>
       )}
 
-      {modalState === 'addCourseForm' && (
+      {formVisibility === 'addCourseForm' && (
         <AddCourseForm 
-          setModalState={setModalState} 
+          setFormVisibility={setFormVisibility} 
           setCourseEventIDInProgress={setCourseEventIDInProgress} />
       )}
 
-      {modalState === 'addSessionsForm' && (
+      {formVisibility === 'addSessionsForm' && (
         <AddSessionsForm 
-          setModalState={setModalState} 
+          setFormVisibility={setFormVisibility} 
           courseEventIDInProgress={courseEventIDInProgress}
           setCourseEventIDInProgress={setCourseEventIDInProgress} />
       )}
