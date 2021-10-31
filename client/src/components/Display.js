@@ -1,4 +1,4 @@
-import CourseEvent from './CourseEventCard'
+import CourseEventCard from './CourseEventCard'
 import Loader from "./Loader";
 import { useContext } from 'react'
 import { CourseContext } from '../contexts/CourseContext';
@@ -39,7 +39,7 @@ const Display = () => {
       { courseEvents && (
         courseEvents.map((course_event) => {
             return (
-              <CourseEvent
+              <CourseEventCard
                 key = {course_event.course_event_id}
                 course_event = {course_event}
                 fetchCourseData = {fetchCourseData}

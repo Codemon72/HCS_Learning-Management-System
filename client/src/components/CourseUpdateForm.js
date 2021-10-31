@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 import { CourseModuleContext } from '../contexts/CourseModuleContext';
 
-const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
+const CourseUpdateForm = ({ course_event, setFormVisibility }) => {
 
   console.log('CourseUpdateForm rendered', course_event);
 
@@ -39,7 +39,7 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
       .then(data => {console.log('course updated in db: ', data)})
       .then(() => fetchCourseData())
       .catch(error => console.log(error));
-    closeUpdateForm();
+    setFormVisibility('');
   };
 
   const handleInputChange = (event) => {
@@ -120,7 +120,7 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
           </div>
           
           <div className="button-box">
-            <button onClick={ closeUpdateForm }>Cancel</button>
+            <button onClick={() => setFormVisibility('')}>Cancel</button>
             <input type="submit" className="button" />
           </div>
 
@@ -129,4 +129,4 @@ const CourseUpdateForm = ({ course_event, closeUpdateForm }) => {
   )
 }
 
-export default CourseUpdateForm
+export default CourseUpdateForm;
