@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AddSessionsForm from './AddSessionsForm';
 import CourseUpdateForm from './CourseUpdateForm';
 
 const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
@@ -98,6 +99,11 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
             >Add Sessions</button>
         </div> 
         )}  
+        { formVisibility === 'AddSessions' && (
+          <AddSessionsForm 
+            setFormVisibility={setFormVisibility}
+            courseEventIDInProgress={course_event.course_event_id} />
+        )}
       </div>
 
       { formVisibility === '' && (
