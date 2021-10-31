@@ -140,11 +140,9 @@ const AddSessions = ({ courseEventIDInProgress, setCourseEventIDInProgress, setF
         </div>
         <br />
 
-        <div className='input-group'>
-          <input
-            type='submit'
-            className='button'
-          />
+        <div className="button-box">
+          <button onClick={() => setFormVisibility('')}>Cancel</button>
+          <input type="submit" className="button" />
         </div>
       </form>
     </div>
