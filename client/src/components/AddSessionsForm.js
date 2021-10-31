@@ -75,7 +75,8 @@ const AddSessions = ({ courseEventIDInProgress, setCourseEventIDInProgress, setF
       })
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
-    setCourseEventIDInProgress(null);
+    // if a child of Modal:
+    if (setCourseEventIDInProgress) {setCourseEventIDInProgress(null)}
     setFormState(initialFormState);
     setFormVisibility('');
   };
