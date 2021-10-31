@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AddSessionsForm from './AddSessionsForm';
 import CourseUpdateForm from './CourseUpdateForm';
-import icon_pencil from '../images/edit-2.svg';
+import icon_pencil from '../images/icon_pencil.svg';
 
 const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
 
