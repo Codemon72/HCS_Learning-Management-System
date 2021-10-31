@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AddSessionsForm from './AddSessionsForm';
 import CourseUpdateForm from './CourseUpdateForm';
+import icon_pencil from '../images/edit-2.svg';
 
 const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
 
@@ -80,6 +81,8 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
                       <td>{ displayDateTime(session.session_start, 'date') }</td>
                       <td>{ displayDateTime(session.session_start, 'time') }</td>
                       <td>{ displayDateTime(session.session_end, 'time') }
+
+                        <img src={icon_pencil} className="icon" alt="" onClick={() => console.log('click')} />
                         <div 
                           onClick={(e) => handleDeleteSession(e, session.session_id)}
                           className="delete_session"
@@ -108,7 +111,7 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
 
       { formVisibility === '' && (
         <div className="button-box">
-          <button onClick={() => setFormVisibility('CourseUpdateForm')}>Update</button>
+          <button onClick={() => setFormVisibility('CourseUpdateForm')}>Update Course</button>
           <button onClick={() => handleDelete(course_event.course_event_id)}>Delete</button>
         </div>)}
       

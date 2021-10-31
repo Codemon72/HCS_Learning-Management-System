@@ -55,6 +55,10 @@ button[disabled]:hover {
   opacity: 0.4;
   cursor: not-allowed;
 }
+.icon {
+  width: 25px;
+  height: 25px;
+}
 .hidden {
   display: none;
 }
