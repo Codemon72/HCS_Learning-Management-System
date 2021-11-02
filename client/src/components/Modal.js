@@ -7,7 +7,7 @@ const Modal = () => {
   const [formVisibility, setFormVisibility] = useState('');
   const [courseEventIDInProgress, setCourseEventIDInProgress] = useState(null);
 
-  console.log('formVisibility: ', formVisibility);
+  console.log('Modal rendered');
 
   return (
     <div className='modal'>

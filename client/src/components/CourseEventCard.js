@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AddSessionsForm from './AddSessionsForm';
 import CourseUpdateForm from './CourseUpdateForm';
+import UpdateSessionForm from './UpdateSessionForm';
 import icon_pencil from '../images/icon_pencil.svg';
 
 const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
@@ -74,22 +75,37 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
               </thead>
               <tbody>
                 { course_event.Sessions.map((session, index) => {
-                  return ( 
-                    <tr className="display__session" key = {session.session_id}>
-                      <td>{ index + 1 }</td>
-                      <td>{ displayDateTime(session.session_start, 'weekday') }</td>
-                      <td>{ displayDateTime(session.session_start, 'date') }</td>
-                      <td>{ displayDateTime(session.session_start, 'time') }</td>
-                      <td>{ displayDateTime(session.session_end, 'time') }
+                  return (
+                    <tr className='display__session' key={session.session_id}>
+                      <td>{index + 1}</td>
+                      <td>
+                        {displayDateTime(session.session_start, 'weekday')}
+                      </td>
+                      <td>{displayDateTime(session.session_start, 'date')}</td>
+                      <td>{displayDateTime(session.session_start, 'time')}</td>
+                      <td>
+                        {displayDateTime(session.session_end, 'time')}
 
-                        <img src={icon_pencil} className="icon" alt="" onClick={() => console.log('click')} />
-                        <div 
-                          onClick={(e) => handleDeleteSession(e, session.session_id)}
-                          className="delete_session"
-                          >x</div>
+                        <img
+                          src={icon_pencil}
+                          className='icon'
+                          alt=''
+                          onClick={() => setFormVisibility('UpdateSessionForm')}
+                        />
+                        <div
+                          onClick={(e) =>
+                            handleDeleteSession(e, session.session_id)
+                          }
+                          className='delete_session'
+                        >
+                          x
+                        </div>
+                        {formVisibility === 'UpdateSessionForm' && (
+                          <UpdateSessionForm />
+                        )}
                       </td>
                     </tr>
-                  )
+                  );
                 })}
               </tbody>
             </table>
