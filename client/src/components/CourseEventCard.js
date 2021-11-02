@@ -90,7 +90,7 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
                           src={icon_pencil}
                           className='icon'
                           alt=''
-                          onClick={() => setFormVisibility('UpdateSessionForm')}
+                          onClick={() => setFormVisibility('UpdateSessionForm' + session.session_id)}
                         />
                         <div
                           onClick={(e) =>
@@ -100,7 +100,7 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
                         >
                           x
                         </div>
-                        {formVisibility === 'UpdateSessionForm' && (
+                        {formVisibility === 'UpdateSessionForm' + session.session_id && (
                           <UpdateSessionForm />
                         )}
                       </td>

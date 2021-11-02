@@ -1,6 +1,9 @@
 
 
 const UpdateSessionForm = () => {
+
+  console.log('UpdateSessionForm rendered')
+
   return (
     <div>
       Bazinga!
