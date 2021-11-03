@@ -51,91 +51,118 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
     return (l10nDE.format(new Date(dateString)))
   };
 
+  const handleEditSession = (session) => {
+    console.log(session);
+    setFormVisibility('UpdateSessionForm')
+  }
+
   return (
-    <div className="course">
+    <div className='course'>
       <h3>Course: {course_event.Course_Module.name} </h3>
       <div>Course ID: {course_event.course_event_id}</div>
       <div>Start Date: {course_event.course_start_date}</div>
       <div>End Date: {course_event.course_end_date}</div>
       <div>Hours: {course_event.Course_Module.hours}</div>
-      <div>Teacher: { course_event.Teacher != null ? course_event.Teacher.name : 'not determined yet'}</div>
-      <div className="display__sessions">
+      <div>
+        Teacher:{' '}
+        {course_event.Teacher != null
+          ? course_event.Teacher.name
+          : 'not determined yet'}
+      </div>
+      <div className='display__sessions'>
         <h4>Sessions</h4>
-      { course_event.Sessions.length === 0 
-          ? <div className="display__session">There are no sessions listed yet for this course.</div>
-          : <table >
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Day</th>
-                  <th>Date</th>
-                  <th>Start</th>
-                  <th>End</th>
-                </tr>
-              </thead>
-              <tbody>
-                { course_event.Sessions.map((session, index) => {
-                  return (
-                    <tr className='display__session' key={session.session_id}>
-                      <td>{index + 1}</td>
-                      <td>
-                        {displayDateTime(session.session_start, 'weekday')}
-                      </td>
-                      <td>{displayDateTime(session.session_start, 'date')}</td>
-                      <td>{displayDateTime(session.session_start, 'time')}</td>
-                      <td>
-                        {displayDateTime(session.session_end, 'time')}
+        {course_event.Sessions.length === 0 ? (
+          <div className='display__session'>
+            There are no sessions listed yet for this course.
+          </div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Day</th>
+                <th>Date</th>
+                <th>Start</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+              {course_event.Sessions.map((session, index) => {
+                return (
+                  <tr className='display__session' key={session.session_id}>
+                    <td>{index + 1}</td>
+                    <td>{displayDateTime(session.session_start, 'weekday')}</td>
+                    <td>{displayDateTime(session.session_start, 'date')}</td>
+                    <td>{displayDateTime(session.session_start, 'time')}</td>
+                    <td>
+                      {displayDateTime(session.session_end, 'time')}
 
-                        <img
-                          src={icon_pencil}
-                          className='icon'
-                          alt=''
-                          onClick={() => setFormVisibility('UpdateSessionForm' + session.session_id)}
-                        />
-                        <div
-                          onClick={(e) =>
-                            handleDeleteSession(e, session.session_id)
-                          }
-                          className='delete_session'
-                        >
-                          x
-                        </div>
-                        {formVisibility === 'UpdateSessionForm' + session.session_id && (
-                          <UpdateSessionForm />
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          }
+                      <img
+                        src={icon_pencil}
+                        className='icon'
+                        alt=''
+                        onClick={() => handleEditSession(session)}
+                      />
+                      <div
+                        onClick={(e) =>
+                          handleDeleteSession(e, session.session_id)
+                        }
+                        className='delete_session'
+                      >
+                        x
+                      </div>
+                      {/* {formVisibility === 'UpdateSessionForm' + session.session_id && (
+                          <UpdateSessionForm 
+                            setFormVisibility={setFormVisibility} />
+                        )} */}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
         <br />
-        { formVisibility === '' && (
-        <div>
-          <button
-            onClick={() => setFormVisibility('AddSessions')}
-            >Add Sessions</button>
-        </div> 
-        )}  
-        { formVisibility === 'AddSessions' && (
-          <AddSessionsForm 
+        {formVisibility === '' && (
+          <div>
+            <button onClick={() => setFormVisibility('AddSessions')}>
+              Add Sessions
+            </button>
+          </div>
+        )}
+        {formVisibility === 'AddSessions' && (
+          <AddSessionsForm
             setFormVisibility={setFormVisibility}
-            courseEventIDInProgress={course_event.course_event_id} />
+            courseEventIDInProgress={course_event.course_event_id}
+          />
         )}
       </div>
 
-      { formVisibility === '' && (
-        <div className="button-box">
-          <button onClick={() => setFormVisibility('CourseUpdateForm')}>Update Course</button>
-          <button onClick={() => handleDelete(course_event.course_event_id)}>Delete</button>
-        </div>)}
-      
+      {formVisibility === '' && (
+        <div className='button-box'>
+          <button onClick={() => setFormVisibility('CourseUpdateForm')}>
+            Update Course
+          </button>
+          <button onClick={() => handleDelete(course_event.course_event_id)}>
+            Delete
+          </button>
+        </div>
+      )}
 
-      { formVisibility === 'CourseUpdateForm' && <CourseUpdateForm course_event={course_event} setFormVisibility={setFormVisibility} /> }
+      {/* CourseUpdateForm */}
+      {formVisibility === 'CourseUpdateForm' && (
+        <CourseUpdateForm
+          course_event={course_event}
+          setFormVisibility={setFormVisibility}
+        />
+      )}
 
+      {/* Update Session Form */}
+      {formVisibility === 'UpdateSessionForm' && (
+        <UpdateSessionForm setFormVisibility={setFormVisibility} />
+      )}
     </div>
-  )
+  );
 }
 
 export default CourseEventCard;

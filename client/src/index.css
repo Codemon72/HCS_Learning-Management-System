@@ -211,6 +211,9 @@ main {
   outline: 1px solid darkorange;
   outline-offset: .7rem;
 }
+.update_session_form {
+  /* ToDo */
+}
 .display__sessions {
   margin-top: .5rem;
 }
