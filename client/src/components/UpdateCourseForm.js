@@ -2,9 +2,9 @@ import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 import { CourseModuleContext } from '../contexts/CourseModuleContext';
 
-const CourseUpdateForm = ({ course_event, setFormVisibility }) => {
+const UpdateCourseForm = ({ course_event, setFormVisibility }) => {
 
-  console.log('CourseUpdateForm rendered', course_event);
+  console.log('UpdateCourseForm rendered', course_event);
 
   const { fetchCourseData } = useContext(CourseContext);
   
@@ -51,7 +51,7 @@ const CourseUpdateForm = ({ course_event, setFormVisibility }) => {
   };
 
   return (
-    <div className="course_update_form">
+    <div className="update_form">
         <form onSubmit={handleUpdateCourse}>
           {/* Course Module */}
           <div className="input-group">
@@ -129,4 +129,4 @@ const CourseUpdateForm = ({ course_event, setFormVisibility }) => {
   )
 }
 
-export default CourseUpdateForm;
+export default UpdateCourseForm;

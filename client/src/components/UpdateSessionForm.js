@@ -10,7 +10,7 @@ const UpdateSessionForm = ({setFormVisibility}) => {
   };
 
   return (
-    <div className='update_session_form'>
+    <div className='update_form'>
       Edit Session
       <form onSubmit={handleOnSubmit}>
 

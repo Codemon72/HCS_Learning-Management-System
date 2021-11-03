@@ -205,14 +205,11 @@ main {
 .course + .course {
   margin-top: 1rem;
 }
-.course_update_form{
+.update_form{
   min-width: 100%;
   margin-top: 2rem;
   outline: 1px solid darkorange;
   outline-offset: .7rem;
-}
-.update_session_form {
-  /* ToDo */
 }
 .display__sessions {
   margin-top: .5rem;

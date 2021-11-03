@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AddSessionsForm from './AddSessionsForm';
-import CourseUpdateForm from './CourseUpdateForm';
+import UpdateCourseForm from './UpdateCourseForm';
 import UpdateSessionForm from './UpdateSessionForm';
 import icon_pencil from '../images/icon_pencil.svg';
 
@@ -140,7 +140,7 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
 
       {formVisibility === '' && (
         <div className='button-box'>
-          <button onClick={() => setFormVisibility('CourseUpdateForm')}>
+          <button onClick={() => setFormVisibility('UpdateCourseForm')}>
             Update Course
           </button>
           <button onClick={() => handleDelete(course_event.course_event_id)}>
@@ -149,9 +149,9 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
         </div>
       )}
 
-      {/* CourseUpdateForm */}
-      {formVisibility === 'CourseUpdateForm' && (
-        <CourseUpdateForm
+      {/* UpdateCourseForm */}
+      {formVisibility === 'UpdateCourseForm' && (
+        <UpdateCourseForm
           course_event={course_event}
           setFormVisibility={setFormVisibility}
         />
