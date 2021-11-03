@@ -9,6 +9,14 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
   console.log('Course rendered');
 
   const [formVisibility, setFormVisibility] = useState('');
+  const [wipSession, setWipSession] = useState({})
+
+  const handleEditSession = (session, index) => {
+    const temp = {...session};
+    temp.index = index;
+    setWipSession(temp);
+    setFormVisibility('UpdateSessionForm');
+  }
 
   const deleteSessionFromDB = (session_id) => {
     const options = {
@@ -50,11 +58,6 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
     let l10nDE = new Intl.DateTimeFormat("en-UK", options);
     return (l10nDE.format(new Date(dateString)))
   };
-
-  const handleEditSession = (session) => {
-    console.log(session);
-    setFormVisibility('UpdateSessionForm')
-  }
 
   return (
     <div className='course'>
@@ -101,7 +104,7 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
                         src={icon_pencil}
                         className='icon'
                         alt=''
-                        onClick={() => handleEditSession(session)}
+                        onClick={() => handleEditSession(session, index)}
                       />
                       <div
                         onClick={(e) =>
@@ -149,7 +152,7 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
         </div>
       )}
 
-      {/* UpdateCourseForm */}
+      {/* Update Course Form */}
       {formVisibility === 'UpdateCourseForm' && (
         <UpdateCourseForm
           course_event={course_event}
@@ -159,7 +162,10 @@ const CourseEventCard = ({course_event, handleDelete, fetchCourseData}) => {
 
       {/* Update Session Form */}
       {formVisibility === 'UpdateSessionForm' && (
-        <UpdateSessionForm setFormVisibility={setFormVisibility} />
+        <UpdateSessionForm 
+          setFormVisibility={setFormVisibility}
+          displayDateTime={displayDateTime} 
+          wipSession={wipSession} />
       )}
     </div>
   );
