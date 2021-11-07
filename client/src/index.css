@@ -128,7 +128,8 @@ main {
   padding: .5rem 1rem;
   width: 200px;
 }
-.dashboard__session .input-group .input-field {
+.dashboard__session .input-group .input-field,
+.display__sessions .input-group .input-field {
   padding: 5px 10px;
   width: 220px;
 }
