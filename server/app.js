@@ -117,6 +117,20 @@ app.post('/api/sessions', (req, res) => {
     });
 });
 
+// Update Session
+app.put("/api/sessions", (req, res) => {
+  let { course_event_id, session_id, session_start, session_end } = req.body;
+  Sessions.update(
+    { course_event_id, session_start, session_end },
+    { where: { session_id: session_id } }
+  )
+    .then(result => res.status(200).json(result))
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
+});
+
 // Delete Session
 app.delete("/api/sessions/:id", (req, res) => {
   const idDeleted = parseInt(req.params.id);

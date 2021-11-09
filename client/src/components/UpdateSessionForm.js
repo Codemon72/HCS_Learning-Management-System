@@ -1,34 +1,50 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CourseContext } from '../contexts/CourseContext';
 
 const UpdateSessionForm = ({setFormVisibility, wipSession}) => {
 
-  console.log('UpdateSessionForm rendered')
+  console.log('UpdateSessionForm rendered');
 
-  const initialFormState = {
+  const { fetchCourseData } = useContext(CourseContext);
+
+  const [formState, setFormState] = useState({
     course_event_id: '',
     session_id: '',
     session_start: '',
     session_end: '',
-  };
-
-  const [formState, setFormState] = useState(initialFormState);
+  });
 
   const handleSessionInputChange = (event) => {
-    console.log('event.target: ', event.target)
     let temp = {...formState};
     const { name, value } = event.target;
     temp[name] = value;
     temp.course_event_id = wipSession.course_event_id;
     temp.session_id = wipSession.session_id;
     setFormState(temp);
-    console.table(temp);
   };
 
+  const updateSessionInDB = () => {
+    const options = {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(formState)
+    };
+    return fetch('http://localhost:4000/api/sessions/', options)
+             .then(res => { 
+              if (!res.ok) { // errors from server
+                throw Error(res.statusText);
+              }
+              return res.json();
+            });
+  };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log('formState: ', formState);
-    console.log('on submit clicked')
+    updateSessionInDB()
+      .then(data => {console.log('session updated in db: ', data)})
+      .then(() => fetchCourseData())
+      .catch(error => console.log(error));
+    setFormVisibility('');
   };
 
   // onlyDuringDev:
