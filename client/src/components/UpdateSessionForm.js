@@ -8,10 +8,10 @@ const UpdateSessionForm = ({setFormVisibility, wipSession}) => {
   const { fetchCourseData } = useContext(CourseContext);
 
   const [formState, setFormState] = useState({
-    course_event_id: '',
-    session_id: '',
-    session_start: '',
-    session_end: '',
+    course_event_id: wipSession.course_event_id,
+    session_id: wipSession.session_id,
+    session_start: wipSession.session_start,
+    session_end: wipSession.session_end,
   });
 
   const handleSessionInputChange = (event) => {
@@ -85,7 +85,6 @@ const UpdateSessionForm = ({setFormVisibility, wipSession}) => {
         </div>
       </form>
       {/* onlyDuringDev: */}
-        <br />
         <div className='addSessionFormField'>
           <button className='dashboard__session button' onClick={logFormstate}>
             (Log FormState)
