@@ -6,6 +6,7 @@ const UpdateSessionForm = ({setFormVisibility, wipSession}) => {
 
   const initialFormState = {
     course_event_id: '',
+    session_id: '',
     session_start: '',
     session_end: '',
   };
@@ -18,6 +19,7 @@ const UpdateSessionForm = ({setFormVisibility, wipSession}) => {
     const { name, value } = event.target;
     temp[name] = value;
     temp.course_event_id = wipSession.course_event_id;
+    temp.session_id = wipSession.session_id;
     setFormState(temp);
     console.table(temp);
   };
