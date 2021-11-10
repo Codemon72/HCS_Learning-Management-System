@@ -4,14 +4,14 @@ import { CourseContext } from '../contexts/CourseContext';
 const UpdateSessionForm = ({setFormVisibility, wipSession}) => {
 
   console.log('UpdateSessionForm rendered');
-
+  
   const { fetchCourseData } = useContext(CourseContext);
 
   const [formState, setFormState] = useState({
     course_event_id: wipSession.course_event_id,
     session_id: wipSession.session_id,
-    session_start: wipSession.session_start,
-    session_end: wipSession.session_end,
+    session_start: new Date(wipSession.session_start).toLocaleString('sv-SE').replace(" ", "T"),
+    session_end: new Date(wipSession.session_end).toLocaleString('sv-SE').replace(" ", "T"),
   });
 
   const handleSessionInputChange = (event) => {
