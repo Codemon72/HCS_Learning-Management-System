@@ -95,11 +95,11 @@ const AddCourse = ({setFormVisibility, setCourseEventIDInProgress}) => {
       .then((data) => {
         console.log('course added to db: ', data);
         setCourseEventIDInProgress(data.course_event_id);
+        setFormState(initialFormState);
+        setFormVisibility('addSessionsForm');
       })
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
-    setFormState(initialFormState);
-    setFormVisibility('addSessionsForm');
   };
 
   return (

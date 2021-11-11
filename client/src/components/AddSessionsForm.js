@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { CourseContext } from '../contexts/CourseContext';
 
-const AddSessions = ({ courseEventIDInProgress, setCourseEventIDInProgress, setFormVisibility }) => {
+const AddSessions = ({ courseEventIDInProgress, setFormVisibility }) => {
   
   const { fetchCourseData } = useContext(CourseContext);
   
@@ -27,7 +27,7 @@ const AddSessions = ({ courseEventIDInProgress, setCourseEventIDInProgress, setF
     let temp = [...formState];
     const { name, value } = event.target;
     temp[i][name] = value;
-    temp[i].course_event_id = courseEventIDInProgress;
+    // temp[i].course_event_id = courseEventIDInProgress;
     setFormState(temp);
     console.table(temp);
   };
@@ -75,8 +75,6 @@ const AddSessions = ({ courseEventIDInProgress, setCourseEventIDInProgress, setF
       })
       .then(() => fetchCourseData())
       .catch((error) => console.log(error));
-    // if a child of Modal:
-    if (setCourseEventIDInProgress) {setCourseEventIDInProgress(null)}
     setFormState(initialFormState);
     setFormVisibility('');
   };
